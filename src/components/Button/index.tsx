@@ -41,8 +41,8 @@ export const IconButton = ({
       onClick={(e) => onClick(e)}
     >
       <Content>
-        {svg ? <SvgItem>{svg}</SvgItem> : <></>}
         <LabelItem>{label.toUpperCase()}</LabelItem>
+        {svg ? <SvgItem>{svg}</SvgItem> : <></>}
       </Content>
     </StyledIconButton>
   );

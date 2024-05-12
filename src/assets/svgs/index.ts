@@ -23,3 +23,6 @@ export { ReactComponent as history } from './History.svg';
 export { ReactComponent as chart } from './Chart.svg';
 export { ReactComponent as send } from './Send.svg';
 export { ReactComponent as announcement } from './Announcement.svg';
+export { ReactComponent as id } from './Id.svg';
+export { ReactComponent as password } from './Password.svg';
+export { ReactComponent as login } from './Login.svg';

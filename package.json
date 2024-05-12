@@ -1,7 +1,7 @@
 {
-  "name": "hanseifood_front",
-  "version": "2.0.0",
-  "description": "관리자 페이지 추가, 식단 댓글 & 좋아요 기능",
+  "name": "CBA App",
+  "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --config config/webpack.dev.js",

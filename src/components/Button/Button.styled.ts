@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {Title5} from '@styles/font';
+import {Title5, body3} from '@styles/font';
 import {EColor} from '@styles/color';
 
 interface StyledIconButtonProps {
@@ -51,4 +51,5 @@ export const LabelItem = styled.div`
   align-items: center;
   width: 100%;
   padding: 0px 8px;
+  ${body3};
 `;

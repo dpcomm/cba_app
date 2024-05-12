@@ -1,8 +1,7 @@
 export enum EColor {
-  COLOR_PRIMARY = "#1b4378",
-  COLOR_SECONDARY = "#3c4253",
-  COLOR_INTERACTION = "#4593d2",
-  COLOR_COMPLEMENTARY = "#3DB397",
+  COLOR_PRIMARY = "#F16622",
+  COLOR_PRIMARY_SUB1 = "#FF8A51",
+  COLOR_PRIMARY_SUB2= "#FFC1A3",
   TEXT_900 = "#1A1A1A",
   TEXT_800 = "#262729",
   TEXT_700 = "#858585",
@@ -11,10 +10,6 @@ export enum EColor {
   TEXT_400 = "#efefef",
   TEXT_300 = "#F7F7F7",
   TEXT_200 = "#FFFFFF",
-  GRAD_TL = "#7fc0ff",
-  GRAD_TR = "#7f99ff",
-  GRAD_BL = "#6ffaff",
-  GRAD_BR = "#56a6ff",
   GRAY = "#A5A5A5",
   RED = "#fa4a4a"
 }
