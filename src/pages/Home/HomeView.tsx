@@ -1,54 +1,37 @@
-import React, { useState } from 'react';
-import { Container, LoginInputView, LogoBold, LogoLight, LogoView, TextButton, TextButtonView } from './HomeVIew.styled';
-import TextInput from '@components/TextInput';
+import React from 'react';
+import logo from '@assets/images/retreat_logo.png';
+import timetable from '@assets/images/retreat_timetable.png';
+import guidebook from '@assets/images/retreat_guidebook.png';
+import { Container, Left, LogoImage, LogoText, TextBody, TextContainer, TextTitle } from './HomeView.styled';
 import SvgIcon from '@components/SvgIcon';
 import { EColor } from '@styles/color';
-import { IconButton } from '@components/Button';
+import StickyNavigation from '@components/StickyTabBar';
 
 const HomeView = () => {
-	const [id, set_id] = useState("");
-	const [password, set_password] = useState("");
-
-	const handleLogion = () => {
-		console.log("Hello world");
-	};
-
-	return (
-		<Container>
-			<LogoView>
-				<LogoLight>Welcome to</LogoLight>
-				<LogoBold>CBA</LogoBold>
-			</LogoView>
-			<LoginInputView>
-				<TextInput
-					svg={<SvgIcon name={'id'} width={32} height={32} fill={EColor.TEXT_200} stroke={EColor.COLOR_PRIMARY} />}
-					placeHolder={"아이디"}
-					getter={id}
-					setter={set_id}
-				/>
-				<TextInput
-					svg={<SvgIcon name={'password'} width={32} height={32} fill={EColor.TEXT_200} stroke={EColor.COLOR_PRIMARY} />}
-					placeHolder={"비밀번호"}
-					getter={password}
-					setter={set_password}
-				/>
-				<IconButton
-					svg={<SvgIcon name={'login'} width={24} height={24} fill={EColor.COLOR_PRIMARY} stroke={EColor.COLOR_PRIMARY} />}
-					label={'로그인 하기'}
-					width={"100%"}
-					height={"52px"}
-					borderRadius='48px'
-					backgroundColor={EColor.TEXT_300}
-					tintColor='white'
-					color='black'
-					onClick={() => handleLogion()}
-				/>
-			</LoginInputView>
-			<TextButtonView>
-				<TextButton>아이디/비밀번호 찾기</TextButton>
-				<TextButton>회원가입</TextButton>
-			</TextButtonView>
-		</Container>
+  return (
+		<>
+			<Container>
+				<LogoImage src={logo} />
+				<Left>
+					<SvgIcon name={'next'} width={24} height={24} fill={EColor.COLOR_PRIMARY} />
+					수련회 등록하기
+				</Left>
+				<TextContainer>
+					<TextTitle>2024년 대학청년부 겨울 수련회</TextTitle>
+					<TextTitle>The Light - 빛 되신 말씀</TextTitle>
+					<TextBody>주님의 말씀은 내 발에 등이요. 내 길에 빛이니이다</TextBody>
+					<TextBody>(시119:105)</TextBody>
+					<TextBody>24년 2월 4-5일, 안산청소년수련원</TextBody>
+					<TextBody>수련회비 납부 및 후원계좌</TextBody>
+					<TextBody>카카오뱅크 79795194749 배윤희</TextBody>
+				</TextContainer>
+			</Container>
+			<StickyNavigation />
+			<LogoText>수련회 일정표</LogoText>
+			<LogoImage src={timetable} />
+			<LogoText>수련회 가이드북</LogoText>
+			<LogoImage src={guidebook} />
+		</>
   );
 };
 
