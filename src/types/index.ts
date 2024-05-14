@@ -7,11 +7,6 @@ export type Paging = {
   hasNext: boolean;
 };
 
-export type Commenter = {
-  kakaoId: string;
-  nickname: string;
-};
-
 export type NavInfo = {
   page: string;
   history: string[];

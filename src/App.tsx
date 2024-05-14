@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import { GlobalStyle } from './styles/GlobalStyle';
 import Home from '@pages/Home';
-import Navbar from '@components/Navbar';
+// import Navbar from '@components/Navbar';
 
 const App = () => {
   return (
