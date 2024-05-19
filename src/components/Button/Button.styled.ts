@@ -52,4 +52,5 @@ export const LabelItem = styled.div`
   width: 100%;
   padding: 0px 8px;
   ${body3};
+  font-size: 16px;
 `;

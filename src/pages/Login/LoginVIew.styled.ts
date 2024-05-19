@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { EColor } from "@styles/color";
-import { Title3, body3, body6 } from "@styles/font";
+import { Title3, Title4_2, Title6, body1, body3, body4, body6 } from "@styles/font";
 
 export const Container = styled.div`
 	display: flex;
@@ -52,4 +52,61 @@ export const TextButton = styled.div`
 	color: ${EColor.TEXT_600};
 	justify-content: center;
 	align-items: center;
+`;
+
+export const NameText = styled.div`
+	${body1};
+	font-size: 24px;
+	color: ${EColor.TEXT_900};
+	letter-spacing: 2px;
+	padding-top: 36px;
+	padding-bottom: 36px;
+`;
+
+export const DDayView = styled.div`
+	padding-bottom: 32px;
+`;
+
+export const DDayTest = styled.div`
+	${body1};
+	font-size: 40px;
+	letter-spacing: 2px;
+	color: ${EColor.TEXT_900};
+`;
+
+export const MenuView = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+`;
+
+export const ItemView = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 36px;
+`;
+
+export const ItemText = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	${body4};
+	color: ${EColor.TEXT_500};
+	margin-top: 10px;
+	text-align: center;
+`;
+
+export const Line = styled.div`
+	display: flex;
+	background-color: ${EColor.TEXT_500};
+	width: 1px;
+	height: 64px;
+	border-radius: 12px;
+`;
+
+export const ButtonView = styled.div`
+
 `;

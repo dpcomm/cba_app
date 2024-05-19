@@ -27,3 +27,7 @@ export { ReactComponent as id } from './Id.svg';
 export { ReactComponent as password } from './Password.svg';
 export { ReactComponent as login } from './Login.svg';
 export { ReactComponent as next } from './Next.svg';
+export { ReactComponent as write } from './Write.svg';
+export { ReactComponent as info } from './Info.svg';
+export { ReactComponent as calendar } from './Calendar.svg';
+export { ReactComponent as location } from './Location.svg';
