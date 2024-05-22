@@ -1,20 +1,19 @@
 import React from 'react';
 import { Container, StyledInput } from './styles';
 
-type TextInputComponentProps = {
+type TextInputBComponentProps = {
   placeHolder: string;
-  svg?: React.ReactElement<SVGAElement>;
   getter: string
   setter: () => void;
 }
 
-const TextInput = ({ svg, placeHolder, getter, setter }: TextInputComponentProps) => {
+
+const TextInputB = ({ placeHolder, getter, setter }: TextInputBComponentProps) => {
   return (
     <Container>
-      {svg}
       <StyledInput type='text' placeholder={placeHolder} value={getter} onChange={(e) => setter(e.target.value)} />
     </Container>
   );
 };
 
-export default TextInput;
+export default TextInputB;

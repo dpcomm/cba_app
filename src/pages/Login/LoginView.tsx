@@ -19,7 +19,7 @@ const LoginView = () => {
 				<LogoLight>Welcome to</LogoLight>
 				<LogoBold>CBA</LogoBold>
 			</LogoView>
-			{/* <LoginInputView>
+			<LoginInputView>
 				<TextInput
 					svg={<SvgIcon name={'id'} width={32} height={32} fill={EColor.TEXT_200} stroke={EColor.COLOR_PRIMARY} />}
 					placeHolder={"아이디"}
@@ -47,9 +47,9 @@ const LoginView = () => {
 			<TextButtonView>
 				<TextButton>아이디/비밀번호 찾기</TextButton>
 				<TextButton>회원가입</TextButton>
-			</TextButtonView> */}
+			</TextButtonView>
 			<></>
-			<NameText>김호준님 안녕하세요.</NameText>
+			{/* <NameText>김호준님 안녕하세요.</NameText>
 			<DDayView>
 				<DDayTest>D-64</DDayTest>
 			</DDayView>
@@ -79,7 +79,7 @@ const LoginView = () => {
 				tintColor='white'
 				color='black'
 				onClick={() => handleLogin()}
-			/>
+			/> */}
 		</Container>
   );
 };
