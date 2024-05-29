@@ -31,3 +31,9 @@ export { ReactComponent as write } from './Write.svg';
 export { ReactComponent as info } from './Info.svg';
 export { ReactComponent as calendar } from './Calendar.svg';
 export { ReactComponent as location } from './Location.svg';
+export { ReactComponent as cba_logo } from './CbaLogo.svg';
+export { ReactComponent as document } from './Document.svg';
+export { ReactComponent as graph } from './Graph.svg';
+export { ReactComponent as meal } from './Meal.svg';
+export { ReactComponent as youtube } from './Youtube.svg';
+
