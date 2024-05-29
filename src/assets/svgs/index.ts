@@ -36,4 +36,5 @@ export { ReactComponent as document } from './Document.svg';
 export { ReactComponent as graph } from './Graph.svg';
 export { ReactComponent as meal } from './Meal.svg';
 export { ReactComponent as youtube } from './Youtube.svg';
+export { ReactComponent as logout } from './Logout.svg';
 
