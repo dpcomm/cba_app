@@ -59,3 +59,8 @@ export const SvgBox = styled.div`
 	padding: 4px;
 	margin-right: 14px;
 `;
+
+export const EmptyBox = styled.div`
+	width: 30px;
+	height: 30px;
+`;

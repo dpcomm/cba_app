@@ -32,3 +32,7 @@ export { ReactComponent as info } from './Info.svg';
 export { ReactComponent as calendar } from './Calendar.svg';
 export { ReactComponent as location } from './Location.svg';
 export { ReactComponent as cake } from './Cake.svg';
+export { ReactComponent as user } from './User.svg';
+export { ReactComponent as gender } from './Gender.svg';
+export { ReactComponent as check } from './Check.svg';
+export { ReactComponent as users } from './Users.svg';

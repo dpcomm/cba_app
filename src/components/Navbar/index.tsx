@@ -1,6 +1,4 @@
-import { Container, NavbarBox, NavbarItem, TicketBox, TicketBoxOn } from './Navbar.styled';
 import SvgIcon from '@components/SvgIcon';
-import { EColor } from '@styles/color';
 import { HeaderBar } from '@components/HeaderBar';
 import usePageControll from '@hooks/usePageControll';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
@@ -12,7 +10,7 @@ import { LeftView } from '@components/HeaderBar/HeaderBar.styled';
 const Navbar = () => {
   const { navigation, handlePage, handlePrevPage } = usePageControll();
   const set_navInfo = useSetRecoilState<NavInfo>(naviState);
-  const get_navInfo = useRecoilValue(naviState);
+  const get_navInfo = useRecoilValue<NavInfo>(naviState);
   const bottomTarget = [''];
 
   useEffect(() => {

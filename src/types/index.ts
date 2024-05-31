@@ -16,3 +16,8 @@ export enum Page {
   home = "home",
   register = "register"
 }
+
+export type RadioItem = {
+  value: number;
+  text: string;
+}
