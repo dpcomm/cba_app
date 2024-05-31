@@ -27,6 +27,7 @@ export const LogoLight = styled.div`
 	font-size: 42px;
 	color: ${EColor.COLOR_PRIMARY_SUB2};
 	letter-spacing: 2px;
+	user-select: none;
 `;
 
 export const LogoBold = styled.div`
@@ -34,6 +35,8 @@ export const LogoBold = styled.div`
 	font-size: 64px;
 	color: ${EColor.COLOR_PRIMARY};
 	letter-spacing: 7px;
+	margin-top: -16px;
+	user-select: none;
 `;
 
 export const InputView = styled.div`

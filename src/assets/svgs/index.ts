@@ -36,3 +36,5 @@ export { ReactComponent as user } from './User.svg';
 export { ReactComponent as gender } from './Gender.svg';
 export { ReactComponent as check } from './Check.svg';
 export { ReactComponent as users } from './Users.svg';
+export { ReactComponent as chevron_up } from './Chevron-up.svg';
+export { ReactComponent as chevron_down } from './Chevron-down.svg';

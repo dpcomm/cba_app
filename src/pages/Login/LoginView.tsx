@@ -3,7 +3,7 @@ import { ButtonView, Container, DDayTest, DDayView, ItemText, ItemView, Line, Lo
 import TextInput from '@components/TextInput';
 import SvgIcon from '@components/SvgIcon';
 import { EColor } from '@styles/color';
-import { IconButton } from '@components/Button';
+import { IconButton } from '@components/IconButton';
 
 const LoginView = () => {
 	const [id, set_id] = useState("");

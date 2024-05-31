@@ -1,5 +1,5 @@
 import React from 'react';
-import { Content, LabelItem, StyledIconButton, SvgItem } from './Button.styled';
+import { Content, LabelItem, StyledIconButton, SvgItem } from './IconButton.styled';
 
 interface IIconButtonComponentProps {
   label: string;
@@ -15,7 +15,7 @@ interface IIconButtonComponentProps {
   onClick: (e?: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Button = ({
+export const IconButton = ({
   label,
   width,
   height,
@@ -47,5 +47,3 @@ const Button = ({
     </StyledIconButton>
   );
 };
-
-export default Button;
