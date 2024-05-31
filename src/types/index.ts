@@ -14,7 +14,10 @@ export type NavInfo = {
 
 export enum Page {
   home = "home",
-  register = "register"
+  register = "register",
+  retreatInfo = "retreat-info",
+  retreatLocation = "retreat-location",
+  retreatPayment = "retreat-payment"
 }
 
 export type RadioItem = {

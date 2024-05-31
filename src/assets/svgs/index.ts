@@ -38,3 +38,6 @@ export { ReactComponent as check } from './Check.svg';
 export { ReactComponent as users } from './Users.svg';
 export { ReactComponent as chevron_up } from './Chevron-up.svg';
 export { ReactComponent as chevron_down } from './Chevron-down.svg';
+export { ReactComponent as clock } from './Clock.svg';
+export { ReactComponent as bill } from './Bill.svg';
+export { ReactComponent as check_lined } from './Check-lined.svg';

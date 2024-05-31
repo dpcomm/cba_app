@@ -8,10 +8,10 @@ import { useEffect } from 'react';
 import { LeftView } from '@components/HeaderBar/HeaderBar.styled';
 
 const Navbar = () => {
-  const { navigation, handlePage, handlePrevPage } = usePageControll();
+  const { navigation, handlePrevPage } = usePageControll();
   const set_navInfo = useSetRecoilState<NavInfo>(naviState);
   const get_navInfo = useRecoilValue<NavInfo>(naviState);
-  const bottomTarget = [''];
+  const noneHeaderTarget = ['', 'home'];
 
   useEffect(() => {
     set_navInfo((prev) => ({
@@ -42,7 +42,7 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    if (bottomTarget.includes(navigation.page)) {
+    if (noneHeaderTarget.includes(navigation.page)) {
       set_navInfo((prev) => ({
         ...prev,
         history: [navigation.page],
@@ -52,11 +52,15 @@ const Navbar = () => {
 
   const pageLabel = {
     [Page.home]: '홈',
-    [Page.register]: '회원가입'
+    [Page.register]: '회원가입',
+    [Page.retreatInfo]: '수련회 안내',
+    [Page.retreatLocation]: '수련회 위치',
+    [Page.retreatPayment]: '수련회 납부',
   };
 
+  console.log(navigation.page);
 
-  if (bottomTarget.includes(navigation.page)) {
+  if (noneHeaderTarget.includes(navigation.page)) {
     return null;
   } else {
     return (
