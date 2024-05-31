@@ -6,6 +6,7 @@ import { EColor } from '@styles/color';
 import RadioButton from '@components/RadioButton';
 import Dropdown from '@components/Dropdown';
 import { IconButton } from '@components/IconButton';
+import useConfirm from '@hooks/useConfirm';
 
 const RegisterView = () => {
   const [id, set_id] = useState("");
@@ -15,6 +16,10 @@ const RegisterView = () => {
   const [gender, set_gender] = useState(0);
   const [group, set_group] = useState();
   const [birth, set_birth] = useState();
+
+  const ok = () => handleRegister();
+  const cancle = () => console.log("Cancled..");
+  const confirmRegister = useConfirm("회원 가입을 완료하시겠습니까? ", ok, cancle);
 
   const handleRegister = () => {
     console.log(id);
@@ -71,7 +76,7 @@ const RegisterView = () => {
       </InputView>
       <IconButton
         label={'가입 완료'}
-        onClick={handleRegister}
+        onClick={confirmRegister}
         width='118px'
         height='48px'
         color={EColor.TEXT_200}
