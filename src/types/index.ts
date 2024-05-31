@@ -11,3 +11,8 @@ export type NavInfo = {
   page: string;
   history: string[];
 };
+
+export enum Page {
+  home = "home",
+  register = "register"
+}

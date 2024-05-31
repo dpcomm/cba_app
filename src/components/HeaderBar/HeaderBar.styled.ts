@@ -1,14 +1,18 @@
+import { EColor } from '@styles/color';
+import { body1, body2, body3 } from '@styles/font';
 import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
+  position: fixed;
   width: 100%;
-  height: 48px;
+  height: 58px;
   align-items: center;
   justify-content: space-between;
   padding: 0px 12px 0px 12px;
   top: 0;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  background-color: ${EColor.TEXT_200};
+  /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2); */
 `;
 
 export const Right = styled.div`
@@ -17,4 +21,13 @@ export const Right = styled.div`
 
 export const Left = styled.div`
   display: flex;
+`;
+
+export const LeftView = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  ${body1};
+  gap: 8px;
 `;

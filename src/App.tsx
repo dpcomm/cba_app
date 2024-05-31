@@ -4,18 +4,19 @@ import { GlobalStyle } from './styles/GlobalStyle';
 import Login from '@pages/Login';
 import Home from '@pages/Home';
 import Register from '@pages/register';
-// import Navbar from '@components/Navbar';
+import Navbar from '@components/Navbar';
+import { Page } from './types';
 
 const App = () => {
   return (
     <RecoilRoot>
       <GlobalStyle />
       <BrowserRouter>
-        {/* <Navbar /> */}
+        <Navbar />
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/register" element={<Register />} />
+          <Route path={`/${Page.home}`} element={<Home />} />
+          <Route path={`/${Page.register}`} element={<Register />} />
         </Routes>
       </BrowserRouter>
     </RecoilRoot>

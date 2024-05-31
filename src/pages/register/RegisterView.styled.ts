@@ -8,8 +8,11 @@ export const Container = styled.div`
 	width: 100%;
 	justify-content: center;
 	align-items: center;
-	padding-right: 54px;
-	padding-left: 54px;
+	padding-top: 86px;
+	padding-bottom: 86px;
+	padding-right: 48px;
+	padding-left: 48px;
+	overflow-y: scroll;
 `;
 
 export const LogoView = styled.div`
@@ -17,8 +20,6 @@ export const LogoView = styled.div`
 	flex-direction: column;
 	width: 100%;
 	align-items: center;
-	padding-top: 86px;
-	padding-bottom: 56px;
 `;
 
 export const LogoLight = styled.div`
@@ -42,6 +43,8 @@ export const InputView = styled.div`
 	align-items: center;
 	width: 100%;
 	gap: 20px;
+	padding-top: 56px;
+	padding-bottom: 56px;
 `;
 
 export const InputBox = styled.div`

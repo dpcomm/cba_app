@@ -14,7 +14,7 @@ export const Container = styled.div`
 
 export const StyledInput = styled.input`
   width: 100%;
-	height: 36px;
+	height: 28px;
 	font-size: 16px;
   padding: 10px;
   background-color: ${EColor.TEXT_300};
