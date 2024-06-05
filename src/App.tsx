@@ -7,6 +7,9 @@ import Navbar from '@components/Navbar';
 import { Page } from './types';
 import RetreatInfo from '@pages/RetreatInfo';
 import Home from '@pages/Home';
+import Backoffice from '@pages/Backoffice';
+import Error404 from '@pages/Error404';
+// import Navbar from '@components/Navbar';
 import RetreatLocation from '@pages/RetreatLocation';
 import RetreatPayment from '@pages/RetreatPayment';
 import RetreatApplicaion from '@pages/RetreatApplication';
@@ -19,12 +22,16 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/backoffice" element={<Backoffice />} />
           <Route path={`/${Page.home}`} element={<Home />} />
           <Route path={`/${Page.retreatInfo}`} element={<RetreatInfo />} />
           <Route path={`/${Page.register}`} element={<Register />} />
           <Route path={`/${Page.retreatLocation}`} element={<RetreatLocation />} />
           <Route path={`/${Page.retreatPayment}`} element={<RetreatPayment />} />
           <Route path={`/${Page.retreatApplication}`} element={<RetreatApplicaion />} />
+          <Route path="*" element={<Error404 />} />
         </Routes>
       </BrowserRouter>
     </RecoilRoot>
