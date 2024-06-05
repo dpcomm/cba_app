@@ -1,37 +1,71 @@
 import React from 'react';
-import logo from '@assets/images/retreat_logo.png';
-import timetable from '@assets/images/retreat_timetable.png';
-import guidebook from '@assets/images/retreat_guidebook.png';
-import { Container, Left, LogoImage, LogoText, TextBody, TextContainer, TextTitle } from './HomeView.styled';
-import SvgIcon from '@components/SvgIcon';
+import { ButtonView, Container, DDayTest, DDayView, ItemText, ItemView, Line, LogoBold, LogoLight, LogoView, MenuView, NameText } from './HomeView.styled';
 import { EColor } from '@styles/color';
-import StickyNavigation from '@components/StickyTabBar';
+import SvgIcon from '@components/SvgIcon';
+import { IconButton } from '@components/IconButton';
 
 const HomeView = () => {
-  return (
-		<>
-			<Container>
-				<LogoImage src={logo} />
-				<Left>
-					<SvgIcon name={'next'} width={24} height={24} fill={EColor.COLOR_PRIMARY} />
-					수련회 등록하기
-				</Left>
-				<TextContainer>
-					<TextTitle>2024년 대학청년부 겨울 수련회</TextTitle>
-					<TextTitle>The Light - 빛 되신 말씀</TextTitle>
-					<TextBody>주님의 말씀은 내 발에 등이요. 내 길에 빛이니이다</TextBody>
-					<TextBody>(시119:105)</TextBody>
-					<TextBody>24년 2월 4-5일, 안산청소년수련원</TextBody>
-					<TextBody>수련회비 납부 및 후원계좌</TextBody>
-					<TextBody>카카오뱅크 79795194749 배윤희</TextBody>
-				</TextContainer>
-			</Container>
-			<StickyNavigation />
-			<LogoText>수련회 일정표</LogoText>
-			<LogoImage src={timetable} />
-			<LogoText>수련회 가이드북</LogoText>
-			<LogoImage src={guidebook} />
-		</>
+  const handleLogout = () => {
+    console.log("로그아웃");
+  };
+
+	return (
+    <Container>
+      <LogoView>
+				<LogoLight>Welcome to</LogoLight>
+				<LogoBold>CBA</LogoBold>
+			</LogoView>
+      <NameText>김호준님 안녕하세요.</NameText>
+      <DDayView>
+        <SvgIcon name={'calendar'} width={36} height={36} fill={"none"} stroke={EColor.TEXT_800} />
+        <DDayTest>D-64</DDayTest>
+      </DDayView>
+      <MenuView>
+        <ItemView>
+          <SvgIcon name={'info'} width={36} height={36} fill={"none"} stroke={EColor.TEXT_800} />
+          <ItemText>수련회 안내</ItemText>
+        </ItemView>
+        <Line />
+        <ItemView>
+          <SvgIcon name={'location'} width={36} height={36} fill={"none"} stroke={EColor.TEXT_800} />
+          <ItemText>수련회 위치</ItemText>
+        </ItemView>
+        <Line />
+        <ItemView>
+          <SvgIcon name={'write'} width={36} height={36} fill={"none"} stroke={EColor.TEXT_800} />
+          <ItemText>수련회 등록</ItemText>
+        </ItemView>
+      </MenuView>
+      <MenuView>
+        <ItemView>
+          <SvgIcon name={'clock'} width={36} height={36} fill={EColor.TEXT_800} stroke={'none'} />
+          <ItemText>수련회 일정표</ItemText>
+        </ItemView>
+        <Line />
+        <ItemView>
+          <SvgIcon name={'bill'} width={36} height={36} fill={EColor.TEXT_800} stroke={EColor.TEXT_800} />
+          <ItemText>납부 확인</ItemText>
+        </ItemView>
+        <Line />
+        <ItemView>
+          <SvgIcon name={'user'} width={40} height={40} fill={"none"} stroke={EColor.TEXT_800} />
+          <ItemText>계정 정보</ItemText>
+        </ItemView>
+      </MenuView>
+      <ButtonView>
+        <IconButton
+          svg={<SvgIcon name={'login'} width={24} height={24} fill={EColor.COLOR_PRIMARY} stroke={EColor.COLOR_PRIMARY} />}
+          label={'로그아웃'}
+          width={"100%"}
+          height={"52px"}
+          borderRadius='48px'
+          backgroundColor={EColor.TEXT_300}
+          tintColor='white'
+          color='black'
+          onClick={handleLogout}
+        />
+      </ButtonView>
+    </Container>
   );
 };
 

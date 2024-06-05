@@ -1,62 +1,127 @@
-import { EColor } from "@styles/color";
-import { Title1, Title4_2, Title6, body1, body5, } from "@styles/font";
 import styled from "styled-components";
+import { EColor } from "@styles/color";
+import { Title3, body1, body3, body6 } from "@styles/font";
 
 export const Container = styled.div`
+	display: flex;
+	flex-direction: column;
 	width: 100%;
 	height: 96vh;
-	text-align: center;
-`;
-
-export const LogoImage = styled.img`
-	width: 100%;
-`;
-
-export const LogoText = styled.div`
-	display: flex;
-	width: 100%;
 	justify-content: center;
 	align-items: center;
-	${Title6};
-	font-size: 36px;
-	color: ${EColor.TEXT_900};
-	letter-spacing: 2px;
-	padding-top: 88px;
-	padding-bottom: 48px;
+	padding-right: 42px;
+	padding-left: 42px;
 `;
 
-export const Left = styled.div`
-	display: flex;
-	flex-direction: row-reverse;
-	align-items: center;
-	width: 100%;
-	${Title4_2}
-	letter-spacing: 4px;
-	color: ${EColor.COLOR_PRIMARY_SUB1};
-	margin-bottom: 60px;
-	padding: 4px;
-	gap: 4px;
-`;
-
-export const TextContainer = styled.div`
+export const LogoView = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 	align-items: center;
-	padding-right: 32px;
-	padding-left: 32px;
+	user-select: none;
 `;
 
-export const TextTitle = styled.div`
+export const LogoLight = styled.div`
+	${body6};
+	font-size: 42px;
+	color: ${EColor.COLOR_PRIMARY_SUB2};
+	letter-spacing: 2px;
+	user-select: none;
+`;
+
+export const LogoBold = styled.div`
+	${Title3}
+	font-size: 64px;
+	color: ${EColor.COLOR_PRIMARY};
+	letter-spacing: 7px;
+	margin-top: -16px;
+	user-select: none;
+`;
+
+export const LoginInputView = styled.div`
+	width: 100%;
+	margin-top: 24px;
+`;
+
+export const TextButtonView = styled.div`
+	width: 100%;
+	margin-top: 36px;
+`;
+
+export const TextButton = styled.div`
+	display: flex;
+	width: 100%;
+	margin: 8px;
+	${body3};
+	color: ${EColor.TEXT_600};
+	justify-content: center;
+	align-items: center;
+`;
+
+export const NameText = styled.div`
 	${body1};
-	font-size: 20px;
-	color: ${EColor.TEXT_800};
+	font-size: 24px;
+	color: ${EColor.TEXT_900};
 	letter-spacing: 2px;
+	padding-top: 6%;
+	padding-bottom: 6%;
 `;
 
-export const TextBody = styled.div`
-	${body5};
-	font-size: 12px;
-	color: ${EColor.TEXT_800};
+export const DDayView = styled.div`
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding-bottom: 32px;
+	gap: 12px;
+`;
+
+export const DDayTest = styled.div`
+	${body1};
+	font-size: 32px;
 	letter-spacing: 2px;
+	color: ${EColor.TEXT_900};
+	user-select: none;
+`;
+
+export const MenuView = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin: 12px;
+`;
+
+export const ItemView = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding-left: 36px;
+	padding-right: 36px;
+`;
+
+export const ItemText = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+	${body3};
+	word-break: break-all;
+	color: ${EColor.TEXT_500};
+	margin-top: 10px;
+	text-align: center;
+	user-select: none;
+`;
+
+export const Line = styled.div`
+	display: flex;
+	background-color: ${EColor.TEXT_500};
+	width: 1px;
+	height: 64px;
+	border-radius: 12px;
+`;
+
+export const ButtonView = styled.div`
+	width: 100%;
+	margin-top: 6%;
 `;

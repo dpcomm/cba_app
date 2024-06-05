@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { EColor } from "@styles/color";
-import { Title3, Title4_2, Title6, body1, body3, body4, body6 } from "@styles/font";
+import { Title3, body1, body3, body4, body6 } from "@styles/font";
 
 export const Container = styled.div`
 	display: flex;
@@ -25,6 +25,7 @@ export const LogoLight = styled.div`
 	font-size: 42px;
 	color: ${EColor.COLOR_PRIMARY_SUB2};
 	letter-spacing: 2px;
+	user-select: none;
 `;
 
 export const LogoBold = styled.div`
@@ -32,6 +33,8 @@ export const LogoBold = styled.div`
 	font-size: 64px;
 	color: ${EColor.COLOR_PRIMARY};
 	letter-spacing: 7px;
+	margin-top: -16px;
+	user-select: none;
 `;
 
 export const LoginInputView = styled.div`

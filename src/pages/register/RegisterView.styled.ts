@@ -8,8 +8,11 @@ export const Container = styled.div`
 	width: 100%;
 	justify-content: center;
 	align-items: center;
-	padding-right: 54px;
-	padding-left: 54px;
+	padding-top: 86px;
+	padding-bottom: 86px;
+	padding-right: 48px;
+	padding-left: 48px;
+	overflow-y: scroll;
 `;
 
 export const LogoView = styled.div`
@@ -17,8 +20,6 @@ export const LogoView = styled.div`
 	flex-direction: column;
 	width: 100%;
 	align-items: center;
-	padding-top: 86px;
-	padding-bottom: 56px;
 `;
 
 export const LogoLight = styled.div`
@@ -26,6 +27,7 @@ export const LogoLight = styled.div`
 	font-size: 42px;
 	color: ${EColor.COLOR_PRIMARY_SUB2};
 	letter-spacing: 2px;
+	user-select: none;
 `;
 
 export const LogoBold = styled.div`
@@ -33,6 +35,8 @@ export const LogoBold = styled.div`
 	font-size: 64px;
 	color: ${EColor.COLOR_PRIMARY};
 	letter-spacing: 7px;
+	margin-top: -16px;
+	user-select: none;
 `;
 
 export const InputView = styled.div`
@@ -42,17 +46,26 @@ export const InputView = styled.div`
 	align-items: center;
 	width: 100%;
 	gap: 20px;
+	padding-top: 56px;
+	padding-bottom: 56px;
 `;
 
 export const InputBox = styled.div`
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	width: 100%;
 `;
 
 export const SvgBox = styled.div`
-	padding: 4px;
-	margin-right: 14px;
+	padding-right: 52px;
+	width: 54px;
+	/* padding: 4px;
+	margin-right: 14px; */
+`;
+
+export const EmptyBox = styled.div`
+	width: 30px;
+	height: 30px;
 `;

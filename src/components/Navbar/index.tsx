@@ -1,17 +1,27 @@
-import { Container, NavbarBox, NavbarItem, TicketBox, TicketBoxOn } from './Navbar.styled';
 import SvgIcon from '@components/SvgIcon';
-import { EColor } from '@styles/color';
 import { HeaderBar } from '@components/HeaderBar';
 import usePageControll from '@hooks/usePageControll';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { naviState } from '@modules/atoms';
-import { NavInfo } from '@type/index';
+import { NavInfo, Page } from '@type/index';
 import { useEffect } from 'react';
+import { LeftView } from '@components/HeaderBar/HeaderBar.styled';
+
+/* 페이지 라우팅 시 해당 부분 수정 필요. */
+const noneHeaderTarget = ['', 'home'];
+const pageLabel = {
+  [Page.home]: '홈',
+  [Page.register]: '회원가입',
+  [Page.retreatInfo]: '수련회 안내',
+  [Page.retreatLocation]: '수련회 위치',
+  [Page.retreatPayment]: '수련회 납부',
+  [Page.retreatApplication]: '수련회 신청',
+};
 
 const Navbar = () => {
-  const { navigation, handlePage, handlePrevPage } = usePageControll();
+  const { navigation, handlePrevPage } = usePageControll();
   const set_navInfo = useSetRecoilState<NavInfo>(naviState);
-  const bottomTarget = ['', 'home', 'notice', 'mypage'];
+  const get_navInfo = useRecoilValue<NavInfo>(naviState);
 
   useEffect(() => {
     set_navInfo((prev) => ({
@@ -42,7 +52,7 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    if (bottomTarget.includes(navigation.page)) {
+    if (noneHeaderTarget.includes(navigation.page)) {
       set_navInfo((prev) => ({
         ...prev,
         history: [navigation.page],
@@ -50,47 +60,19 @@ const Navbar = () => {
     }
   }, [navigation.page]);
 
-  if (bottomTarget.includes(navigation.page)) {
-    return (
-      <Container>
-        <NavbarBox>
-          <NavbarItem onClick={() => handlePage('home')}>
-            {navigation.page === 'home' || navigation.page === '' ? (
-              <SvgIcon name={'home_on'} width={78} height={70} fill={''} />
-            ) : (
-              <SvgIcon name={'home'} width={78} height={70} fill={''} />
-            )}
-          </NavbarItem>
-          <NavbarItem onClick={() => handlePage('notice')}>
-            {navigation.page === 'notice' ? (
-              <TicketBoxOn>
-                <SvgIcon
-                  name={'announcement'}
-                  width={30}
-                  height={28}
-                  fill={'white'}
-                  stroke={EColor.COLOR_INTERACTION}
-                />
-              </TicketBoxOn>
-            ) : (
-              <TicketBox>
-                <SvgIcon name={'announcement'} width={30} height={28} fill={'white'} stroke={EColor.TEXT_800} />
-              </TicketBox>
-            )}
-          </NavbarItem>
-          <NavbarItem onClick={() => handlePage('mypage')}>
-            {navigation.page === 'mypage' ? (
-              <SvgIcon name={'mypage_on'} width={78} height={70} fill={'white'} />
-            ) : (
-              <SvgIcon name={'mypage'} width={78} height={70} fill={'white'} />
-            )}
-          </NavbarItem>
-        </NavbarBox>
-      </Container>
-    );
+  if (noneHeaderTarget.includes(navigation.page)) {
+    return null;
   } else {
     return (
-      <HeaderBar left={<SvgIcon name={'back'} width={24} height={24} fill={'none'} />} onClickLeft={handlePrevPage} />
+      <HeaderBar
+        left=
+          {
+            <LeftView>
+              <SvgIcon name={'back'} width={24} height={24} fill={'none'} />
+              {pageLabel[get_navInfo.page]}
+            </LeftView>
+          }
+        onClickLeft={handlePrevPage} />
     );
   }
 };
