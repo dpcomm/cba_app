@@ -2,13 +2,14 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import { GlobalStyle } from './styles/GlobalStyle';
 import Login from '@pages/Login';
-import Register from '@pages/register';
+import Register from '@pages/Register';
 import Navbar from '@components/Navbar';
 import { Page } from './types';
 import RetreatInfo from '@pages/RetreatInfo';
 import Home from '@pages/Home';
 import RetreatLocation from '@pages/RetreatLocation';
 import RetreatPayment from '@pages/RetreatPayment';
+import RetreatApplicaion from '@pages/RetreatApplication';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route path={`/${Page.register}`} element={<Register />} />
           <Route path={`/${Page.retreatLocation}`} element={<RetreatLocation />} />
           <Route path={`/${Page.retreatPayment}`} element={<RetreatPayment />} />
+          <Route path={`/${Page.retreatApplication}`} element={<RetreatApplicaion />} />
         </Routes>
       </BrowserRouter>
     </RecoilRoot>

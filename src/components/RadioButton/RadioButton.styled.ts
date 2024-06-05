@@ -24,16 +24,16 @@ export const CustomLabel = styled.label`
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-x: auto;
 `;
 
 export const RadioView = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center; /* 중앙 정렬 */
+  align-items: center;
   justify-content: center;
+  width: 100%;
   margin-right: 8px;
-  color: ${props => props.isSelected ? EColor.COLOR_PRIMARY : EColor.TEXT_500}; /* 조건에 따라 색상 변경 */
+  color: ${props => props.isSelected ? EColor.COLOR_PRIMARY : EColor.TEXT_500};
   ${body1}
   gap: 8px;
   letter-spacing: 2px;

@@ -17,7 +17,8 @@ export enum Page {
   register = "register",
   retreatInfo = "retreat-info",
   retreatLocation = "retreat-location",
-  retreatPayment = "retreat-payment"
+  retreatPayment = "retreat-payment",
+  retreatApplication = "retreat-application"
 }
 
 export type RadioItem = {

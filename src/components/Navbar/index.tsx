@@ -7,11 +7,21 @@ import { NavInfo, Page } from '@type/index';
 import { useEffect } from 'react';
 import { LeftView } from '@components/HeaderBar/HeaderBar.styled';
 
+/* 페이지 라우팅 시 해당 부분 수정 필요. */
+const noneHeaderTarget = ['', 'home'];
+const pageLabel = {
+  [Page.home]: '홈',
+  [Page.register]: '회원가입',
+  [Page.retreatInfo]: '수련회 안내',
+  [Page.retreatLocation]: '수련회 위치',
+  [Page.retreatPayment]: '수련회 납부',
+  [Page.retreatApplication]: '수련회 신청',
+};
+
 const Navbar = () => {
   const { navigation, handlePrevPage } = usePageControll();
   const set_navInfo = useSetRecoilState<NavInfo>(naviState);
   const get_navInfo = useRecoilValue<NavInfo>(naviState);
-  const noneHeaderTarget = ['', 'home'];
 
   useEffect(() => {
     set_navInfo((prev) => ({
@@ -49,16 +59,6 @@ const Navbar = () => {
       }));
     }
   }, [navigation.page]);
-
-  const pageLabel = {
-    [Page.home]: '홈',
-    [Page.register]: '회원가입',
-    [Page.retreatInfo]: '수련회 안내',
-    [Page.retreatLocation]: '수련회 위치',
-    [Page.retreatPayment]: '수련회 납부',
-  };
-
-  console.log(navigation.page);
 
   if (noneHeaderTarget.includes(navigation.page)) {
     return null;

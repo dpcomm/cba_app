@@ -53,14 +53,16 @@ export const InputView = styled.div`
 export const InputBox = styled.div`
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	width: 100%;
 `;
 
 export const SvgBox = styled.div`
-	padding: 4px;
-	margin-right: 14px;
+	padding-right: 52px;
+	width: 54px;
+	/* padding: 4px;
+	margin-right: 14px; */
 `;
 
 export const EmptyBox = styled.div`
