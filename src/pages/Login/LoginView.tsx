@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-import { Container, LoginInputView, LogoBold, LogoLight, LogoView, TextButton, TextButtonView } from './LoginVIew.styled';
+import { AutoLoginView, CheckBox, Container, LoginInputView, LogoBold, LogoLight, LogoView, TextButton, TextButtonView } from './LoginVIew.styled';
 import TextInput from '@components/TextInput';
 import SvgIcon from '@components/SvgIcon';
 import { EColor } from '@styles/color';
 import { IconButton } from '@components/IconButton';
+import RadioButton from '@components/RadioButton';
 
 const LoginView = () => {
 	const [id, set_id] = useState("");
 	const [password, set_password] = useState("");
+	const [autoLogin, set_autoLogin] = useState(false);
+
+	const handleCheckBox = () => {
+		set_autoLogin(!autoLogin);
+	};
 
 	const handleLogin = () => {
 		console.log("Hello world");
@@ -44,6 +50,15 @@ const LoginView = () => {
 					onClick={() => handleLogin()}
 				/>
 			</LoginInputView>
+				<CheckBox onClick={handleCheckBox}>
+					<SvgIcon
+						name={'check'}
+						width={24}
+						height={24}
+						fill={autoLogin ? EColor.COLOR_PRIMARY_SUB1 : EColor.TEXT_500}
+					/>
+					로그인 유지
+				</CheckBox>
 			<TextButtonView>
 				<TextButton>아이디/비밀번호 찾기</TextButton>
 				<TextButton>회원가입</TextButton>

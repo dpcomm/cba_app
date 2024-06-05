@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { EColor } from "@styles/color";
-import { Title3, body1, body3, body4, body6 } from "@styles/font";
+import { Title3, body1, body2, body3, body4, body6 } from "@styles/font";
 
 export const Container = styled.div`
 	display: flex;
@@ -110,6 +110,14 @@ export const Line = styled.div`
 	border-radius: 12px;
 `;
 
-export const ButtonView = styled.div`
-
+export const CheckBox = styled.div`
+	display: flex;
+	align-items: center;
+	padding: 12px;
+	color: ${EColor.TEXT_500};
+	display: flex;
+	width: 100%;
+	${body2};
+	gap: 4px;
+	user-select: none;
 `;
