@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { AutoLoginView, CheckBox, Container, LoginInputView, LogoBold, LogoLight, LogoView, TextButton, TextButtonView } from './LoginVIew.styled';
+import { CheckBox, Container, LoginInputView, LogoBold, LogoLight, LogoView, TextButton, TextButtonView } from './LoginVIew.styled';
 import TextInput from '@components/TextInput';
 import SvgIcon from '@components/SvgIcon';
 import { EColor } from '@styles/color';
 import { IconButton } from '@components/IconButton';
-import RadioButton from '@components/RadioButton';
 
 const LoginView = () => {
 	const [id, set_id] = useState("");
