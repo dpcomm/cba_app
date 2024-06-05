@@ -12,7 +12,7 @@ const BackTextInput = ({ placeHolder, getter, setter }: BackTextInputComponentPr
   return (
     <Container>
       <SvgIcon name={'search'} width={20} height={20} fill={EColor.TEXT_600} />
-      <StyledInput type="text" placeholder={placeHolder} value={getter} onChange={setter} />
+      <StyledInput type="text" placeholder={placeHolder} value={getter} onChange={(e) => setter(e.target.value)} />
     </Container>
   );
 };

@@ -13,6 +13,7 @@ import { BackButtonContainer, BackItemButtonContainer, Container, LogoContainer,
 const BackofficeView = () => {
   const [page, set_page] = useState(0);
   const [clickedButton, setClickedButton] = useState<number | null>(null);
+  const [search, set_search] = useState("");
 
   const handleClick = (index: number) => {
     setClickedButton(index);
@@ -25,7 +26,7 @@ const BackofficeView = () => {
   return (
     <Container>
       {/* <TopBar>Welcome to CBA</TopBar> */}
-      <BackTextInput />
+      <BackTextInput placeHolder={'Search...'} getter={search} setter={set_search} />
       <SideBar>
         <LogoContainer>
           <SvgIcon name={'cba_logo'} width={120} height={120} fill={'none'} />
