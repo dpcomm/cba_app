@@ -1,12 +1,14 @@
+import BackTextInput from '@components/BackTextinput';
 import React, { useState } from 'react';
-import styled from 'styled-components';
-
-
+import { Container } from './View.styled';
 
 const AllUser = () => {
+  const [search, set_search] = useState("");
 
   return (
-    <div>AllUser</div>
+    <Container>
+      <BackTextInput placeHolder={'Search...'} getter={search} setter={set_search} />
+    </Container>
   );
 };
 
