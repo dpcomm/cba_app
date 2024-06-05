@@ -4,17 +4,21 @@ import TextInput from '@components/TextInput';
 import SvgIcon from '@components/SvgIcon';
 import { EColor } from '@styles/color';
 import { IconButton } from '@components/IconButton';
+import usePageControll from '@hooks/usePageControll';
 
 const LoginView = () => {
 	const [id, set_id] = useState("");
 	const [password, set_password] = useState("");
 	const [autoLogin, set_autoLogin] = useState(false);
 
+	const { handlePage } = usePageControll();
+
 	const handleCheckBox = () => {
 		set_autoLogin(!autoLogin);
 	};
 
 	const handleLogin = () => {
+		handlePage('home');
 		console.log("Hello world");
 	};
 
@@ -59,8 +63,8 @@ const LoginView = () => {
 					로그인 유지
 				</CheckBox>
 			<TextButtonView>
-				<TextButton>아이디/비밀번호 찾기</TextButton>
-				<TextButton>회원가입</TextButton>
+				<TextButton onClick={() => alert("구현중인 기능입니다.:)")}>아이디/비밀번호 찾기</TextButton>
+				<TextButton onClick={() => handlePage("register")}>회원가입</TextButton>
 			</TextButtonView>
 		</Container>
   );
