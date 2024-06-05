@@ -1,40 +1,28 @@
 import styled from "styled-components";
 import { EColor } from "@styles/color";
-const InputContainer = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-position: absolute;
-top: 100px; 
-left: 50%;
-transform: translateX(-50%);
-width: 100%;
-padding: 20px 0;
-margin-top: 50px;
-`;
+import { body3 } from "@styles/font";
 
-const InputWrapper = styled.div`
+export const Container = styled.div`
   display: flex;
-  align-items: center
-`
-
-const StyledInput = styled.input`
-  width: 300px;
-  padding: 10px;
-  background-color: ${EColor.TEXT_700};
-  border: 2px solid ${EColor.TEXT_700};
+  align-items: center;
+  flex-direction: row;
+  width: 412px;
+  padding: 12px;
   border-radius: 20px;
-  font-size: 16px;
-  outline: none;
-   
-  
-  &::placeholder {
-    color:${EColor.TEXT_500}; 
-  }
-
+  gap: 12px;
+  background-color: ${EColor.TEXT_400};
+  user-select: none;
 `;
 
-export { InputContainer, StyledInput }
-// export interface StyledInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-//   customHeingt?: number;
-// }
+export const StyledInput = styled.input`
+  display: flex;
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: ${EColor.TEXT_400};
+  color: ${EColor.TEXT_600};
+  ${body3}
+  &::placeholder {
+    color: ${EColor.TEXT_600};
+  }
+`;
