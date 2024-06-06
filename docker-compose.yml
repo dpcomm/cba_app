@@ -32,7 +32,8 @@ services:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
     command: >
-      certonly --webroot --webroot-path=/var/www/certbot --email jipkim2@gmail.com --agree-tos --no-eff-email -d recba.me -d www.recba.me
+      certonly --webroot --webroot-path=/var/www/certbot --email jipkim2@gmail.com --agree-tos --no-eff-email --non-interactive --keep-until-expiring -d recba.me -d www.recba.me
+
   # certbot:
   #   container_name: certbot
   #   image: certbot/certbot:latest
