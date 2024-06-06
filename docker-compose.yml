@@ -9,7 +9,7 @@ services:
       - ./:/app
 
   nginx:
-    container_name: hanseifood_ws
+    container_name: cba_ws
     build:
       context: .
       dockerfile: dockerfile

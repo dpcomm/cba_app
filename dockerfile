@@ -2,6 +2,7 @@ FROM node:18.16.0 AS react-builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
+RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 COPY . .
 RUN npm run build
 

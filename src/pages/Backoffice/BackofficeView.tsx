@@ -6,7 +6,7 @@ import MediaLink from './views/MediaLink';
 import SvgIcon from '@components/SvgIcon';
 import BackItemButton from '@components/BackItemButton';
 import { BackItemButtonContainer, Container, SideBar, TopView } from './BackofficeView.styled';
-import { IconButton } from '@components/Button';
+import IconButton from '@components/Button';
 import { EColor } from '@styles/color';
 
 
