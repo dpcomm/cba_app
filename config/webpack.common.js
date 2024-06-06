@@ -44,12 +44,12 @@ module.exports = {
       'process.env': JSON.stringify(process.env),
     }),
     new WebpackPwaManifest({
-      name: '한세대학교 주간식단표',
-      short_name: '주간식단표',
-      description: '한세대학교 주간식단표 서비스입니다.',
+      name: 'RE:CBA',
+      short_name: 'RE:CBA',
+      description: 'CBA 대학청년부를 위한 웹앱입니다.',
       background_color: '#ffffff',
       crossOrigin: 'use-credentials',
-      theme_color: '#1b4378',
+      theme_color: '#F16622',
       icons: [
         {
           src: path.resolve('src/assets/images/logo512.png'),
