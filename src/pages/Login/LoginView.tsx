@@ -5,6 +5,7 @@ import SvgIcon from '@components/SvgIcon';
 import { EColor } from '@styles/color';
 import { IconButton } from '@components/IconButton';
 import usePageControll from '@hooks/usePageControll';
+import { requestLogin } from '@apis/index';
 
 const LoginView = () => {
 	const [id, set_id] = useState("");
@@ -17,9 +18,17 @@ const LoginView = () => {
 		set_autoLogin(!autoLogin);
 	};
 
-	const handleLogin = () => {
-		handlePage('home');
-		console.log("Hello world");
+	const handleLogin = async () => {
+		await requestLogin(id, password, autoLogin)
+		.then(async (res) => {
+			await localStorage.setItem('access_token', res.data.accessToken);
+			alert("로그인에 성공하였습니다.");
+			handlePage('home');
+		}).catch((err) => {
+			if (err.response.data.message === "Unregisterd user") return alert("존재하지 않는 유저입니다.");
+			if (err.response.data.message === "Incorrect password") return alert("비밀번호가 일치하지 않습니다.");
+			return alert("잘못된 접근입니다.");
+		});
 	};
 
 	return (
@@ -40,6 +49,7 @@ const LoginView = () => {
 					placeHolder={"비밀번호"}
 					getter={password}
 					setter={set_password}
+					type='password'
 				/>
 				<IconButton
 					svg={<SvgIcon name={'login'} width={24} height={24} fill={EColor.COLOR_PRIMARY} stroke={EColor.COLOR_PRIMARY} />}

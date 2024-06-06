@@ -13,6 +13,7 @@ import Error404 from '@pages/Error404';
 import RetreatLocation from '@pages/RetreatLocation';
 import RetreatPayment from '@pages/RetreatPayment';
 import RetreatApplicaion from '@pages/RetreatApplication';
+import Maintenance from '@pages/Maintenance';
 
 const App = () => {
   return (
@@ -22,16 +23,15 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/backoffice" element={<Backoffice />} />
           <Route path={`/${Page.home}`} element={<Home />} />
           <Route path={`/${Page.retreatInfo}`} element={<RetreatInfo />} />
           <Route path={`/${Page.register}`} element={<Register />} />
           <Route path={`/${Page.retreatLocation}`} element={<RetreatLocation />} />
           <Route path={`/${Page.retreatPayment}`} element={<RetreatPayment />} />
           <Route path={`/${Page.retreatApplication}`} element={<RetreatApplicaion />} />
+          <Route path={`/${Page.backoffice}`} element={<Backoffice />} />
           <Route path="*" element={<Error404 />} />
+          <Route path="/maintenance" element={<Maintenance />} />
         </Routes>
       </BrowserRouter>
     </RecoilRoot>

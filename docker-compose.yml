@@ -9,7 +9,7 @@ services:
       - ./:/app
 
   nginx:
-    container_name: hanseifood_ws
+    container_name: cba_ws
     build:
       context: .
       dockerfile: dockerfile
@@ -19,8 +19,8 @@ services:
       # - ./certbot/conf/:/etc/letsencrypt
     restart: unless-stopped
     ports:
-      # - 443:443
-      - 80:80
+      # - 444:443
+      - 81:80
     command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
     depends_on:
       - react-builder

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { DOMAIN } from './domain';
 
-const request = axios.create({ baseURL: DOMAIN.main, timeout: 1000 });
+const request = axios.create({ baseURL: DOMAIN.local, timeout: 1000 });
 
 request.interceptors.request.use(async (config) => {
   const accessToken = await localStorage.getItem('access_token');
@@ -22,6 +22,10 @@ request.interceptors.response.use(
     if (errorStatus.includes(error.response.status)) {
       window.location.href = '/maintenance';
     }
+    if (error.response.data.message === 'jwt expired') {
+      // const beforeAccessToken = await localStorage.getItem('access_token');
+      // const data = await requestReissuedToken(beforeAccessToken);
+    }
     return Promise.reject(error);
   },
 );
@@ -31,10 +35,10 @@ request.interceptors.response.use(
     return response;
   },
   async (error) => {
-    if (error.response.status == 401) {
-      alert('로그인 / 재로그인이 필요합니다.');
-      window.location.href = '/login';
-    }
+    // if (error.response.status == 401) {
+    //   alert('로그인 / 재로그인이 필요합니다.');
+    //   window.location.href = '/';
+    // }
     return Promise.reject(error);
   },
 );
