@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonView, Container, DDayTest, DDayView, ItemText, ItemView, Line, LogoBold, LogoLight, LogoView, MenuView, NameText } from './HomeView.styled';
+import { ButtonView, Container, DDayTest, DDayView, ItemText, ItemView, Line, LogoBold, LogoLight, LogoView, MenuView, NameText } from './HomeVIew.styled';
 import { EColor } from '@styles/color';
 import SvgIcon from '@components/SvgIcon';
 import { IconButton } from '@components/IconButton';
