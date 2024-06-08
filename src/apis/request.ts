@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { DOMAIN } from './domain';
 
-const request = axios.create({ baseURL: DOMAIN.local, timeout: 1000 });
+const request = axios.create({ baseURL: DOMAIN.main, timeout: 1000 });
 
 request.interceptors.request.use(async (config) => {
   const accessToken = await localStorage.getItem('access_token');
