@@ -4,9 +4,13 @@ import { EColor } from '@styles/color';
 import SvgIcon from '@components/SvgIcon';
 import { IconButton } from '@components/IconButton';
 import usePageControll from '@hooks/usePageControll';
+import { useRecoilValue } from 'recoil';
+import { userState } from '@modules/atoms';
 
 const HomeView = () => {
   const { handlePage } = usePageControll();
+  const user = useRecoilValue(userState);
+  console.log(user);
   const handleLogout = () => {
     handlePage('');
     console.log("로그아웃");
@@ -18,7 +22,7 @@ const HomeView = () => {
 				<LogoLight>Welcome to</LogoLight>
 				<LogoBold>CBA</LogoBold>
 			</LogoView>
-      <NameText>김호준님 안녕하세요.</NameText>
+      <NameText>{user.name}님 안녕하세요.</NameText>
       <DDayView>
         <SvgIcon name={'calendar'} width={36} height={36} fill={"none"} stroke={EColor.TEXT_800} />
         <DDayTest>D-64</DDayTest>
