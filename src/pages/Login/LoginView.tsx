@@ -6,11 +6,15 @@ import { EColor } from '@styles/color';
 import { IconButton } from '@components/IconButton';
 import usePageControll from '@hooks/usePageControll';
 import { requestLogin } from '@apis/index';
+import { useSetRecoilState } from 'recoil';
+import { userState } from '@modules/atoms';
+
 
 const LoginView = () => {
 	const [id, set_id] = useState("");
 	const [password, set_password] = useState("");
 	const [autoLogin, set_autoLogin] = useState(false);
+	const setUser = useSetRecoilState(userState);
 
 	const { handlePage } = usePageControll();
 
@@ -21,6 +25,17 @@ const LoginView = () => {
 	const handleLogin = async () => {
 		await requestLogin(id, password, autoLogin)
 		.then(async (res) => {
+			/* rank 백엔드와 수정 필요 (role -> rank) */
+			setUser({
+				userId: res.data.user.userId,
+				rank: res.data.user.role,
+				password: res.data.user.password,
+				name: res.data.user.name,
+				group: res.data.user.group,
+				phone: res.data.user.phone,
+				birth: res.data.user.birth,
+				gender: res.data.user.gender,
+			});
 			await localStorage.setItem('access_token', res.data.accessToken);
 			alert("로그인에 성공하였습니다.");
 			handlePage('home');

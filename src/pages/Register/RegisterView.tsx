@@ -92,7 +92,7 @@ const RegisterView = () => {
         </InputBox>
         <InputBox>
           <SvgBox><SvgIcon name={'users'} width={30} height={30} fill={EColor.TEXT_200} stroke={EColor.COLOR_PRIMARY} /></SvgBox>
-          <Dropdown options={["권수영M", "노시은M", "반일섭M"]} placeholder='소그룹을 선택해주세요.' onChange={set_group}/>
+          <Dropdown options={["권수영M", "노시은M", "반일섭M", "대청2부", "대청3부"]} placeholder='소그룹을 선택해주세요.' onChange={set_group}/>
         </InputBox>
         <InputBox>
           <SvgBox><SvgIcon name={'cake'} width={30} height={30} fill={EColor.TEXT_200} stroke={EColor.COLOR_PRIMARY} /></SvgBox>
