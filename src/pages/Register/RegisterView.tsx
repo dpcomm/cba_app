@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Container, EmptyBox, InputBox, InputView, LogoBold, LogoLight, LogoView, SvgBox } from './RegisterView.styled';
+import { GroupInputView,Container, EmptyBox, InputBox, InputView, LogoBold, LogoLight, LogoView, SvgBox,TextSub } from './RegisterView.styled';
 import TextInputB from '@components/TextInputB';
+import PhoneInput from '@components/PhoneInput';
 import SvgIcon from '@components/SvgIcon';
 import { EColor } from '@styles/color';
 import RadioButton from '@components/RadioButton';
@@ -22,6 +23,7 @@ const RegisterView = () => {
   const [phone, set_phone] = useState();
   const [group, set_group] = useState();
   const [birth, set_birth] = useState();
+  const [etcGroup, set_etcGruop] = useState();
 
   const ok = () => handleRegister();
   const cancle = () => console.log("Cancled..");
@@ -51,7 +53,16 @@ const RegisterView = () => {
 			return alert("잘못된 접근입니다.");
 		});
   };
-
+  const formatPhoneNumber = (value) => {
+    if (!value) return value;
+    const phoneNumber = value.replace(/[^\d]/g, ''); // 숫자만 추출
+    if (phoneNumber.length < 4) return phoneNumber;
+    if (phoneNumber.length < 8) {
+      return `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3)}`;
+      
+    }
+    return `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3, 7)}-${phoneNumber.slice(7, 11)}`;
+  }
 	return (
     <Container>
       <LogoView>
@@ -67,6 +78,7 @@ const RegisterView = () => {
           <SvgBox><SvgIcon name={'password'} width={30} height={30} fill={EColor.TEXT_200} stroke={EColor.COLOR_PRIMARY} /></SvgBox>
           <TextInputB placeHolder={'비밀번호를 입력해주세요.'} getter={password} setter={set_password} maxLength={24} type='password' />
         </InputBox>
+        <TextSub>* 영문, 숫자포함 10자 이상</TextSub>
         <InputBox>
           <SvgBox><EmptyBox /></SvgBox>
           <TextInputB placeHolder={'비밀번호를 다시 입력해주세요.'} getter={password2} setter={set_password2} maxLength={24} type='password' />
@@ -88,15 +100,21 @@ const RegisterView = () => {
         </InputBox>
         <InputBox>
           <SvgBox><SvgIcon name={'user'} width={30} height={30} fill={EColor.TEXT_200} stroke={EColor.COLOR_PRIMARY} /></SvgBox>
-          <TextInputB placeHolder={'연락처를 입력해주세요.'} getter={phone} setter={set_phone} type='number' maxLength={11} />
+          <PhoneInput getter={phone} setter={set_phone} />
         </InputBox>
         <InputBox>
           <SvgBox><SvgIcon name={'users'} width={30} height={30} fill={EColor.TEXT_200} stroke={EColor.COLOR_PRIMARY} /></SvgBox>
-          <Dropdown options={["권수영M", "노시은M", "반일섭M", "대청2부", "대청3부"]} placeholder='소그룹을 선택해주세요.' onChange={set_group}/>
+          <Dropdown options={["권수영M", "노시은M", "반일섭M", "대청2부", "대청3부","기타"]} placeholder='소그룹을 선택해주세요.' initialValue={group} onChange={set_group}/>
         </InputBox>
+        {group === "기타" &&
+            <GroupInputView>
+							<TextInputB placeHolder={'지예배당 및 교단교회 입력'} getter={etcGroup} setter={set_etcGruop} type={'text'} />
+            </GroupInputView>
+        }
+        <TextSub>* 지예배당/교단교회 - [기타]를 선택해 작성해주세요.</TextSub>
         <InputBox>
           <SvgBox><SvgIcon name={'cake'} width={30} height={30} fill={EColor.TEXT_200} stroke={EColor.COLOR_PRIMARY} /></SvgBox>
-          <TextInputB placeHolder={'생년월일을 입력해주세요.'} getter={birth} setter={set_birth} type='number' maxLength={8} />
+          <TextInputB placeHolder={'생년월일을 입력해주세요.'} getter={birth} setter={set_birth} type='date' />
         </InputBox>
       </InputView>
       <IconButton
