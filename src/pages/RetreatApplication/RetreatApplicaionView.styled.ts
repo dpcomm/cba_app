@@ -1,5 +1,5 @@
 import { EColor } from "@styles/color";
-import { Title1, Title4_2, body4, body5 } from "@styles/font";
+import { Title1, Title4_2, body4, body5 } from "@styles/font"; 
 import styled from "styled-components";
 
 export const Container = styled.div`
