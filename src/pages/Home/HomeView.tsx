@@ -54,7 +54,7 @@ const HomeView = () => {
           <ItemText>수련회 위치</ItemText>
         </ItemView>
         <Line />
-        <ItemView onClick={() => alert("구현중인 기능입니다.:)")}>
+        <ItemView onClick={() => handlePage('editprofile')}>
           <SvgIcon name={'user'} width={40} height={40} fill={"none"} stroke={EColor.TEXT_800} />
           <ItemText>계정 정보</ItemText>
         </ItemView>

@@ -53,16 +53,7 @@ const RegisterView = () => {
 			return alert("잘못된 접근입니다.");
 		});
   };
-  const formatPhoneNumber = (value) => {
-    if (!value) return value;
-    const phoneNumber = value.replace(/[^\d]/g, ''); // 숫자만 추출
-    if (phoneNumber.length < 4) return phoneNumber;
-    if (phoneNumber.length < 8) {
-      return `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3)}`;
-      
-    }
-    return `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3, 7)}-${phoneNumber.slice(7, 11)}`;
-  }
+  
 	return (
     <Container>
       <LogoView>
