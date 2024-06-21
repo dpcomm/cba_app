@@ -39,7 +39,7 @@ const RegisterView = () => {
       name,
       group,
       phone,
-      parseDateString(birth),
+      birth,
       gender ? "female" : "male"
     )
 		.then((res) => {

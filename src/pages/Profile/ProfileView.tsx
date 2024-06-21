@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { GroupInputView,Container, EmptyBox, InputBox, InputView, LogoBold, LogoLight, LogoView, SvgBox,TextSub } from './EditProfileView.styled';
+import { GroupInputView,Container, EmptyBox, InputBox, InputView, LogoBold, LogoLight, LogoView, SvgBox,TextSub } from './ProfileView.styled';
 import TextInputB from '@components/TextInputB';
 import PhoneInput from '@components/PhoneInput';
 import SvgIcon from '@components/SvgIcon';
@@ -15,7 +15,7 @@ import { password } from 'assets/svgs';
 import { useRecoilState } from 'recoil';
 import { userState } from '@modules/atoms';
 
-const EditProfileView = () => {
+const ProfileView = () => {
   const { handlePage } = usePageControll();
   const [userData, setUserData] = useRecoilState(userState);
   // const [userData, setUserData] = useState(user);
@@ -116,4 +116,4 @@ const EditProfileView = () => {
   );
 };
 
-export default EditProfileView;
+export default ProfileView;

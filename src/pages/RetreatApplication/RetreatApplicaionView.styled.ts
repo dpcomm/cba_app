@@ -59,3 +59,14 @@ export const CarIdInputView = styled.div`
 	flex-direction: column;
 	width: 100%;
 `;
+
+export const InputView = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	gap: 20px;
+	padding-top: 56px;
+	padding-bottom: 56px;
+`;

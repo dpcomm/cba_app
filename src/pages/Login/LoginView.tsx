@@ -28,7 +28,7 @@ const LoginView = () => {
 			/* rank 백엔드와 수정 필요 (role -> rank) */
 			setUser({
 				userId: res.data.user.userId,
-				rank: res.data.user.role,
+				rank: res.data.user.rank,
 				password: res.data.user.password,
 				name: res.data.user.name,
 				group: res.data.user.group,
