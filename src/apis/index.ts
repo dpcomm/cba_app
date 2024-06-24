@@ -19,6 +19,7 @@ export const requestRegister =
   phone: string,
   birth: string,
   gender: string,
+  etcGroup?: string
 ) => {
   return request.post('/api/user/register', {
     userId,
@@ -27,7 +28,8 @@ export const requestRegister =
     group,
     phone,
     birth,
-    gender
+    gender,
+    etcGroup
   });
 };
 

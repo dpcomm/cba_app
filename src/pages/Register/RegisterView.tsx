@@ -23,35 +23,36 @@ const RegisterView = () => {
   const [phone, set_phone] = useState();
   const [group, set_group] = useState();
   const [birth, set_birth] = useState();
-  const [etcGroup, set_etcGruop] = useState();
+  const [etcGroup, set_etcGroup] = useState();
 
   const ok = () => handleRegister();
   const cancle = () => console.log("Cancled..");
   const confirmRegister = useConfirm("회원 가입을 완료하시겠습니까? ", ok, cancle);
 
   const handleRegister = async () => {
-    console.log(id, password, password2, name, gender, phone, group, birth);
+    console.log(id, password, password2, name, gender, phone, group, birth,etcGroup);
     if (password !== password2) return alert("패스워드가 일치하지 않습니다.");
     if (!id || !password || !password2 || !name || !phone || !group || !birth) return alert("회원 정보를 모두 입력해주세요.");
-		await requestRegister(
+    await requestRegister(
       id,
       password,
       name,
       group,
       phone,
       birth,
-      gender ? "female" : "male"
+      gender ? "female" : "male",
+      etcGroup
     )
-		.then((res) => {
+    .then((res) => {
       console.log(res);
       alert("회원가입에 성공하였습니다.");
-			handlePage('');
-		}).catch((err) => {
-			if (err.response.data.message === "Invalid request") return alert("잘못된 요청입니다.");
+      handlePage('');
+    }).catch((err) => {
+      if (err.response.data.message === "Invalid request") return alert("잘못된 요청입니다.");
       if (err.response.data.message === "Duplicated id") return alert("중복되는 아이디입니다.");
-			if (err.response.data.message === "Password pattern unfulfilled") return alert("비밀번호는 10자 이상, 알파벳, 숫자를 포함하여야 합니다. ");
-			return alert("잘못된 접근입니다.");
-		});
+      if (err.response.data.message === "Password pattern unfulfilled") return alert("비밀번호는 10자 이상, 알파벳, 숫자를 포함하여야 합니다. ");
+      return alert("잘못된 접근입니다.");
+    });
   };
   
 	return (
@@ -99,7 +100,7 @@ const RegisterView = () => {
         </InputBox>
         {group === "기타" &&
             <GroupInputView>
-							<TextInputB placeHolder={'지예배당 및 교단교회 입력'} getter={etcGroup} setter={set_etcGruop} type={'text'} />
+							<TextInputB placeHolder={'지예배당 및 교단교회 입력'} getter={etcGroup} setter={set_etcGroup} type={'text'} />
             </GroupInputView>
         }
         <TextSub>* 지예배당/교단교회 - [기타]를 선택해 작성해주세요.</TextSub>
