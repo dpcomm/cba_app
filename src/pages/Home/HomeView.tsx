@@ -26,7 +26,6 @@ const HomeView = () => {
     setDDay(calculateDDay(targetDate));
   }, []);
 
-
   const handleLogout = () => {
     handlePage('');
     console.log("로그아웃");
