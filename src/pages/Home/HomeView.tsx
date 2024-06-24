@@ -6,11 +6,26 @@ import { IconButton } from '@components/IconButton';
 import usePageControll from '@hooks/usePageControll';
 import { useRecoilValue } from 'recoil';
 import { userState } from '@modules/atoms';
+import { useState,useEffect } from 'react';
 
 const HomeView = () => {
   const { handlePage } = usePageControll();
   const user = useRecoilValue(userState);
+  const [dDay, setDDay] = useState(null);
   console.log(user);
+
+  const calculateDDay = (targetDate) => {
+    const today = new Date();
+    const target = new Date(targetDate);
+    const difference = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
+    return difference;
+  };
+
+  useEffect(() => {
+    const targetDate = '2024-08-23'; // Set your target date here
+    setDDay(calculateDDay(targetDate));
+  }, []);
+
   const handleLogout = () => {
     handlePage('');
     console.log("로그아웃");
@@ -25,7 +40,7 @@ const HomeView = () => {
       <NameText>{user.name}님 안녕하세요.</NameText>
       <DDayView>
         <SvgIcon name={'calendar'} width={36} height={36} fill={"none"} stroke={EColor.TEXT_800} />
-        <DDayTest>D-64</DDayTest>
+        <DDayTest>D-{dDay}</DDayTest>
       </DDayView>
       <MenuView>
         <ItemView onClick={() => handlePage('retreat-info')}>
