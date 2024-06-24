@@ -1,5 +1,5 @@
 import { EColor } from "@styles/color";
-import { Title1, Title4_2, body4, body5 } from "@styles/font"; 
+import { Title1, Title4_2, body4 } from "@styles/font";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -49,6 +49,17 @@ export const TextForm = styled.div`
 	user-select: none;
 `;
 
+export const TextFormLight = styled.div`
+	display: flex;
+	justify-content: center;
+	width: 118px;
+	margin-right: 12px;
+	${Title4_2}
+	color: ${EColor.TEXT_500};
+	letter-spacing: 2px;
+	user-select: none;
+`;
+
 export const TextSub = styled.div`
 	${body4}
 	color: ${EColor.TEXT_500};
@@ -58,15 +69,4 @@ export const CarIdInputView = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-`;
-
-export const InputView = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	gap: 20px;
-	padding-top: 56px;
-	padding-bottom: 56px;
 `;

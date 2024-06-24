@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { EColor } from "@styles/color";
-import { Title3, body6 } from "@styles/font";
+import { Title3, body6, body4 } from "@styles/font";
 
 export const Container = styled.div`
 	display: flex;
@@ -68,4 +68,16 @@ export const SvgBox = styled.div`
 export const EmptyBox = styled.div`
 	width: 30px;
 	height: 30px;
+`;
+
+export const GroupInputView = styled.div`
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+`;
+
+export const TextSub = styled.div`
+	text-align: left;
+	color: ${EColor.TEXT_500};
+	${body4}
 `;
