@@ -33,6 +33,25 @@ export const requestRegister =
   });
 };
 
+export const requestSurvey = 
+(
+  userId: string,
+  transfer:string,
+  idn:string,
+  meal:number[][], 
+  bus?:number,
+  carId?:string
+) => {
+  return request.post('/api/user/survey', {
+    userId,
+    transfer,
+    bus,
+    carId,
+    idn,
+    meal
+  });
+};
+
 
 export const requestGetUserInfo = (
   userId: string,
