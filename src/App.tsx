@@ -15,6 +15,7 @@ import RetreatPayment from '@pages/RetreatPayment';
 import RetreatApplicaion from '@pages/RetreatApplication';
 import Maintenance from '@pages/Maintenance';
 import Profile from '@pages/Profile';
+import RetreatAppInfo from '@pages/RetreatAppInfo';
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
           <Route path={`/${Page.retreatApplication}`} element={<RetreatApplicaion />} />
           <Route path={`/${Page.backoffice}`} element={<Backoffice />} />
           <Route path={`/${Page.eidtprofile}`} element={<Profile />} />
+          <Route path={`/${Page.retreatAppInfo}`} element={<RetreatAppInfo />} />
           <Route path="*" element={<Error404 />} />
           <Route path="/maintenance" element={<Maintenance />} />
         </Routes>

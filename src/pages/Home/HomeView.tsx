@@ -4,15 +4,35 @@ import { EColor } from '@styles/color';
 import SvgIcon from '@components/SvgIcon';
 import { IconButton } from '@components/IconButton';
 import usePageControll from '@hooks/usePageControll';
-import { useRecoilValue } from 'recoil';
-import { userState } from '@modules/atoms';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { surveyState, userState } from '@modules/atoms';
 import { useState,useEffect } from 'react';
+import { getExistSurvey } from '@apis/index';
 
 const HomeView = () => {
   const { handlePage } = usePageControll();
   const user = useRecoilValue(userState);
   const [dDay, setDDay] = useState(null);
+  const [surveyData,setSurveyData] = useRecoilState(surveyState);
+
+  const getSurvey = async () => {
+    if (!user.userId) return;
+    try {
+      const res = await getExistSurvey(user.userId);
+      setSurveyData({
+        meal: res.data.data.surveyData.meal,
+        transfer: res.data.data.surveyData.transfer.transfer,
+        bus: res.data.data.surveyData.transfer.bus,
+        carId: res.data.data.surveyData.transfer['own-car'],
+        idn: res.data.data.idn
+      });
+    } catch (err) {
+      setSurveyData(surveyData)
+      }
+    };
+
   console.log(user);
+  console.log(surveyData);
 
   const calculateDDay = (targetDate) => {
     const today = new Date();
@@ -22,9 +42,10 @@ const HomeView = () => {
   };
 
   useEffect(() => {
+    getSurvey();
     const targetDate = '2024-08-23'; // Set your target date here
     setDDay(calculateDDay(targetDate));
-  }, []);
+  }, [user.userId]);
 
 
   const handleLogout = () => {
@@ -49,9 +70,9 @@ const HomeView = () => {
           <ItemText>수련회 안내</ItemText>
         </ItemView>
         <Line />
-        <ItemView onClick={() => handlePage('retreat-application')}>
+        <ItemView onClick={() => handlePage(surveyData.idn ? 'retreat-appinfo' : 'retreat-application')}>
           <SvgIcon name={'write'} width={36} height={36} fill={"none"} stroke={EColor.TEXT_800} />
-          <ItemText>수련회 등록</ItemText>
+          <ItemText>{surveyData.idn ? '설문지 조회' : '설문지 등록'}</ItemText>
         </ItemView>
         <Line />
         <ItemView onClick={() => handlePage('retreat-payment')}>
