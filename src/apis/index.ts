@@ -52,6 +52,13 @@ export const requestSurvey =
   });
 };
 
+export const getExistSurvey = 
+(
+  userId: string
+) => {
+  return request.post('/api/user/getExistSurvey', {userId});
+};
+
 
 export const requestGetUserInfo = (
   userId: string,
