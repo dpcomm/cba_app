@@ -5,6 +5,14 @@ import { EColor } from '@styles/color';
 import SvgIcon from '@components/SvgIcon';
 
 const RetreatPaymentView = () => {
+  const handleCopyClipBoard = async () => {
+    try {
+      await navigator.clipboard.writeText("카카오뱅크 79795194749");
+      alert('클립보드에 복사되었습니다.');
+    } catch (e) {
+      alert('복사에 실패하였습니다');
+    }
+  };
 	return (
     <Container>
       <PaymentView>
@@ -17,7 +25,7 @@ const RetreatPaymentView = () => {
         <IconButton
           label={'계좌번호 복사하기'}
           height='32px'
-          onClick={() => console.log("hello")}
+          onClick={handleCopyClipBoard}
           color={EColor.TEXT_200}
           backgroundColor={EColor.COLOR_PRIMARY_SUB1}
           borderRadius='8px'
