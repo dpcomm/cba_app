@@ -13,8 +13,8 @@ const formatIdnNumber = (value: string) => {
     const IdnNumber = value.replace(/[^\d]/g, '');
   
     //  주민등록번호 길이 및 포맷 체크 {6}-{7}
-    if (IdnNumber.length < 6) return IdnNumber;
-    return `${IdnNumber.slice(0, 6)}-${IdnNumber.slice(6, 14)}`;
+    if (IdnNumber.length < 7) return IdnNumber;
+    return `${IdnNumber.slice(0, 6)}-${IdnNumber.slice(6, 13)}`;
   };
   
 
