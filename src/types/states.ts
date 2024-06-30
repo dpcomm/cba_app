@@ -18,3 +18,11 @@ export interface UpdateForm {
   gender: string,
   etcGroup?: string
 }
+
+export interface surveyForm {
+  meal: number[][],
+  transfer: string,
+  bus?: number,
+  carId?: string,
+  idn:string
+}

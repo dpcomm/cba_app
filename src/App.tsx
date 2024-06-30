@@ -15,6 +15,7 @@ import RetreatPayment from '@pages/RetreatPayment';
 import RetreatApplicaion from '@pages/RetreatApplication';
 import Maintenance from '@pages/Maintenance';
 import Profile from '@pages/Profile';
+import RetreatAppInfo from '@pages/RetreatAppInfo';
 import NotLogin from '@pages/NotLogin';
 
 const isLogin = localStorage.getItem('access_token');
@@ -41,6 +42,7 @@ const App = () => {
             <Route path={`/${Page.retreatApplication}`} element={<RetreatApplicaion />} />
             <Route path={`/${Page.backoffice}`} element={<Backoffice />} />
             <Route path={`/${Page.editProfile}`} element={<Profile />} />
+            <Route path={`/${Page.retreatAppInfo}`} element={<RetreatAppInfo />} />
           </Route>
           <Route path="*" element={<Error404 />} />
         </Routes>
