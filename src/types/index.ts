@@ -21,7 +21,7 @@ export enum Page {
   retreatApplication = "retreat-application",
   backoffice = "backoffice",
   editProfile = "edit-profile",
-  retreatAppInfo = "retreat-appinfo"
+  retreatAppInfo = "retreat-appinfo",
   notLogin = "not-login",
 
 }
