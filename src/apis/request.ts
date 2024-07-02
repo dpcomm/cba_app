@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { DOMAIN } from './domain';
+import { requestRefresh } from '.';
 
-const request = axios.create({ baseURL: DOMAIN.main, timeout: 1000 });
+const request = axios.create({ baseURL: DOMAIN.local, timeout: 1000 });
 
 request.interceptors.request.use(async (config) => {
   const accessToken = await localStorage.getItem('access_token');
@@ -23,22 +24,31 @@ request.interceptors.response.use(
       window.location.href = '/maintenance';
     }
     if (error.response.data.message === 'jwt expired') {
-      // const beforeAccessToken = await localStorage.getItem('access_token');
-      // const data = await requestReissuedToken(beforeAccessToken);
+      try {
+        const beforeAccessToken: string | null = await localStorage.getItem('access_token');
+        const beforeRefreshToken: string | null = await localStorage.getItem('refresh_token');
+        if (!beforeRefreshToken) {
+          await localStorage.removeItem('access_token');
+          alert('로그인이 만료되었습니다. 다시 로그인 해주세요.');
+          window.location.href = '/';
+          return;
+        }
+        const data = await requestRefresh(beforeAccessToken, beforeRefreshToken);
+        if (data) {
+          await localStorage.removeItem('access_token');
+          await localStorage.setItem('access_token', data.data.accessToken);
+          const newConfig = { ...error.config };
+          newConfig.headers.Authorization = `Bearer: ${data.data.accessToken}`;
+          return axios(newConfig);
+        }
+      } catch (error) {
+        await localStorage.removeItem('access_token');
+        await localStorage.removeItem('refresh_token');
+        alert('자동 로그인이 만료되었습니다. 다시 로그인 해주세요.');
+        window.location.href = '/';
+      }
+      return Promise.reject(error);
     }
-    return Promise.reject(error);
-  },
-);
-
-request.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  async (error) => {
-    // if (error.response.status == 401) {
-    //   alert('로그인 / 재로그인이 필요합니다.');
-    //   window.location.href = '/';
-    // }
     return Promise.reject(error);
   },
 );

@@ -31,3 +31,10 @@ export const Body = styled.div`
 export const StyledImage = styled.img`
   width: 256px;
 `;
+
+export const ButtonView = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 24px;
+`;

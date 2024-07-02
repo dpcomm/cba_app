@@ -1,6 +1,5 @@
 import { UpdateForm } from '@type/states';
 import request from './request';
-import { user } from 'assets/svgs';
 
 export const requestLogin = (userId: string, password: string, autoLogin: boolean) => {
   return request.post('/api/user/login', {
@@ -33,6 +32,20 @@ export const requestRegister =
   });
 };
 
+export const requestRefresh = (accessToken: string | null, refreshToken: string | null) => {
+  return request.post('/api/user/refresh', {
+    accessToken,
+    refreshToken
+  });
+};
+
+export const requestAuthCheck = (accessToken: string | null, refreshToken: string | null) => {
+  return request.post('/api/user', {
+    accessToken,
+    refreshToken
+  });
+};
+
 
 export const requestGetUserInfo = (
   userId: string,
@@ -40,7 +53,7 @@ export const requestGetUserInfo = (
 ) => {
   const token = localStorage.getItem('access_token');
   if (!token) {
-    // 토큰이 없을 경우의 처리 로직 추가 
+    // 토큰이 없을 경우의 처리 로직 추가
     console.log("No token found. Redirecting to login.");
     return Promise.reject("Authentication required.");
   }

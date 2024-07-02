@@ -7,12 +7,12 @@ import usePageControll from '@hooks/usePageControll';
 import { useRecoilValue } from 'recoil';
 import { userState } from '@modules/atoms';
 import { useState,useEffect } from 'react';
+import useConfirm from '@hooks/useConfirm';
 
 const HomeView = () => {
   const { handlePage } = usePageControll();
   const user = useRecoilValue(userState);
   const [dDay, setDDay] = useState(null);
-  console.log(user);
 
   const calculateDDay = (targetDate) => {
     const today = new Date();
@@ -26,10 +26,12 @@ const HomeView = () => {
     setDDay(calculateDDay(targetDate));
   }, []);
 
-  const handleLogout = () => {
+  const handleLogout = useConfirm("로그아웃 하시겠습니까? ", async () => {
+    await localStorage.removeItem('access_token');
+    await localStorage.removeItem('refresh_token');
     handlePage('');
-    console.log("로그아웃");
-  };
+    alert("로그아웃이 완료되었습니다.");
+  }, () => null);
 
 	return (
     <Container>

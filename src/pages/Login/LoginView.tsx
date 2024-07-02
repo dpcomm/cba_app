@@ -11,19 +11,19 @@ import { userState } from '@modules/atoms';
 
 
 const LoginView = () => {
+	const { handlePage } = usePageControll();
+
 	const [id, set_id] = useState("");
 	const [password, set_password] = useState("");
 	const [autoLogin, set_autoLogin] = useState(false);
 	const setUser = useSetRecoilState(userState);
-
-	const { handlePage } = usePageControll();
 
 	const handleCheckBox = () => {
 		set_autoLogin(!autoLogin);
 	};
 
 	const handleLogin = async () => {
-		await requestLogin(id, password, autoLogin)
+		requestLogin(id, password, autoLogin)
 		.then(async (res) => {
 			/* rank 백엔드와 수정 필요 (role -> rank) */
 			setUser({
@@ -37,8 +37,11 @@ const LoginView = () => {
 				gender: res.data.user.gender,
 			});
 			await localStorage.setItem('access_token', res.data.accessToken);
-			alert("로그인에 성공하였습니다.");
+			if (autoLogin) {
+				await localStorage.setItem('refresh_token', res.data.refreshToken);
+			}
 			handlePage('home');
+			alert("로그인에 성공하였습니다.");
 		}).catch((err) => {
 			if (err.response.data.message === "Unregisterd user") return alert("존재하지 않는 유저입니다.");
 			if (err.response.data.message === "Incorrect password") return alert("비밀번호가 일치하지 않습니다.");

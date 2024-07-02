@@ -1,6 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { RecoilRoot } from 'recoil';
-import { GlobalStyle } from './styles/GlobalStyle';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from '@pages/Login';
 import Register from '@pages/Register';
 import Navbar from '@components/Navbar';
@@ -15,37 +13,75 @@ import RetreatPayment from '@pages/RetreatPayment';
 import RetreatApplicaion from '@pages/RetreatApplication';
 import Maintenance from '@pages/Maintenance';
 import Profile from '@pages/Profile';
+import PrivateRoute from '@utils/PrivateRoute';
+import { useEffect } from 'react';
+import { requestAuthCheck } from './apis';
+import { userState } from '@modules/atoms';
+import { useSetRecoilState } from 'recoil';
 import NotLogin from '@pages/NotLogin';
 
-const isLogin = localStorage.getItem('access_token');
-
-const PrivateRoute = () => {
-  return isLogin ? <NotLogin /> : <Navigate to="/" />;
-};
-
 const App = () => {
+  const setUser = useSetRecoilState(userState);
+
+  useEffect(() => {
+		handleAuthCheck();
+	}, []);
+
+	const handleAuthCheck = async () => {
+		const accessToken = await localStorage.getItem('access_token');
+		const refreshToken = await localStorage.getItem('refresh_token');
+
+		requestAuthCheck(accessToken, refreshToken)
+		.then((res) => {
+			if (!res.data.user) return;
+			setUser({
+				userId: res.data.user.userId,
+				rank: res.data.user.rank,
+				password: res.data.user.password,
+				name: res.data.user.name,
+				group: res.data.user.group,
+				phone: res.data.user.phone,
+				birth: res.data.user.birth,
+				gender: res.data.user.gender,
+			});
+			if (window.location.pathname == '/') window.location.href = '/home';
+		}).catch(async (err) => {
+			setUser({
+				userId: "",
+				rank: "M",
+				password: "",
+				name: "",
+				group: "",
+				phone: "",
+				birth: "",
+				gender: "",
+			});
+			if (!err.response || !err.response.data) return console.log("An unexpected error occurred:", err);
+			if (err.response.data.message === "Token not exist") return;
+			if (err.response.data.message === "Unauthorized user") return alert("로그인이 필요합니다.");
+		});
+	};
+
   return (
-    <RecoilRoot>
-      <GlobalStyle />
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path={`/${Page.register}`} element={<Register />} />
-          <Route path="/maintenance" element={<Maintenance />} />
-          <Route element={<PrivateRoute />}>
-            <Route path={`/${Page.home}`} element={<Home />} />
-            <Route path={`/${Page.retreatInfo}`} element={<RetreatInfo />} />
-            <Route path={`/${Page.retreatLocation}`} element={<RetreatLocation />} />
-            <Route path={`/${Page.retreatPayment}`} element={<RetreatPayment />} />
-            <Route path={`/${Page.retreatApplication}`} element={<RetreatApplicaion />} />
-            <Route path={`/${Page.backoffice}`} element={<Backoffice />} />
-            <Route path={`/${Page.editProfile}`} element={<Profile />} />
-          </Route>
-          <Route path="*" element={<Error404 />} />
-        </Routes>
-      </BrowserRouter>
-    </RecoilRoot>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path={`/${Page.register}`} element={<Register />} />
+				<Route path={`/${Page.notLogin}`} element={<NotLogin />} />
+        <Route path="/maintenance" element={<Maintenance />} />
+        <Route element={<PrivateRoute />}>
+          <Route path={`/${Page.home}`} element={<Home />} />
+          <Route path={`/${Page.retreatInfo}`} element={<RetreatInfo />} />
+          <Route path={`/${Page.retreatLocation}`} element={<RetreatLocation />} />
+          <Route path={`/${Page.retreatPayment}`} element={<RetreatPayment />} />
+          <Route path={`/${Page.retreatApplication}`} element={<RetreatApplicaion />} />
+          <Route path={`/${Page.backoffice}`} element={<Backoffice />} />
+          <Route path={`/${Page.editProfile}`} element={<Profile />} />
+        </Route>
+        <Route path="*" element={<Error404 />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

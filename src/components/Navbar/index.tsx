@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import { LeftView } from '@components/HeaderBar/HeaderBar.styled';
 
 /* 페이지 라우팅 시 해당 부분 수정 필요. */
-const noneHeaderTarget = ['', 'home'];
+const noneHeaderTarget = ['', 'home', 'not-login'];
 const pageLabel = {
   [Page.home]: '홈',
   [Page.register]: '회원가입',
