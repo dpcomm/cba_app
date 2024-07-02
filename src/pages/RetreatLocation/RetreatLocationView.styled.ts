@@ -12,7 +12,7 @@ export const Container = styled.div`
 
 export const TextTitle  = styled.div`
   display: flex;
-	padding: 46px;
+	margin-bottom: 24px;
 	${Title1}
 	font-size: 34px;
 	letter-spacing: 2px;

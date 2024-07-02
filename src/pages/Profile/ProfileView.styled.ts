@@ -8,8 +8,8 @@ export const Container = styled.div`
 	width: 100%;
 	justify-content: center;
 	align-items: center;
-	padding-top: 86px;
-	padding-bottom: 86px;
+	padding-top: 64px;
+	padding-bottom: 64px;
 	padding-right: 48px;
 	padding-left: 48px;
 	overflow-y: scroll;

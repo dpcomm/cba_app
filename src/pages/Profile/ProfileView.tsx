@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { GroupInputView,Container, EmptyBox, InputBox, InputView, LogoBold, LogoLight, LogoView, SvgBox,TextSub } from './ProfileView.styled';
 import TextInputB from '@components/TextInputB';
 import PhoneInput from '@components/PhoneInput';
@@ -8,10 +8,8 @@ import RadioButton from '@components/RadioButton';
 import Dropdown from '@components/Dropdown';
 import { IconButton } from '@components/IconButton';
 import useConfirm from '@hooks/useConfirm';
-import { requestGetUserInfo,updateUserInfo } from '@apis/index';
+import { updateUserInfo } from '@apis/index';
 import usePageControll from '@hooks/usePageControll';
-import parseDateString from '@utils/ParseDateString';
-import { password } from 'assets/svgs';
 import { useRecoilState } from 'recoil';
 import { userState } from '@modules/atoms';
 
@@ -23,20 +21,22 @@ const ProfileView = () => {
 
   function mapGenderToNumber(gender) {
     return gender === "male" ? 0 : 1;
-  };  
+  }
+
   function formatDate(date) {
-    const userbirth = new Date(date)
+    const userbirth = new Date(date);
     const formbirth = userbirth.toLocaleDateString('ko-KR', {
       year: 'numeric',
       month: '2-digit',
       day: '2-digit'
-    })
+    });
     return formbirth.replace(/\s/g, '').replace(/\./g, '-').slice(0, -1);
   }
 
   const handleChange = (field, value) => {
     setUserData(prev => ({ ...prev, [field]: value}));
   };
+
   const handleUpdateProfile = async() => {
     if (userData.password !== password2) {
       alert("패스워드가 일치하지 않습니다.");
@@ -47,7 +47,7 @@ const ProfileView = () => {
       alert("회원정보 수정 성공");
       handlePage('home');
     } catch (error) {
-        console.error('Error updating user data:',error)
+        console.error('Error updating user data:',error);
         alert("회원정보 수정 실패");
     }
   };

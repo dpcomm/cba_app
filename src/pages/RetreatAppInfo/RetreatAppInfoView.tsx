@@ -19,7 +19,6 @@ import MealRadioButton from '@components/MealRadioButton';
 import { IconButton } from '@components/IconButton';
 import { EColor } from '@styles/color';
 import { requestSurvey } from '@apis/index';
-import { allowedNodeEnvironmentFlags } from 'process';
 import usePageControll from '@hooks/usePageControll';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { surveyState, userState } from '@modules/atoms';
@@ -37,8 +36,8 @@ const RetreatAppInfoView = () => {
 
   const ok = () => handleApplication();
   const cancle = () => console.log("Cancled..");
-  const confirmApplication = useConfirm("설문을 수정하시겠습니까? ",ok,cancle)
-  
+  const confirmApplication = useConfirm("설문을 수정하시겠습니까? ",ok,cancle);
+
   const handleChange = (field, value) => {
     setSurveyData(prev => ({ ...prev, [field]: value}));
   };
