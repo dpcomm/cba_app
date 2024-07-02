@@ -15,12 +15,14 @@ import Profile from '@pages/Profile';
 import PrivateRoute from '@utils/PrivateRoute';
 import { useEffect } from 'react';
 import { requestAuthCheck } from './apis';
-import { userState } from '@modules/atoms';
-import { useSetRecoilState } from 'recoil';
+import { isLoadingState, userState } from '@modules/atoms';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import NotLogin from '@pages/NotLogin';
+import Spinner from '@components/Spinner';
 
 const App = () => {
   const setUser = useSetRecoilState(userState);
+	const isLoading = useRecoilState(isLoadingState);
 
   useEffect(() => {
 		handleAuthCheck();
@@ -64,6 +66,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
+			{isLoading[0].isLoading && <Spinner />}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path={`/${Page.register}`} element={<Register />} />

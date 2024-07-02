@@ -49,11 +49,11 @@ export const requestAuthCheck = (accessToken: string | null, refreshToken: strin
 export const requestSurvey =
 (
   userId: string,
-  transfer:string,
-  idn:string,
-  meal:number[][],
-  bus?:number,
-  carId?:string
+  transfer: string,
+  idn: string,
+  meal: number[][],
+  bus?: number,
+  carId?: string
 ) => {
   return request.post('/api/user/survey', {
     userId,

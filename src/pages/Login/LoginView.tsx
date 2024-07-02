@@ -7,7 +7,7 @@ import { IconButton } from '@components/IconButton';
 import usePageControll from '@hooks/usePageControll';
 import { requestLogin } from '@apis/index';
 import { useSetRecoilState } from 'recoil';
-import { userState } from '@modules/atoms';
+import { isLoadingState, userState } from '@modules/atoms';
 
 
 const LoginView = () => {
@@ -17,15 +17,17 @@ const LoginView = () => {
 	const [password, set_password] = useState("");
 	const [autoLogin, set_autoLogin] = useState(false);
 	const setUser = useSetRecoilState(userState);
+	const setIsLoading = useSetRecoilState(isLoadingState);
 
 	const handleCheckBox = () => {
 		set_autoLogin(!autoLogin);
 	};
 
 	const handleLogin = async () => {
+		if ( !id || !password) return alert("아이디와 비밀번호을 입력해주세요.");
+		setIsLoading({ isLoading: true });
 		requestLogin(id, password, autoLogin)
 		.then(async (res) => {
-			/* rank 백엔드와 수정 필요 (role -> rank) */
 			setUser({
 				userId: res.data.user.userId,
 				rank: res.data.user.rank,
@@ -42,7 +44,9 @@ const LoginView = () => {
 			}
 			handlePage('home');
 			alert("로그인에 성공하였습니다.");
+			setIsLoading({ isLoading: false });
 		}).catch((err) => {
+			setIsLoading({ isLoading: false });
 			if (err.response.data.message === "Unregisterd user") return alert("존재하지 않는 유저입니다.");
 			if (err.response.data.message === "Incorrect password") return alert("비밀번호가 일치하지 않습니다.");
 			return alert("잘못된 접근입니다.");
@@ -70,8 +74,8 @@ const LoginView = () => {
 					type='password'
 				/>
 				<IconButton
-					svg={<SvgIcon name={'login'} width={24} height={24} fill={EColor.COLOR_PRIMARY} stroke={EColor.COLOR_PRIMARY} />}
-					label={'로그인 하기'}
+					// svg={<SvgIcon name={'login'} width={24} height={24} fill={EColor.COLOR_PRIMARY} stroke={EColor.COLOR_PRIMARY} />}
+					label={'로그인'}
 					width={"100%"}
 					height={"52px"}
 					borderRadius='48px'
@@ -91,7 +95,7 @@ const LoginView = () => {
 					로그인 유지
 				</CheckBox>
 			<TextButtonView>
-				<TextButton onClick={() => alert("구현중인 기능입니다.:)")}>아이디/비밀번호 찾기</TextButton>
+				<TextButton onClick={() => alert("서비스 준비중입니다.")}>아이디/비밀번호 찾기</TextButton>
 				<TextButton onClick={() => handlePage("register")}>회원가입</TextButton>
 			</TextButtonView>
 		</Container>

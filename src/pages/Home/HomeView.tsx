@@ -80,7 +80,7 @@ const HomeView = () => {
         </ItemView>
       </MenuView>
       <MenuView>
-        <ItemView onClick={() => alert("구현중인 기능입니다.:)")}>
+        <ItemView onClick={() => alert("서비스 준비중입니다.")}>
           <SvgIcon name={'clock'} width={36} height={36} fill={EColor.TEXT_800} stroke={'none'} />
           <ItemText>수련회 일정표</ItemText>
         </ItemView>
@@ -97,7 +97,7 @@ const HomeView = () => {
       </MenuView>
       <ButtonView>
         <IconButton
-          svg={<SvgIcon name={'login'} width={24} height={24} fill={EColor.COLOR_PRIMARY} stroke={EColor.COLOR_PRIMARY} />}
+          // svg={<SvgIcon name={'login'} width={24} height={24} fill={EColor.COLOR_PRIMARY} stroke={EColor.COLOR_PRIMARY} />}
           label={'로그아웃'}
           width={"100%"}
           height={"52px"}

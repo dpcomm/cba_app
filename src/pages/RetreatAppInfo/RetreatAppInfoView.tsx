@@ -128,7 +128,7 @@ const RetreatAppInfoView = () => {
             <IdnInput getter={surveyData.idn} setter={(value) => handleChange('idn',value)}/>
           </InputBox>
           <IconButton
-            label={'수정 하기'}
+            label={'수정 완료'}
             onClick={confirmApplication}
             width='118px'
             height='48px'
