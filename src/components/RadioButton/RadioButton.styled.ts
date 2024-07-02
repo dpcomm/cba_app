@@ -13,7 +13,7 @@ export const RadioWrap = styled.div`
   input {
     border: 0;
     clip: rect(0 0 0 0);
-    height: 1px;
+    height: 0px;
     margin: -1px;
     padding: 0;
     width: 1px;

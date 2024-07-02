@@ -1,5 +1,5 @@
-import { NavInfo, Paging } from '.';
-import { User, surveyForm } from './states';
+import { NavInfo, Paging } from '../types';
+import { IsLoading, User, surveyForm } from '../types/states';
 
 export const DefaultPaging = <Paging>{
   currentPage: 0,
@@ -30,4 +30,8 @@ export const DefaultSurvey = <surveyForm>{
   bus: 0,
   carId: "",
   idn:""
-}
+};
+
+export const DefaultIsLoading = <IsLoading>{
+  isLoading: false,
+};

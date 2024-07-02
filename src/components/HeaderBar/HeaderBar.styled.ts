@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  position: fixed;
+  position: sticky;
   width: 100%;
   height: 58px;
   align-items: center;

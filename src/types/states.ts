@@ -26,3 +26,7 @@ export interface surveyForm {
   carId?: string,
   idn:string
 }
+
+export interface IsLoading {
+  isLoading: boolean
+}

@@ -19,7 +19,6 @@ import MealRadioButton from '@components/MealRadioButton';
 import { IconButton } from '@components/IconButton';
 import { EColor } from '@styles/color';
 import { requestSurvey } from '@apis/index';
-import { allowedNodeEnvironmentFlags } from 'process';
 import usePageControll from '@hooks/usePageControll';
 import { useRecoilValue } from 'recoil';
 import { userState } from '@modules/atoms';
@@ -31,25 +30,31 @@ const RetreatApplicationView = () => {
   const [transfer, set_transfer] = useState("");
   const [bus, set_bus] = useState(0);
   const [carId, set_carId] = useState("");
-  const [Idn, set_Idn] = useState("");
+  const [Idn, set_Idn] = useState("000000-0000000");
   const [meal, set_meal] = useState([
     [0, 0, 0], [0, 0, 0], [0, 0, 0]
   ]);
 
   const ok = () => handleApplication();
   const cancle = () => console.log("Cancled..");
-  const confirmApplication = useConfirm("설문 작성을 완료하시겠습니까? ",ok,cancle)
+  const confirmApplication = useConfirm("설문 작성을 완료하시겠습니까? ",ok,cancle);
 
   const handleApplication = async () => {
-    if (!transfer || !Idn ) return alert("필수 항목을 모두 작성해주세요.");
+    // if (!transfer || !Idn ) return alert("필수 항목을 모두 작성해주세요.");
+    if (!transfer) return alert("필수 항목을 모두 작성해주세요.");
     await requestSurvey(
-      userData.userId,transfer,Idn,meal,bus,carId
+      userData.userId,
+      transfer,
+      Idn,
+      meal,
+      bus,
+      carId
     )
-    .then((res) => {
-      console.log(res);
+    .then(() => {
       alert("설문 등록이 완료되었습니다.");
       handlePage('home');
     }).catch((err) => {
+      alert("설문 등록에 실패하였습니다.");
       console.log(err.response.data.message);
     });
   };
@@ -78,7 +83,7 @@ const RetreatApplicationView = () => {
             <Dropdown
               onChange={set_transfer}
               placeholder='이동수단 선택'
-              options={['대형버스', '대중교통', '자차']}
+              options={['대형버스', '대중교통', '자차', '선발대']}
             />
           </InputBox>
           {transfer === "대형버스" &&
@@ -101,12 +106,13 @@ const RetreatApplicationView = () => {
               <TextSub>자차일 경우 차량번호를 입력해주세요.</TextSub>
             </CarIdInputView>
           }
-          <InputBox>
+          {/* <InputBox>
             <TextForm>주민등록번호</TextForm>
             <IdnInput getter={Idn} setter={set_Idn}/>
-          </InputBox>
+          </InputBox> */}
+          <TextSub>* 선발대라면, 이동수단 - 선발대 선택해주세요.</TextSub>
           <IconButton
-            label={'가입 완료'}
+            label={'신청 완료'}
             onClick={confirmApplication}
             width='118px'
             height='48px'
