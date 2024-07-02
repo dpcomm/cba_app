@@ -46,6 +46,32 @@ export const requestAuthCheck = (accessToken: string | null, refreshToken: strin
   });
 };
 
+export const requestSurvey =
+(
+  userId: string,
+  transfer:string,
+  idn:string,
+  meal:number[][],
+  bus?:number,
+  carId?:string
+) => {
+  return request.post('/api/user/survey', {
+    userId,
+    transfer,
+    bus,
+    carId,
+    idn,
+    meal
+  });
+};
+
+export const getExistSurvey =
+(
+  userId: string
+) => {
+  return request.post('/api/user/getExistSurvey', {userId});
+};
+
 
 export const requestGetUserInfo = (
   userId: string,

@@ -12,6 +12,7 @@ const MealRadioButton = ({ dates, mealData, disabled, onMealChange }: IMealRadio
    const handleMealSelect = (dayIndex: number, mealIndex: number) => {
     if (!disabled[dayIndex][mealIndex]) {
       const newMealData = [...mealData];
+      newMealData[dayIndex] = [...newMealData[dayIndex]];  // 내부 배열도 복사하여 불변성 유지
       newMealData[dayIndex][mealIndex] = newMealData[dayIndex][mealIndex] === 0 ? 1 : 0;
       onMealChange(newMealData);
     }

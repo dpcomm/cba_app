@@ -1,5 +1,5 @@
 import { NavInfo, Paging } from '.';
-import { User } from './states';
+import { User, surveyForm } from './states';
 
 export const DefaultPaging = <Paging>{
   currentPage: 0,
@@ -23,3 +23,11 @@ export const DefaultUser = <User>{
   birth: "",
   gender: "",
 };
+
+export const DefaultSurvey = <surveyForm>{
+  meal: [[0, 0, 0], [0, 0, 0], [0, 0, 0]],
+  transfer: "",
+  bus: 0,
+  carId: "",
+  idn:""
+}

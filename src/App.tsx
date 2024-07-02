@@ -7,7 +7,6 @@ import RetreatInfo from '@pages/RetreatInfo';
 import Home from '@pages/Home';
 import Backoffice from '@pages/Backoffice';
 import Error404 from '@pages/Error404';
-// import Navbar from '@components/Navbar';
 import RetreatLocation from '@pages/RetreatLocation';
 import RetreatPayment from '@pages/RetreatPayment';
 import RetreatApplicaion from '@pages/RetreatApplication';
