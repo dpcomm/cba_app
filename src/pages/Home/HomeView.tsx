@@ -32,9 +32,6 @@ const HomeView = () => {
       }
     };
 
-  console.log(user);
-  console.log(surveyData);
-
   const calculateDDay = (targetDate) => {
     const today = new Date();
     const target = new Date(targetDate);
@@ -93,7 +90,7 @@ const HomeView = () => {
           <ItemText>수련회 위치</ItemText>
         </ItemView>
         <Line />
-        <ItemView onClick={() => handlePage('editprofile')}>
+        <ItemView onClick={() => handlePage('edit-profile')}>
           <SvgIcon name={'user'} width={40} height={40} fill={"none"} stroke={EColor.TEXT_800} />
           <ItemText>계정 정보</ItemText>
         </ItemView>

@@ -16,6 +16,7 @@ const pageLabel = {
   [Page.retreatLocation]: '수련회 위치',
   [Page.retreatPayment]: '수련회 납부',
   [Page.retreatApplication]: '수련회 신청',
+  [Page.editProfile]: "회원 정보 수정"
 };
 
 const Navbar = () => {
