@@ -12,6 +12,7 @@ export const Container = styled.div`
   padding: 0px 12px 0px 12px;
   top: 0;
   background-color: ${EColor.TEXT_200};
+  z-index: 10;
   /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2); */
 `;
 

@@ -11,9 +11,12 @@ import useConfirm from '@hooks/useConfirm';
 import { requestRegister } from '@apis/index';
 import usePageControll from '@hooks/usePageControll';
 import parseDateString from '@utils/ParseDateString';
+import { useSetRecoilState } from 'recoil';
+import { isLoadingState } from '@modules/atoms';
 
 const RegisterView = () => {
   const { handlePage } = usePageControll();
+  const setIsLoading = useSetRecoilState(isLoadingState);
 
   const [id, set_id] = useState("");
   const [password, set_password] = useState("");
@@ -30,9 +33,15 @@ const RegisterView = () => {
   const confirmRegister = useConfirm("회원 가입을 완료하시겠습니까? ", ok, cancle);
 
   const handleRegister = async () => {
-    console.log(id, password, password2, name, gender, phone, group, birth,etcGroup);
-    if (password !== password2) return alert("패스워드가 일치하지 않습니다.");
-    if (!id || !password || !password2 || !name || !phone || !group || !birth) return alert("회원 정보를 모두 입력해주세요.");
+    setIsLoading({ isLoading: true });
+    if (password !== password2) {
+      setIsLoading({ isLoading: false });
+      return alert("패스워드가 일치하지 않습니다.");
+    }
+    if (!id || !password || !password2 || !name || !phone || !group || !birth) {
+      setIsLoading({ isLoading: false });
+      return alert("회원 정보를 모두 입력해주세요.");
+    }
     await requestRegister(
       id,
       password,
@@ -43,11 +52,12 @@ const RegisterView = () => {
       gender ? "female" : "male",
       etcGroup
     )
-    .then((res) => {
-      console.log(res);
+    .then(() => {
+      setIsLoading({ isLoading: false });
       alert("회원가입에 성공하였습니다.");
       handlePage('');
     }).catch((err) => {
+      setIsLoading({ isLoading: false });
       if (err.response.data.message === "Invalid request") return alert("잘못된 요청입니다.");
       if (err.response.data.message === "Duplicated id") return alert("중복되는 아이디입니다.");
       if (err.response.data.message === "Password pattern unfulfilled") return alert("비밀번호는 10자 이상, 알파벳, 숫자를 포함하여야 합니다. ");

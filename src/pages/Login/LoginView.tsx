@@ -33,6 +33,7 @@ const LoginView = () => {
 		requestLogin(id, password, autoLogin)
 		.then(async (res) => {
 			setUser({
+				id: res.data.user.id,
 				userId: res.data.user.userId,
 				rank: res.data.user.rank,
 				password: res.data.user.password,

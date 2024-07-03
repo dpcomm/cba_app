@@ -73,8 +73,8 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Navbar />
 			{isLoading[0].isLoading && <Spinner />}
+      <Navbar />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path={`/${Page.register}`} element={<Register />} />
