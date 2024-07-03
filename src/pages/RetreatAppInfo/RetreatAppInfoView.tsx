@@ -123,10 +123,10 @@ const RetreatAppInfoView = () => {
               <TextSub>자차일 경우 차량번호를 입력해주세요.</TextSub>
             </CarIdInputView>
           }
-          <InputBox>
+          {/* <InputBox>
             <TextForm>주민등록번호</TextForm>
             <IdnInput getter={surveyData.idn} setter={(value) => handleChange('idn',value)}/>
-          </InputBox>
+          </InputBox> */}
           <IconButton
             label={'수정 완료'}
             onClick={confirmApplication}

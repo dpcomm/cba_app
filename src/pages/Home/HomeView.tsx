@@ -69,9 +69,9 @@ const HomeView = () => {
           <ItemText>수련회 안내</ItemText>
         </ItemView>
         <Line />
-        <ItemView onClick={() => handlePage(surveyData.idn ? 'retreat-appinfo' : 'retreat-application')}>
+        <ItemView onClick={() => handlePage(surveyData ? 'retreat-appinfo' : 'retreat-application')}>
           <SvgIcon name={'write'} width={36} height={36} fill={"none"} stroke={EColor.TEXT_800} />
-          <ItemText>{surveyData.idn ? '설문지 조회' : '설문지 등록'}</ItemText>
+          <ItemText>{surveyData ? '설문지 조회' : '설문지 등록'}</ItemText>
         </ItemView>
         <Line />
         <ItemView onClick={() => handlePage('retreat-payment')}>

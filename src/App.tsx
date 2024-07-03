@@ -19,6 +19,8 @@ import { isLoadingState, userState } from '@modules/atoms';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import NotLogin from '@pages/NotLogin';
 import Spinner from '@components/Spinner';
+import RetreatAppInfo from '@pages/RetreatAppInfo';
+import AuthUser from '@pages/AuthUser';
 
 const App = () => {
   const setUser = useSetRecoilState(userState);
@@ -80,6 +82,8 @@ const App = () => {
           <Route path={`/${Page.retreatApplication}`} element={<RetreatApplicaion />} />
           <Route path={`/${Page.backoffice}`} element={<Backoffice />} />
           <Route path={`/${Page.editProfile}`} element={<Profile />} />
+          <Route path={`/${Page.retreatAppInfo}`} element={<RetreatAppInfo />} />
+          <Route path={`/${Page.AuthUser}`} element={<AuthUser />} />
         </Route>
         <Route path="*" element={<Error404 />} />
       </Routes>
