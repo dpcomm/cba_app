@@ -23,7 +23,18 @@ export const PaymentView = styled.div`
 export const TextPayment = styled.div`
   ${body1}
   color: ${EColor.COLOR_PRIMARY_SUB1};
-  font-size: 36px;
+  font-size: 42px;
+`;
+
+export const TextPaymentSub = styled.div`
+  ${body1}
+  color: ${EColor.TEXT_500};
+  font-size: 42px;
+`;
+
+export const TextPaymentBody = styled.div`
+  ${body2};
+  color: ${EColor.TEXT_500};
 `;
 
 export const TextBody = styled.div`

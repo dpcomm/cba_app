@@ -92,3 +92,9 @@ export const updateUserInfo =
 ) => {
   return request.post('/api/user/updateUser', userData);
 };
+
+export const requestApplicationByUser = (userId: string) => {
+  return request.post('/api/user/application', {
+    userId
+  });
+};
