@@ -14,6 +14,7 @@ export const DefaultNavInfo = <NavInfo>{
 
 
 export const DefaultUser = <User>{
+  id: null,
   userId: "",
   rank: "M",
   password: "",

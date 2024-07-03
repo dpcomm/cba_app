@@ -28,7 +28,13 @@ const App = () => {
 
   useEffect(() => {
 		handleAuthCheck();
+		setScreenSize();
 	}, []);
+
+	const setScreenSize = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  };
 
 	const handleAuthCheck = async () => {
 		const accessToken = await localStorage.getItem('access_token');
@@ -38,6 +44,7 @@ const App = () => {
 		.then((res) => {
 			if (!res.data.user) return;
 			setUser({
+				id: res.data.user.id,
 				userId: res.data.user.userId,
 				rank: res.data.user.rank,
 				password: res.data.user.password,
@@ -50,6 +57,7 @@ const App = () => {
 			if (window.location.pathname == '/') window.location.href = '/home';
 		}).catch(async (err) => {
 			setUser({
+				id: null,
 				userId: "",
 				rank: "M",
 				password: "",
@@ -67,8 +75,8 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Navbar />
 			{isLoading[0].isLoading && <Spinner />}
+      <Navbar />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path={`/${Page.register}`} element={<Register />} />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CheckBox, Container, LoginInputView, LogoBold, LogoLight, LogoView, TextButton, TextButtonView } from './LoginView.styled';
 import TextInput from '@components/TextInput';
 import SvgIcon from '@components/SvgIcon';
@@ -6,7 +6,7 @@ import { EColor } from '@styles/color';
 import { IconButton } from '@components/IconButton';
 import usePageControll from '@hooks/usePageControll';
 import { requestLogin } from '@apis/index';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { isLoadingState, userState } from '@modules/atoms';
 
 
@@ -16,8 +16,12 @@ const LoginView = () => {
 	const [id, set_id] = useState("");
 	const [password, set_password] = useState("");
 	const [autoLogin, set_autoLogin] = useState(false);
-	const setUser = useSetRecoilState(userState);
+	const [user, setUser] = useRecoilState(userState);
 	const setIsLoading = useSetRecoilState(isLoadingState);
+
+	useEffect(() => {
+		user.userId && handlePage("home");
+	}, []);
 
 	const handleCheckBox = () => {
 		set_autoLogin(!autoLogin);
@@ -29,6 +33,7 @@ const LoginView = () => {
 		requestLogin(id, password, autoLogin)
 		.then(async (res) => {
 			setUser({
+				id: res.data.user.id,
 				userId: res.data.user.userId,
 				rank: res.data.user.rank,
 				password: res.data.user.password,

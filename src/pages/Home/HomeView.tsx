@@ -4,14 +4,16 @@ import { EColor } from '@styles/color';
 import SvgIcon from '@components/SvgIcon';
 import { IconButton } from '@components/IconButton';
 import usePageControll from '@hooks/usePageControll';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { surveyState, userState } from '@modules/atoms';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { isLoadingState, surveyState, userState } from '@modules/atoms';
 import { useState,useEffect } from 'react';
 import useConfirm from '@hooks/useConfirm';
-import { getExistSurvey } from '@apis/index';
+import { getExistSurvey, requestLogout } from '@apis/index';
 
 const HomeView = () => {
   const { handlePage } = usePageControll();
+  const setIsLoading = useSetRecoilState(isLoadingState);
+
   const user = useRecoilValue(userState);
   const [dDay, setDDay] = useState(null);
   const [surveyData,setSurveyData] = useRecoilState(surveyState);
@@ -46,10 +48,18 @@ const HomeView = () => {
   }, [user.userId]);
 
   const handleLogout = useConfirm("로그아웃 하시겠습니까? ", async () => {
+    setIsLoading({ isLoading: true });
     await localStorage.removeItem('access_token');
     await localStorage.removeItem('refresh_token');
-    handlePage('');
-    alert("로그아웃이 완료되었습니다.");
+    requestLogout(user.id).then(() => {
+      window.location.href = '';
+      alert("로그아웃이 완료되었습니다.");
+      setIsLoading({ isLoading: false });
+    }).catch((err) => {
+      console.log(err);
+      alert("로그아웃에 실패하였습니다.");
+      setIsLoading({ isLoading: false });
+    });
   }, () => null);
 
 	return (

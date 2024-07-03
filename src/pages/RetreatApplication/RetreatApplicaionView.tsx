@@ -13,20 +13,22 @@ import {
 } from './RetreatApplicaionView.styled';
 import Dropdown from '@components/Dropdown';
 import TextInputB from '@components/TextInputB';
-import IdnInput from '@components/IdnInput';
+// import IdnInput from '@components/IdnInput';
 import RadioButton from '@components/RadioButton';
 import MealRadioButton from '@components/MealRadioButton';
 import { IconButton } from '@components/IconButton';
 import { EColor } from '@styles/color';
 import { requestSurvey } from '@apis/index';
 import usePageControll from '@hooks/usePageControll';
-import { useRecoilValue } from 'recoil';
-import { userState } from '@modules/atoms';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { isLoadingState, userState } from '@modules/atoms';
 import useConfirm from '@hooks/useConfirm';
 
 const RetreatApplicationView = () => {
   const {handlePage} = usePageControll();
+  const setIsLoading = useSetRecoilState(isLoadingState);
   const userData = useRecoilValue(userState);
+
   const [transfer, set_transfer] = useState("");
   const [bus, set_bus] = useState(0);
   const [carId, set_carId] = useState("");
@@ -40,6 +42,7 @@ const RetreatApplicationView = () => {
   const confirmApplication = useConfirm("설문 작성을 완료하시겠습니까? ",ok,cancle);
 
   const handleApplication = async () => {
+    setIsLoading({ isLoading: true });
     // if (!transfer || !Idn ) return alert("필수 항목을 모두 작성해주세요.");
     if (!transfer) return alert("필수 항목을 모두 작성해주세요.");
     await requestSurvey(
@@ -51,9 +54,11 @@ const RetreatApplicationView = () => {
       carId
     )
     .then(() => {
+      setIsLoading({ isLoading: false });
       alert("설문 등록이 완료되었습니다.");
       handlePage('home');
     }).catch((err) => {
+      setIsLoading({ isLoading: false });
       alert("설문 등록에 실패하였습니다.");
       console.log(err.response.data.message);
     });

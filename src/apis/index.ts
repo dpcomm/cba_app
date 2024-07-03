@@ -9,6 +9,12 @@ export const requestLogin = (userId: string, password: string, autoLogin: boolea
   });
 };
 
+export const requestLogout = (id: number | null) => {
+  return request.post('/api/user/logout', {
+    id
+  });
+};
+
 export const requestRegister =
 (
   userId: string,
@@ -91,4 +97,10 @@ export const updateUserInfo =
   userData: UpdateForm
 ) => {
   return request.post('/api/user/updateUser', userData);
+};
+
+export const requestApplicationByUser = (userId: string) => {
+  return request.post('/api/user/application', {
+    userId
+  });
 };

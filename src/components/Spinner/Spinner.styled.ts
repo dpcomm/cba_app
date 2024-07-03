@@ -4,14 +4,14 @@ import styled from "styled-components";
 
 export const Container = styled.div`
 	display: flex;
-  position: absolute;
+  position: fixed;
 	flex-direction: column;
 	width: 100%;
-  height: 100%;
+  height: 100vh;
 	justify-content: center;
 	align-items: center;
   z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(76, 76, 76, 0.7);
 `;
 
 export const Logo = styled.div`

@@ -28,6 +28,7 @@ const RetreatLocationView = () => {
           color={EColor.TEXT_200}
           backgroundColor={EColor.COLOR_PRIMARY_SUB1}
           borderRadius='8px'
+          borderWidth='0'
         />
       </ButtonView>
     </Container>
