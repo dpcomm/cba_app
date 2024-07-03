@@ -1,4 +1,5 @@
 export interface User {
+  id: number | null,
   userId: string,
   rank: string,
   password: string,

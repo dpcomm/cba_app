@@ -8,7 +8,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { surveyState, userState } from '@modules/atoms';
 import { useState,useEffect } from 'react';
 import useConfirm from '@hooks/useConfirm';
-import { getExistSurvey } from '@apis/index';
+import { getExistSurvey, requestLogout } from '@apis/index';
 
 const HomeView = () => {
   const { handlePage } = usePageControll();
@@ -48,8 +48,12 @@ const HomeView = () => {
   const handleLogout = useConfirm("로그아웃 하시겠습니까? ", async () => {
     await localStorage.removeItem('access_token');
     await localStorage.removeItem('refresh_token');
-    handlePage('');
-    alert("로그아웃이 완료되었습니다.");
+    requestLogout(user.id).then(() => {
+      window.location.href = '';
+      alert("로그아웃이 완료되었습니다.");
+    }).catch((err) => {
+      console.log(err);
+    });
   }, () => null);
 
 	return (

@@ -9,10 +9,13 @@ import { body6 } from "./font";
 
 export const GlobalStyle = createGlobalStyle`
   * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
   }
+  :root {
+    --vh: 100%;
+   }
   @font-face {
     font-family: 'NotoSansBlack';
     src: local('NotoSansBlack'), local('NotoSansBlack');
