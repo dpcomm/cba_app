@@ -1,10 +1,10 @@
 import { EColor } from "@styles/color";
-import { Title1, Title4_2, Title6, body1, body5, } from "@styles/font";
+import { Title4_2, Title6, body1, body5, } from "@styles/font";
 import styled from "styled-components";
 
 export const Container = styled.div`
 	width: 100%;
-	height: 96vh;
+	height: 100dvh;
 	text-align: center;
 `;
 

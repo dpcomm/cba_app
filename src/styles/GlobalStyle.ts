@@ -9,6 +9,7 @@ import { body6 } from "./font";
 
 export const GlobalStyle = createGlobalStyle`
   * {
+    overscroll-behavior-y: none;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
