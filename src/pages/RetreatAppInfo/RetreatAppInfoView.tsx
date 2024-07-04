@@ -56,7 +56,7 @@ const RetreatAppInfoView = () => {
       carId: carId || surveyData.carId,
       idn: idn || surveyData.idn
     };
-    if (!updatedSurveyData.transfer || !updatedSurveyData.idn ) return alert("필수 항목을 모두 작성해주세요.");
+    if (!updatedSurveyData.transfer) return alert("필수 항목을 모두 작성해주세요.");
 
     await requestSurvey(
       userData.userId,
