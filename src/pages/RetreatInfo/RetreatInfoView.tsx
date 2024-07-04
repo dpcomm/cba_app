@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '@assets/images/retreat_grace_logo.png';
 import guidebook from '@assets/images/retreat_grace_poster.png';
-import { Container, Left, LogoImage, LogoText, TextBody, TextContainer, TextTitle } from './RetreatInfo.styled';
+import { Container, LogoImage, LogoText, TextBody, TextContainer, TextTitle } from './RetreatInfo.styled';
 import StickyNavigation from '@components/StickyTabBar';
 
 const RetreatInfoView = () => {
