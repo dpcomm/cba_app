@@ -1,5 +1,5 @@
 import { EColor } from '@styles/color';
-import { Title1, Title3 } from '@styles/font';
+import { Title3 } from '@styles/font';
 import styled from 'styled-components';
 
 export const TabBar = styled.div`
@@ -9,7 +9,7 @@ export const TabBar = styled.div`
   bottom: ${props => props.isTop ? 'auto' : '0'};
   background-color: #fff;
   border-bottom: 1px solid #ccc;
-  z-index: 1000;
+  z-index: 500;
 `;
 
 export const Tab = styled.div`

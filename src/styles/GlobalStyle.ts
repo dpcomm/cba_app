@@ -11,11 +11,17 @@ export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
   }
-  :root {
-    --vh: 100%;
-   }
+  html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @media (max-width: 768px) {
+    html {
+      display: block;
+    }
+  }
   @font-face {
     font-family: 'NotoSansBlack';
     src: local('NotoSansBlack'), local('NotoSansBlack');

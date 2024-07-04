@@ -1,10 +1,7 @@
 import React from 'react';
-import logo from '@assets/images/retreat_logo.png';
-import timetable from '@assets/images/retreat_timetable.png';
-import guidebook from '@assets/images/retreat_guidebook.png';
+import logo from '@assets/images/retreat_grace_logo.png';
+import guidebook from '@assets/images/retreat_grace_poster.png';
 import { Container, Left, LogoImage, LogoText, TextBody, TextContainer, TextTitle } from './RetreatInfo.styled';
-import SvgIcon from '@components/SvgIcon';
-import { EColor } from '@styles/color';
 import StickyNavigation from '@components/StickyTabBar';
 
 const RetreatInfoView = () => {
@@ -12,23 +9,20 @@ const RetreatInfoView = () => {
 		<>
 			<Container>
 				<LogoImage src={logo} />
-				<Left>
+				{/* <Left>
 					<SvgIcon name={'next'} width={24} height={24} fill={EColor.COLOR_PRIMARY} />
 					수련회 등록하기
-				</Left>
+				</Left> */}
 				<TextContainer>
-					<TextTitle>2024년 대학청년부 겨울 수련회</TextTitle>
-					<TextTitle>The Light - 빛 되신 말씀</TextTitle>
-					<TextBody>주님의 말씀은 내 발에 등이요. 내 길에 빛이니이다</TextBody>
-					<TextBody>(시119:105)</TextBody>
-					<TextBody>24년 2월 4-5일, 안산청소년수련원</TextBody>
-					<TextBody>수련회비 납부 및 후원계좌</TextBody>
-					<TextBody>카카오뱅크 79795194749 배윤희</TextBody>
+					<TextTitle>2024 대학청년부 여름 수련회</TextTitle>
+					<TextTitle>복음에서 오는 은혜</TextTitle>
+					<TextBody>우리는 그리스도 안에서 그의 은혜의 풍성함을 따라
+					그의 피로 말미암아 속량 곧 죄 사함을 받았느니라</TextBody>
+					<TextBody>(에베소서 1장 7절)</TextBody>
+					<TextBody>24년 8월 23-25일, 안산청소년수련원</TextBody>
 				</TextContainer>
 			</Container>
-			<StickyNavigation />
-			<LogoText>수련회 일정표</LogoText>
-			<LogoImage src={timetable} />
+			{/* <StickyNavigation /> */}
 			<LogoText>수련회 가이드북</LogoText>
 			<LogoImage src={guidebook} />
 		</>
