@@ -100,7 +100,7 @@ const RetreatAppInfoView = () => {
               initialValue={surveyData.transfer}
               onChange={(set_transfer)}
               placeholder='이동수단 선택'
-              options={['대형버스', '대중교통', '자차']}
+              options={['대형버스', '대중교통', '자차', '선발대']}
             />
           </InputBox>
           {transfer === "대형버스" &&
