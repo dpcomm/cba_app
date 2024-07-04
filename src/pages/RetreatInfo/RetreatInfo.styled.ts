@@ -4,12 +4,14 @@ import styled from "styled-components";
 
 export const Container = styled.div`
 	width: 100%;
-	height: 100dvh;
+	/* height: 100dvh; */
 	text-align: center;
+	margin-bottom: 84px;
 `;
 
 export const LogoImage = styled.img`
 	width: 100%;
+	margin-bottom: 34px;
 `;
 
 export const LogoText = styled.div`
@@ -21,7 +23,7 @@ export const LogoText = styled.div`
 	font-size: 36px;
 	color: ${EColor.TEXT_900};
 	letter-spacing: 2px;
-	padding-top: 88px;
+	padding-top: 48px;
 	padding-bottom: 48px;
 `;
 

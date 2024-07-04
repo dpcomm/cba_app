@@ -11,7 +11,11 @@ export const Container = styled.div`
 	justify-content: center;
 	align-items: center;
   z-index: 1000;
-  background-color: rgba(76, 76, 76, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
+	left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 `;
 
 export const Logo = styled.div`

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from '@assets/images/retreat_logo.png';
+import logo from '@assets/images/retreat_grace_logo.png';
 import {
   CarIdInputView,
   Container,

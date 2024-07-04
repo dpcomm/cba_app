@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from '@assets/images/retreat_logo.png';
+import logo from '@assets/images/retreat_grace_logo.png';
 import {
   CarIdInputView,
   Container,
@@ -80,7 +80,7 @@ const RetreatAppInfoView = () => {
       <Container>
         <LogoImage src={logo} />
         <FormContainer>
-          <TextTitle>수련회 신청서 조회&수정</TextTitle>
+          <TextTitle>수련회 신청서 조회 & 수정</TextTitle>
           <InputBox>
             <TextForm>식사 여부</TextForm>
 						<MealRadioButton
@@ -137,6 +137,7 @@ const RetreatAppInfoView = () => {
             borderRadius='8px'
           />
         </FormContainer>
+
       </Container>
     </>
   );

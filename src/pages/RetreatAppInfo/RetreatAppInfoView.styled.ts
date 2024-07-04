@@ -20,6 +20,7 @@ export const FormContainer = styled.div`
 	padding-right: 32px;
 	padding-left: 32px;
 	gap: 28px;
+	padding-bottom: 56px;
 `;
 
 export const TextTitle  = styled.div`

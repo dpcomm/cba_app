@@ -28,13 +28,7 @@ const App = () => {
 
   useEffect(() => {
 		handleAuthCheck();
-		setScreenSize();
 	}, []);
-
-	const setScreenSize = () => {
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-  };
 
 	const handleAuthCheck = async () => {
 		const accessToken = await localStorage.getItem('access_token');
@@ -76,6 +70,7 @@ const App = () => {
   return (
     <BrowserRouter>
 			{isLoading[0].isLoading && <Spinner />}
+			{/* <Spinner /> */}
       <Navbar />
       <Routes>
         <Route path="/" element={<Login />} />
