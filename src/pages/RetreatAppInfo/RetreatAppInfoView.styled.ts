@@ -63,6 +63,7 @@ export const InputBox = styled.div`
 export const TextForm = styled.div`
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	flex-direction: column;
 	width: 118px;
 	margin-right: 12px;
