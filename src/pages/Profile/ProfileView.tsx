@@ -21,7 +21,7 @@ const ProfileView = () => {
   const [name, set_name] = useState(user.name);
   // const [password, set_password] = useState("");
   // const [password2, set_password2] = useState("");
-  const [gender, set_gender] = useState(user.gender === "male" ? 0 : 1);
+  const [gender, set_gender] = useState(user.gender);
   const [phone, set_phone] = useState(user.phone);
   const [group, set_group] = useState(user.group);
   const [birth, set_birth] = useState(user.birth);
@@ -35,6 +35,9 @@ const ProfileView = () => {
       day: '2-digit'
     });
     return formbirth.replace(/\s/g, '').replace(/\./g, '-').slice(0, -1);
+  };
+  const convertGenderToIndex = (gender:string) => {
+    return gender === "female" ? 1 : 0;
   };
 
   const handleUpdateProfile = async () => {
@@ -105,7 +108,7 @@ const ProfileView = () => {
               { text: '남자', value: 0 },
               { text: '여자', value: 1 },
             ]}
-            initialValue={gender}
+            initialValue={convertGenderToIndex(gender)}
             onChange={set_gender}
           />
         </InputBox>
