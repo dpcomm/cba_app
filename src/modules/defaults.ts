@@ -1,5 +1,5 @@
 import { NavInfo, Paging } from '../types';
-import { IsLoading, User, surveyForm } from '../types/states';
+import { Application, IsLoading, User } from '../types/states';
 
 export const DefaultPaging = <Paging>{
   currentPage: 0,
@@ -25,12 +25,23 @@ export const DefaultUser = <User>{
   gender: "",
 };
 
-export const DefaultSurvey = <surveyForm>{
-  meal: [[0, 0, 0], [0, 0, 0], [0, 0, 0]],
-  transfer: "",
-  bus: 0,
-  carId: "",
-  idn:""
+export const DefaultApplication = <Application>{
+  id: null,
+  idn: "000000-0000000",
+  surveyData: {
+    meal: [[0, 0, 0], [0, 0, 0], [0, 0, 0]],
+    transfer: {
+      transfer: "",
+      "own-car": "",
+      bus: [0, 0],
+    },
+  },
+  attended: false,
+  feePaid: false,
+  createdAt: null,
+  updatedAt: null,
+  userId: null,
+  retreatId: null,
 };
 
 export const DefaultIsLoading = <IsLoading>{

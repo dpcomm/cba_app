@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { EColor } from "@styles/color";
-import { Title3, body6, body4 } from "@styles/font";
+import { Title3, body4, Title6 } from "@styles/font";
 
 export const Container = styled.div`
 	display: flex;
@@ -23,8 +23,8 @@ export const LogoView = styled.div`
 `;
 
 export const LogoLight = styled.div`
-	${body6};
-	font-size: 42px;
+	${Title6};
+	font-size: 38px;
 	color: ${EColor.COLOR_PRIMARY_SUB2};
 	letter-spacing: 2px;
 	user-select: none;

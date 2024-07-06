@@ -71,7 +71,6 @@ const App = () => {
   return (
     <BrowserRouter>
 			{isLoading[0].isLoading && <Spinner />}
-			{/* <Spinner /> */}
       <Navbar />
       <Routes>
         <Route path="/" element={<Login />} />

@@ -50,8 +50,7 @@ export const TextContainer = styled.div`
 	flex-direction: column;
 	width: 100%;
 	align-items: center;
-	padding-right: 32px;
-	padding-left: 32px;
+	gap: 12px;
 `;
 
 export const TextTitle = styled.div`
@@ -66,4 +65,15 @@ export const TextBody = styled.div`
 	font-size: 12px;
 	color: ${EColor.TEXT_800};
 	letter-spacing: 2px;
+`;
+
+export const RetreatGuideBookTitle = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 106px;
+	height: 28px;
+	background-color: #87D5F2;
+	color: ${EColor.TEXT_200};
+	border-radius: 8px;
 `;

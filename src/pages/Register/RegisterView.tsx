@@ -10,7 +10,6 @@ import { IconButton } from '@components/IconButton';
 import useConfirm from '@hooks/useConfirm';
 import { requestRegister } from '@apis/index';
 import usePageControll from '@hooks/usePageControll';
-import parseDateString from '@utils/ParseDateString';
 import { useSetRecoilState } from 'recoil';
 import { isLoadingState } from '@modules/atoms';
 
@@ -42,7 +41,15 @@ const RegisterView = () => {
       setIsLoading({ isLoading: false });
       return alert("회원 정보를 모두 입력해주세요.");
     }
-    await requestRegister(
+    if (id.length >= 6) {
+      setIsLoading({ isLoading: false });
+      return alert("아이디를 6자 이상 입력해주세요.");
+    }
+    if (/^[가-힣]{2,}$/.test(name)) {
+      setIsLoading({ isLoading: false });
+      return alert("이름은 2자 이상 실명으로 입력해주세요.");
+    }
+    requestRegister(
       id,
       password,
       name,
