@@ -18,12 +18,10 @@ const ProfileView = () => {
   const setIsLoading = useSetRecoilState(isLoadingState);
   const [user, set_user] = useRecoilState(userState);
 
-  console.log(user);
-
   const [name, set_name] = useState(user.name);
   // const [password, set_password] = useState("");
   // const [password2, set_password2] = useState("");
-  const [gender, set_gender] = useState(0);
+  const [gender, set_gender] = useState(user.gender === "male" ? 0 : 1);
   const [phone, set_phone] = useState(user.phone);
   const [group, set_group] = useState(user.group);
   const [birth, set_birth] = useState(user.birth);
@@ -107,7 +105,7 @@ const ProfileView = () => {
               { text: '남자', value: 0 },
               { text: '여자', value: 1 },
             ]}
-            initialValue={0}
+            initialValue={gender}
             onChange={set_gender}
           />
         </InputBox>
