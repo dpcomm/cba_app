@@ -4,20 +4,26 @@ import { IconButton } from '@components/IconButton';
 import { EColor } from '@styles/color';
 import SvgIcon from '@components/SvgIcon';
 import { requestApplicationByUser } from '@apis/index';
-import { useRecoilState } from 'recoil';
-import { userState } from '@modules/atoms';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { isLoadingState, userState } from '@modules/atoms';
 
 const RetreatPaymentView = () => {
+  const setIsLoading = useSetRecoilState(isLoadingState);
+
   const [feePaid, set_feePaid] = useState("미신청");
   const user = useRecoilState(userState);
   useEffect(() => {
+    setIsLoading({ isLoading: true });
     requestApplicationByUser(user[0].userId).then((res) => {
       if (res.data.application.feePaid) {
+        setIsLoading({ isLoading: false });
         return set_feePaid("납부완료");
       }
+      setIsLoading({ isLoading: false });
       return set_feePaid("납부전");
     }).catch((err) => {
       if (err.response.data.message === "Application not exist") set_feePaid("미신청");
+      setIsLoading({ isLoading: false });
     });
   }, []);
 

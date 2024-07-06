@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GroupInputView,Container, InputView, LogoBold, LogoLight, LogoView, SvgBox,TextSub } from './ProfileView.styled';
+import { GroupInputView,Container, InputView, LogoBold, LogoLight, LogoView, SvgBox, TextSub, InputBox } from './ProfileView.styled';
 import TextInputB from '@components/TextInputB';
 import PhoneInput from '@components/PhoneInput';
 import SvgIcon from '@components/SvgIcon';
