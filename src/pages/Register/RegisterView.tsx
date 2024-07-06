@@ -24,7 +24,7 @@ const RegisterView = () => {
   const [gender, set_gender] = useState(0);
   const [phone, set_phone] = useState("");
   const [group, set_group] = useState("");
-  const [birth, set_birth] = useState();
+  const [birth, set_birth] = useState("2024-01-01");
   const [etcGroup, set_etcGroup] = useState("");
 
   const ok = () => handleRegister();
@@ -41,7 +41,7 @@ const RegisterView = () => {
       setIsLoading({ isLoading: false });
       return alert("회원 정보를 모두 입력해주세요.");
     }
-    if (id.length >= 6) {
+    if (id.length < 6) {
       setIsLoading({ isLoading: false });
       return alert("아이디를 6자 이상 입력해주세요.");
     }
