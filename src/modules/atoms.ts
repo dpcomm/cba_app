@@ -1,6 +1,6 @@
-import { DefaultIsLoading, DefaultNavInfo, DefaultSurvey, DefaultUser } from './defaults';
+import { DefaultApplication, DefaultIsLoading, DefaultNavInfo, DefaultUser } from './defaults';
 import { NavInfo } from '@type/index';
-import { IsLoading, User, surveyForm } from '@type/states';
+import { Application, IsLoading, User } from '@type/states';
 import { atom } from 'recoil';
 import { recoilPersist } from 'recoil-persist';
 
@@ -18,9 +18,9 @@ export const userState = atom<User>({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const surveyState = atom<surveyForm>({
-  key: 'surveyState',
-  default: DefaultSurvey,
+export const applicationState = atom<Application>({
+  key: 'applicationState',
+  default: DefaultApplication,
   effects_UNSTABLE: [persistAtom],
 });
 

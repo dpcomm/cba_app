@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { EColor } from "@styles/color";
-import { Title3, body1, body3, body6 } from "@styles/font";
+import { Title3, Title6, body1, body3, body6 } from "@styles/font";
 
 export const Container = styled.div`
 	display: flex;
@@ -22,8 +22,8 @@ export const LogoView = styled.div`
 `;
 
 export const LogoLight = styled.div`
-	${body6};
-	font-size: 42px;
+	${Title6};
+	font-size: 38px;
 	color: ${EColor.COLOR_PRIMARY_SUB2};
 	letter-spacing: 2px;
 	user-select: none;
@@ -122,6 +122,17 @@ export const Line = styled.div`
 `;
 
 export const ButtonView = styled.div`
+	display: flex;
 	width: 100%;
 	margin-top: 6%;
+	justify-content: center;
+`;
+
+export const TextLight = styled.div`
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	${body6};
+	color: ${EColor.TEXT_500};
+	margin-top: 4px;
 `;

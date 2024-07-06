@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { EColor } from "@styles/color";
-import { Title3, body6, body4 } from "@styles/font";
+import { Title3, body4, Title6 } from "@styles/font";
 
 export const Container = styled.div`
 	display: flex;
@@ -8,10 +8,7 @@ export const Container = styled.div`
 	width: 100%;
 	justify-content: center;
 	align-items: center;
-	padding-top: 64px;
-	padding-bottom: 64px;
-	padding-right: 48px;
-	padding-left: 48px;
+	padding: 52px 48px 52px 48px;
 	overflow-y: scroll;
 `;
 
@@ -23,8 +20,8 @@ export const LogoView = styled.div`
 `;
 
 export const LogoLight = styled.div`
-	${body6};
-	font-size: 42px;
+	${Title6};
+	font-size: 38px;
 	color: ${EColor.COLOR_PRIMARY_SUB2};
 	letter-spacing: 2px;
 	user-select: none;

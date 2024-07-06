@@ -7,7 +7,7 @@ interface DropdownProps {
   options: string[];
   initialValue?: string;
   placeholder?: string;
-  onChange?: () => void;
+  onChange?: (data: any) => void;
 }
 
 const Dropdown = ({ options, initialValue, placeholder, onChange }: DropdownProps) => {

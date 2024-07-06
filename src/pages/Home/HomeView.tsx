@@ -1,14 +1,14 @@
 import React from 'react';
-import { ButtonView, Container, DDayTest, DDayView, ItemText, ItemView, Line, LogoBold, LogoLight, LogoView, MenuView, NameText } from './HomeView.styled';
+import { ButtonView, Container, DDayTest, DDayView, ItemText, ItemView, Line, LogoBold, LogoLight, LogoView, MenuView, NameText, TextLight } from './HomeView.styled';
 import { EColor } from '@styles/color';
 import SvgIcon from '@components/SvgIcon';
 import { IconButton } from '@components/IconButton';
 import usePageControll from '@hooks/usePageControll';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
-import { isLoadingState, surveyState, userState } from '@modules/atoms';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { isLoadingState, userState } from '@modules/atoms';
 import { useState,useEffect } from 'react';
 import useConfirm from '@hooks/useConfirm';
-import { getExistSurvey, requestLogout } from '@apis/index';
+import { requestLogout } from '@apis/index';
 
 const HomeView = () => {
   const { handlePage } = usePageControll();
@@ -16,23 +16,6 @@ const HomeView = () => {
 
   const user = useRecoilValue(userState);
   const [dDay, setDDay] = useState(null);
-  const [surveyData,setSurveyData] = useRecoilState(surveyState);
-
-  const getSurvey = async () => {
-    if (!user.userId) return;
-    try {
-      const res = await getExistSurvey(user.userId);
-      setSurveyData({
-        meal: res.data.data.surveyData.meal,
-        transfer: res.data.data.surveyData.transfer.transfer,
-        bus: res.data.data.surveyData.transfer.bus,
-        carId: res.data.data.surveyData.transfer['own-car'],
-        idn: res.data.data.idn
-      });
-    } catch (err) {
-      setSurveyData(surveyData);
-      }
-    };
 
   const calculateDDay = (targetDate) => {
     const today = new Date();
@@ -42,7 +25,6 @@ const HomeView = () => {
   };
 
   useEffect(() => {
-    getSurvey();
     const targetDate = '2024-08-23'; // Set your target date here
     setDDay(calculateDDay(targetDate));
   }, [user.userId]);
@@ -79,9 +61,9 @@ const HomeView = () => {
           <ItemText>수련회 안내</ItemText>
         </ItemView>
         <Line />
-        <ItemView onClick={() => handlePage(surveyData ? 'retreat-appinfo' : 'retreat-application')}>
-          <SvgIcon name={'write'} width={36} height={36} fill={"none"} stroke={EColor.TEXT_800} />
-          <ItemText>{surveyData ? '설문지 조회' : '설문지 등록'}</ItemText>
+        <ItemView onClick={() => alert("서비스 준비중입니다.")}>
+          <SvgIcon name={'youtube'} width={36} height={36} fill={EColor.TEXT_800} stroke={"none"} />
+          <ItemText>유튜브 실황</ItemText>
         </ItemView>
         <Line />
         <ItemView onClick={() => handlePage('retreat-payment')}>
@@ -100,21 +82,21 @@ const HomeView = () => {
           <ItemText>수련회 위치</ItemText>
         </ItemView>
         <Line />
-        <ItemView onClick={() => handlePage('edit-profile')}>
+        <ItemView onClick={() => handlePage('my-page')}>
           <SvgIcon name={'user'} width={40} height={40} fill={"none"} stroke={EColor.TEXT_800} />
-          <ItemText>계정 정보</ItemText>
+          <ItemText>마이 페이지</ItemText>
         </ItemView>
       </MenuView>
+      <TextLight>[수련회 신청] - 수련회 안내 페이지를 확인해주세요.</TextLight>
       <ButtonView>
         <IconButton
-          // svg={<SvgIcon name={'login'} width={24} height={24} fill={EColor.COLOR_PRIMARY} stroke={EColor.COLOR_PRIMARY} />}
           label={'로그아웃'}
-          width={"100%"}
-          height={"52px"}
-          borderRadius='48px'
-          backgroundColor={EColor.TEXT_300}
+          width={"108px"}
+          height={"34px"}
+          borderRadius='12px'
+          backgroundColor={EColor.TEXT_500}
           tintColor='white'
-          color='black'
+          color='white'
           onClick={handleLogout}
         />
       </ButtonView>

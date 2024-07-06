@@ -1,11 +1,33 @@
 import { EColor } from "@styles/color";
-import { Title1, Title4_2, body4 } from "@styles/font";
+import { Title1, Title4_2, body2, body4 } from "@styles/font";
 import styled from "styled-components";
 
 export const Container = styled.div`
 	width: 100%;
 	height: 100dvh;
 	text-align: center;
+`;
+
+export const MealButton = styled.button`
+  width: 68px;
+  padding: 5px;
+  margin-bottom: 5px;
+  ${body2};
+  color: ${EColor.TEXT_200};
+  background-color: ${EColor.COLOR_PRIMARY};
+  border: none;
+  border-radius: 8px;
+`;
+
+export const MealButtonFalse = styled.button`
+  width: 68px;
+  padding: 5px;
+  margin-bottom: 5px;
+  ${body2};
+  color: ${EColor.TEXT_200};
+  background-color: ${EColor.COLOR_PRIMARY_SUB2};
+  border: none;
+  border-radius: 8px;
 `;
 
 export const LogoImage = styled.img`
@@ -17,10 +39,8 @@ export const FormContainer = styled.div`
 	flex-direction: column;
 	width: 100%;
 	align-items: center;
-	padding-right: 32px;
-	padding-left: 32px;
+	padding: 32px 32px 32px 32px;
 	gap: 28px;
-	padding-bottom: 56px;
 `;
 
 export const TextTitle  = styled.div`
@@ -43,11 +63,13 @@ export const InputBox = styled.div`
 export const TextForm = styled.div`
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
 	width: 118px;
 	margin-right: 12px;
 	${Title4_2}
 	letter-spacing: 2px;
 	user-select: none;
+	gap: 8px;
 `;
 
 export const TextFormLight = styled.div`

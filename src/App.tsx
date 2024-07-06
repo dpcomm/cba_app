@@ -21,6 +21,7 @@ import NotLogin from '@pages/NotLogin';
 import Spinner from '@components/Spinner';
 import RetreatAppInfo from '@pages/RetreatAppInfo';
 import AuthUser from '@pages/AuthUser';
+import MyPage from '@pages/MyPage';
 
 const App = () => {
   const setUser = useSetRecoilState(userState);
@@ -70,7 +71,6 @@ const App = () => {
   return (
     <BrowserRouter>
 			{isLoading[0].isLoading && <Spinner />}
-			{/* <Spinner /> */}
       <Navbar />
       <Routes>
         <Route path="/" element={<Login />} />
@@ -87,6 +87,7 @@ const App = () => {
           <Route path={`/${Page.editProfile}`} element={<Profile />} />
           <Route path={`/${Page.retreatAppInfo}`} element={<RetreatAppInfo />} />
           <Route path={`/${Page.AuthUser}`} element={<AuthUser />} />
+					<Route path={`/${Page.myPage}`} element={<MyPage />} />
         </Route>
         <Route path="*" element={<Error404 />} />
       </Routes>

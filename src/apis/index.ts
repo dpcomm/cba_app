@@ -1,4 +1,3 @@
-import { UpdateForm } from '@type/states';
 import request from './request';
 
 export const requestLogin = (userId: string, password: string, autoLogin: boolean) => {
@@ -38,6 +37,28 @@ export const requestRegister =
   });
 };
 
+
+export const updateUserInfo = (
+  userId: string,
+  name: string,
+  // password: string,
+  gender: string,
+  phone: string,
+  group: string,
+  birth: string
+) => {
+  return request.post('/api/user/update', {
+    userId,
+    name,
+    // password,
+    gender,
+    phone,
+    group,
+    birth,
+  });
+};
+
+
 export const requestRefresh = (accessToken: string | null, refreshToken: string | null) => {
   return request.post('/api/user/refresh', {
     accessToken,
@@ -52,55 +73,22 @@ export const requestAuthCheck = (accessToken: string | null, refreshToken: strin
   });
 };
 
-export const requestSurvey =
-(
-  userId: string,
-  transfer: string,
-  idn: string,
+export const requestApplicationByUser = (userId: string | null) => {
+  return request.get(`/api/application/${userId}`);
+};
+
+export const requestApplication = (
+  userId: string | null,
   meal: number[][],
-  bus?: number,
+  transfer: string,
+  bus?: number[],
   carId?: string
 ) => {
-  return request.post('/api/user/survey', {
+  return request.post('/api/application', {
     userId,
+    meal,
     transfer,
     bus,
-    carId,
-    idn,
-    meal
-  });
-};
-
-export const getExistSurvey =
-(
-  userId: string
-) => {
-  return request.post('/api/user/getExistSurvey', {userId});
-};
-
-
-export const requestGetUserInfo = (
-  userId: string,
-  password: string
-) => {
-  const token = localStorage.getItem('access_token');
-  if (!token) {
-    // 토큰이 없을 경우의 처리 로직 추가
-    console.log("No token found. Redirecting to login.");
-    return Promise.reject("Authentication required.");
-  }
-  return request.post('/api/user/checkuser',{userId,password});
-};
-
-export const updateUserInfo =
-(
-  userData: UpdateForm
-) => {
-  return request.post('/api/user/updateUser', userData);
-};
-
-export const requestApplicationByUser = (userId: string) => {
-  return request.post('/api/user/application', {
-    userId
+    carId
   });
 };
