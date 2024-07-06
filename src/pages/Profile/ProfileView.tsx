@@ -45,7 +45,8 @@ const ProfileView = () => {
       setIsLoading({ isLoading: false });
       return alert("회원 정보를 모두 입력해주세요.");
     }
-    if (/^[가-힣]{2,}$/.test(name)) {
+    const reg_name = /^[가-힣]{2,4}$/;
+    if (!reg_name.test(name)) {
       setIsLoading({ isLoading: false });
       return alert("이름은 2자 이상 실명으로 입력해주세요.");
     }
@@ -56,14 +57,14 @@ const ProfileView = () => {
         // password,
         gender ? "female" : "male",
         phone,
-        group,
+        group === "기타" ? etcGroup : group,
         birth
       );
       setIsLoading({ isLoading: false });
       set_user({
         ...user,
 				name: name,
-				group: group,
+				group: group === "기타" ? etcGroup : group,
 				phone: phone,
 				birth: birth,
 				gender: gender ? "female" : "male",

@@ -22,10 +22,10 @@ const RegisterView = () => {
   const [password2, set_password2] = useState("");
   const [name, set_name] = useState("");
   const [gender, set_gender] = useState(0);
-  const [phone, set_phone] = useState();
-  const [group, set_group] = useState();
+  const [phone, set_phone] = useState("");
+  const [group, set_group] = useState("");
   const [birth, set_birth] = useState();
-  const [etcGroup, set_etcGroup] = useState();
+  const [etcGroup, set_etcGroup] = useState("");
 
   const ok = () => handleRegister();
   const cancle = () => console.log("Cancled..");
@@ -45,7 +45,8 @@ const RegisterView = () => {
       setIsLoading({ isLoading: false });
       return alert("아이디를 6자 이상 입력해주세요.");
     }
-    if (/^[가-힣]{2,}$/.test(name)) {
+    const reg_name = /^[가-힣]{2,4}$/;
+    if (!reg_name.test(name)) {
       setIsLoading({ isLoading: false });
       return alert("이름은 2자 이상 실명으로 입력해주세요.");
     }
@@ -53,7 +54,7 @@ const RegisterView = () => {
       id,
       password,
       name,
-      group,
+      group === "기타" ? etcGroup : group,
       phone,
       birth,
       gender ? "female" : "male",
