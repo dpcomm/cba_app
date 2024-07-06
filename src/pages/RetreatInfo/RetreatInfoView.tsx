@@ -1,18 +1,18 @@
 import React from 'react';
 import logo from '@assets/images/retreat_grace_logo.png';
 import guidebook from '@assets/images/retreat_grace_poster.png';
-import { Container, LogoImage, LogoText, TextBody, TextContainer, TextTitle } from './RetreatInfo.styled';
-import StickyNavigation from '@components/StickyTabBar';
+import { Container, Left, LogoImage, LogoText, TextBody, TextContainer, TextTitle } from './RetreatInfo.styled';
+import SvgIcon from '@components/SvgIcon';
 
 const RetreatInfoView = () => {
   return (
 		<>
 			<Container>
 				<LogoImage src={logo} />
-				{/* <Left>
-					<SvgIcon name={'next'} width={24} height={24} fill={EColor.COLOR_PRIMARY} />
+				<Left>
+					<SvgIcon name={'next'} width={24} height={24} fill="#1F9EDD" />
 					수련회 등록하기
-				</Left> */}
+				</Left>
 				<TextContainer>
 					<TextTitle>2024 대학청년부 여름 수련회</TextTitle>
 					<TextTitle>복음에서 오는 은혜</TextTitle>

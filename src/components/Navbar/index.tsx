@@ -18,6 +18,7 @@ const pageLabel = {
   [Page.retreatApplication]: '수련회 신청',
   [Page.retreatAppInfo]: "수련회 신청서 조회",
   [Page.editProfile]: "회원 정보 수정",
+  [Page.myPage]: "마이페이지",
 };
 
 const Navbar = () => {

@@ -24,6 +24,7 @@ export enum Page {
   retreatAppInfo = "retreat-appinfo",
   notLogin = "not-login",
   AuthUser = "AuthUser",
+  myPage = "my-page",
 }
 
 export type RadioItem = {

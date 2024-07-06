@@ -122,6 +122,17 @@ export const Line = styled.div`
 `;
 
 export const ButtonView = styled.div`
+	display: flex;
 	width: 100%;
 	margin-top: 6%;
+	justify-content: center;
+`;
+
+export const TextLight = styled.div`
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	${body6};
+	color: ${EColor.TEXT_500};
+	margin-top: 4px;
 `;

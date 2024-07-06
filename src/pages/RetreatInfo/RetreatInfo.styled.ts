@@ -1,5 +1,5 @@
 import { EColor } from "@styles/color";
-import { Title4_2, Title6, body1, body5, } from "@styles/font";
+import { Title6, body1, body2, body5, } from "@styles/font";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -11,7 +11,6 @@ export const Container = styled.div`
 
 export const LogoImage = styled.img`
 	width: 100%;
-	margin-bottom: 34px;
 `;
 
 export const LogoText = styled.div`
@@ -32,12 +31,18 @@ export const Left = styled.div`
 	flex-direction: row-reverse;
 	align-items: center;
 	width: 100%;
-	${Title4_2}
-	letter-spacing: 4px;
-	color: ${EColor.COLOR_PRIMARY_SUB1};
+	${body2}
+	letter-spacing: 2px;
+	color: #1F9EDD;
 	margin-bottom: 60px;
 	padding: 4px;
 	gap: 4px;
+	user-select: none;
+	&:active {
+    background-color: ${EColor.TEXT_400};
+    color: ${EColor.TEXT_600};
+    border-radius: 12px;
+  }
 `;
 
 export const TextContainer = styled.div`
