@@ -44,9 +44,9 @@ module.exports = {
       'process.env': JSON.stringify(process.env),
     }),
     new WebpackPwaManifest({
-      name: 'RE:CBA',
-      short_name: 'RE:CBA',
-      description: 'CBA 대학청년부를 위한 웹앱입니다.',
+      name: 'CBA Connect',
+      short_name: 'CBA Connect',
+      description: 'CBA Connect',
       background_color: '#ffffff',
       crossOrigin: 'use-credentials',
       theme_color: '#F16622',
