@@ -1,4 +1,4 @@
-FROM node:18.16.0 AS react-builder
+FROM node:v20.12.2 AS react-builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
