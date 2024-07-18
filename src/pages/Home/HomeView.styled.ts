@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { EColor } from "@styles/color";
-import { Title3, Title6, body1, body3, body6 } from "@styles/font";
+import { Title2, Title3, Title6, body1, body3, body5 } from "@styles/font";
 
 export const Container = styled.div`
 	display: flex;
@@ -60,9 +60,9 @@ export const TextButton = styled.div`
 
 export const NameText = styled.div`
 	${body1};
-	font-size: 24px;
-	color: ${EColor.TEXT_900};
-	letter-spacing: 2px;
+	font-size: 20px;
+	color: ${EColor.TEXT_800};
+	letter-spacing: 1px;
 	padding-top: 6%;
 	padding-bottom: 6%;
 `;
@@ -76,10 +76,9 @@ export const DDayView = styled.div`
 `;
 
 export const DDayTest = styled.div`
-	${body1};
-	font-size: 32px;
-	letter-spacing: 2px;
-	color: ${EColor.TEXT_900};
+	${Title2};
+	letter-spacing: 1px;
+	color: ${EColor.TEXT_800};
 	user-select: none;
 `;
 
@@ -107,7 +106,7 @@ export const ItemText = styled.div`
 	width: 40px;
 	${body3};
 	word-break: break-all;
-	color: ${EColor.TEXT_500};
+	color: ${EColor.TEXT_600};
 	margin-top: 10px;
 	text-align: center;
 	user-select: none;
@@ -132,7 +131,7 @@ export const TextLight = styled.div`
 	display: flex;
 	justify-content: center;
 	width: 100%;
-	${body6};
-	color: ${EColor.TEXT_500};
+	${body5};
+	color: ${EColor.TEXT_600};
 	margin-top: 4px;
 `;

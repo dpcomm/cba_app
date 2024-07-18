@@ -4,17 +4,13 @@ import { IconButton } from "@components/IconButton";
 import usePageControll from "@hooks/usePageControll";
 import { EColor } from "@styles/color";
 
-const MaintenanceView = () => {
+const NotLoginView = () => {
   const { handlePage } = usePageControll();
   return (
     <Container>
       <SvgIcon name={"cba_logo"} width={188} height={188} fill={""} />
-      <TitleText>
-        RE:CBA
-      </TitleText>
-      <TitleSubText>
-        수련회 등록관리 서비스
-      </TitleSubText>
+      <TitleText>CBA Connect</TitleText>
+      <TitleSubText>수련회 등록관리 서비스</TitleSubText>
       <Body>
         Unauthorized user
         <br />
@@ -36,4 +32,4 @@ const MaintenanceView = () => {
   );
 };
 
-export default MaintenanceView;
+export default NotLoginView;

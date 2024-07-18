@@ -3,8 +3,10 @@ import { Title6, body1, body2, body5, } from "@styles/font";
 import styled from "styled-components";
 
 export const Container = styled.div`
-	width: 100%;
-	/* height: 100dvh; */
+	display: flex;
+	flex-direction: column;
+	max-width: 460px;
+	height: 100dvh;
 	text-align: center;
 	margin-bottom: 84px;
 `;
@@ -51,6 +53,7 @@ export const TextContainer = styled.div`
 	width: 100%;
 	align-items: center;
 	gap: 12px;
+	user-select: none;
 `;
 
 export const TextTitle = styled.div`

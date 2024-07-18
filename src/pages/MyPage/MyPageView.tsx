@@ -1,10 +1,11 @@
 import React from 'react';
-import { Container, ListItemButton } from './styles';
+import { Container, ListItemButton, Name, Version, VersionView } from './styles';
 import usePageControll from '@hooks/usePageControll';
 import { requestApplicationByUser } from '@apis/index';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { applicationState, isLoadingState, userState } from '@modules/atoms';
 import useConfirm from '@hooks/useConfirm';
+import packageJson from '../../../package.json';
 
 const MyPageView = () => {
   const { handlePage } = usePageControll();
@@ -39,6 +40,10 @@ const MyPageView = () => {
       <ListItemButton onClick={() => handleApplicationPage()}>
         수련회 신청서 조회 & 수정
       </ListItemButton>
+      <VersionView>
+        <Name>{packageJson.name}</Name>
+        <Version>{packageJson.version}</Version>
+      </VersionView>
     </Container>
   );
 };

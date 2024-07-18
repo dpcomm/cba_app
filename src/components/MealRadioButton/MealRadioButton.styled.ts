@@ -19,6 +19,7 @@ export const MealColumn = styled.div`
 export const DateLabel = styled.div`
   ${body2}
   margin-bottom: 8px;
+  user-select: none;
 `;
 
 export const MealButton = styled.button<{ $active: boolean, $disabled: boolean }>`

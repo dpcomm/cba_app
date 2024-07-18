@@ -5,12 +5,8 @@ const MaintenanceView = () => {
   return (
     <Container>
       <SvgIcon name={"cba_logo"} width={188} height={188} fill={""} />
-      <TitleText>
-        RE:CBA
-      </TitleText>
-      <TitleSubText>
-        수련회 등록관리 서비스
-      </TitleSubText>
+      <TitleText>CBA Connect</TitleText>
+      <TitleSubText>수련회 등록관리 서비스</TitleSubText>
       <Body>
         시스템 점검으로 인하여 일시적으로
         <br />
