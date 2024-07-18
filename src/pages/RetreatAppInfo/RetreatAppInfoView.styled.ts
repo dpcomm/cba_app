@@ -3,7 +3,9 @@ import { Title1, Title4_2, body2, body4 } from "@styles/font";
 import styled from "styled-components";
 
 export const Container = styled.div`
-	width: 100%;
+	display: flex;
+	flex-direction: column;
+	max-width: 460px;
 	height: 100dvh;
 	text-align: center;
 `;

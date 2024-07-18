@@ -94,7 +94,7 @@ const HomeView = () => {
           width={"108px"}
           height={"34px"}
           borderRadius='12px'
-          backgroundColor={EColor.TEXT_500}
+          backgroundColor={EColor.TEXT_600}
           tintColor='white'
           color='white'
           onClick={handleLogout}

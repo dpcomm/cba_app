@@ -14,6 +14,7 @@ export const Container = styled.div`
   background-color: ${EColor.TEXT_200};
   z-index: 10;
   /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2); */
+  user-select: none;
 `;
 
 export const Right = styled.div`

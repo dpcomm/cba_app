@@ -18,6 +18,7 @@ export const PaymentView = styled.div`
   flex-direction: column;
   padding-top: 52px;
   padding-bottom: 52px;
+  user-select: none;
 `;
 
 export const TextPayment = styled.div`
@@ -41,6 +42,7 @@ export const TextBody = styled.div`
   display: flex;
   font-size: 22px;
   letter-spacing: 2px;
+  user-select: none;
 `;
 
 export const TextBodyUnderLine = styled.div`
