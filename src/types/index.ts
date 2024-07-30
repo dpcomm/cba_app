@@ -25,6 +25,8 @@ export enum Page {
   notLogin = "not-login",
   AuthUser = "AuthUser",
   myPage = "my-page",
+  youtube = "youtube",
+  youtubeOld = "youtube-old",
 }
 
 export type RadioItem = {

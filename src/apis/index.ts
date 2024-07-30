@@ -92,3 +92,7 @@ export const requestApplication = (
     carId
   });
 };
+
+export const requestYoutube = () => {
+  return request.get('/api/youtube');
+};
