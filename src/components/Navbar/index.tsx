@@ -19,6 +19,8 @@ const pageLabel = {
   [Page.retreatAppInfo]: "수련회 신청서 조회 & 수정",
   [Page.editProfile]: "내 정보 관리",
   [Page.myPage]: "마이페이지",
+  [Page.youtube]: "유튜브 라이브",
+  [Page.youtubeOld]: "이전 라이브"
 };
 
 const Navbar = () => {

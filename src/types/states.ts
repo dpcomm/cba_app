@@ -29,6 +29,14 @@ export interface Application {
   retreatId: number | null;
 }
 
+export interface Youtube {
+  id: number;
+  retreatId: number;
+  title: string;
+  link: string;
+  createdAt: string;
+}
+
 export interface IsLoading {
   isLoading: boolean
 }

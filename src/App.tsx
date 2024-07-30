@@ -22,6 +22,8 @@ import Spinner from '@components/Spinner';
 import RetreatAppInfo from '@pages/RetreatAppInfo';
 import AuthUser from '@pages/AuthUser';
 import MyPage from '@pages/MyPage';
+import Youtube from '@pages/Youtube';
+import YoutubeOld from '@pages/YoutubeOld';
 
 const App = () => {
   const setUser = useSetRecoilState(userState);
@@ -88,6 +90,8 @@ const App = () => {
           <Route path={`/${Page.retreatAppInfo}`} element={<RetreatAppInfo />} />
           <Route path={`/${Page.AuthUser}`} element={<AuthUser />} />
 					<Route path={`/${Page.myPage}`} element={<MyPage />} />
+					<Route path={`/${Page.youtube}`} element={<Youtube />} />
+					<Route path={`/${Page.youtubeOld}`} element={<YoutubeOld />} />
         </Route>
         <Route path="*" element={<Error404 />} />
       </Routes>

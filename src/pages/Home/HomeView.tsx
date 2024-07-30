@@ -61,9 +61,9 @@ const HomeView = () => {
           <ItemText>수련회 안내</ItemText>
         </ItemView>
         <Line />
-        <ItemView onClick={() => alert("서비스 준비중입니다.")}>
+        <ItemView onClick={() => handlePage('youtube')}>
           <SvgIcon name={'youtube'} width={36} height={36} fill={EColor.TEXT_800} stroke={"none"} />
-          <ItemText>유튜브 실황</ItemText>
+          <ItemText>유튜브 라이브</ItemText>
         </ItemView>
         <Line />
         <ItemView onClick={() => handlePage('retreat-payment')}>
