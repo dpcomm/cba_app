@@ -72,7 +72,7 @@ const HomeView = () => {
         </ItemView>
       </MenuView>
       <MenuView>
-        <ItemView onClick={() => alert("서비스 준비중입니다.")}>
+        <ItemView onClick={() => handlePage('time-table')}>
           <SvgIcon name={'clock'} width={36} height={36} fill={EColor.TEXT_800} stroke={'none'} />
           <ItemText>수련회 일정표</ItemText>
         </ItemView>

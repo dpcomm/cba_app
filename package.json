@@ -1,7 +1,7 @@
 {
   "name": "CBA Connect",
-  "version": "1.0.2_release",
-  "description": "1.0.2_release",
+  "version": "1.0.21_release",
+  "description": "1.0.21_release",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --config config/webpack.dev.js",

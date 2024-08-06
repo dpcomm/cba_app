@@ -20,7 +20,8 @@ const pageLabel = {
   [Page.editProfile]: "내 정보 관리",
   [Page.myPage]: "마이페이지",
   [Page.youtube]: "유튜브 라이브",
-  [Page.youtubeOld]: "이전 라이브"
+  [Page.youtubeOld]: "이전 라이브",
+  [Page.timeTable]: "수련회 일정표",
 };
 
 const Navbar = () => {
