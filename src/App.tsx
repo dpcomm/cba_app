@@ -24,6 +24,7 @@ import AuthUser from '@pages/AuthUser';
 import MyPage from '@pages/MyPage';
 import Youtube from '@pages/Youtube';
 import YoutubeOld from '@pages/YoutubeOld';
+import TimeTable from '@pages/TimeTable';
 
 const App = () => {
   const setUser = useSetRecoilState(userState);
@@ -92,6 +93,7 @@ const App = () => {
 					<Route path={`/${Page.myPage}`} element={<MyPage />} />
 					<Route path={`/${Page.youtube}`} element={<Youtube />} />
 					<Route path={`/${Page.youtubeOld}`} element={<YoutubeOld />} />
+					<Route path={`/${Page.timeTable}`} element={<TimeTable />} />
         </Route>
         <Route path="*" element={<Error404 />} />
       </Routes>
