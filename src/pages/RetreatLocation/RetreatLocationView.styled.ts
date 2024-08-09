@@ -37,6 +37,7 @@ export const ImageLocation = styled.img`
 	width: 100%;
 	padding-top: 24px;
 	padding-bottom: 24px;
+	user-select: none;
 `;
 
 export const ButtonView = styled.div`
