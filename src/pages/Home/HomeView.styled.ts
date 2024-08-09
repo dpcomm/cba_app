@@ -131,7 +131,7 @@ export const Left = styled.div`
 	align-items: center;
 	${body2}
 	color: ${EColor.TEXT_700};
-	margin-bottom: 52px;
+	margin-bottom: 48px;
 	padding: 4px;
 	user-select: none;
 	margin-left: auto;
@@ -183,7 +183,7 @@ export const Line = styled.div`
 export const ButtonView = styled.div`
 	display: flex;
 	width: 100%;
-	margin-top: auto;
+	margin-top: 24px;
 `;
 
 export const TextLight = styled.div`
