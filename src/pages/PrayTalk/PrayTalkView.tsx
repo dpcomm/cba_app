@@ -138,7 +138,7 @@ const PrayTalkView = () => {
           backgroundColor={EColor.COLOR_PRIMARY_SUB1}
           borderWidth='0'
           borderRadius='8px'
-          width='70px'
+          width='86px'
         />
       </InputContainer>
     </Container>
