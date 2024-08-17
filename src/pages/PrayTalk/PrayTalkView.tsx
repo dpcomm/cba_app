@@ -130,6 +130,7 @@ const PrayTalkView = () => {
           value={input}
           onChange={(e) => set_input(e.target.value)}
           placeholder="기도 제목을 입력하세요..."
+          maxLength={156}
         />
         <IconButton
           label={'전송'}
