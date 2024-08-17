@@ -25,6 +25,7 @@ import MyPage from '@pages/MyPage';
 import Youtube from '@pages/Youtube';
 import YoutubeOld from '@pages/YoutubeOld';
 import TimeTable from '@pages/TimeTable';
+import PrayTalk from '@pages/PrayTalk';
 
 const App = () => {
   const setUser = useSetRecoilState(userState);
@@ -94,6 +95,7 @@ const App = () => {
 					<Route path={`/${Page.youtube}`} element={<Youtube />} />
 					<Route path={`/${Page.youtubeOld}`} element={<YoutubeOld />} />
 					<Route path={`/${Page.timeTable}`} element={<TimeTable />} />
+					<Route path={`/${Page.prayTalk}`} element={<PrayTalk />} />
         </Route>
         <Route path="*" element={<Error404 />} />
       </Routes>

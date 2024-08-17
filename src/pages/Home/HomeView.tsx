@@ -87,7 +87,7 @@ const HomeView = () => {
           <ItemText>수련회 일정표</ItemText>
         </ItemView>
         <Line />
-        <ItemView onClick={() => alert("서비스 준비중입니다.")}>
+        <ItemView onClick={() => handlePage('pray-talk')}>
           <SvgIcon name={'message'} width={36} height={36} fill={"none"} stroke={EColor.TEXT_800} />
           <ItemText>기도 <br></br>TALK</ItemText>
         </ItemView>

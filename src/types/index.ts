@@ -28,6 +28,7 @@ export enum Page {
   youtube = "youtube",
   youtubeOld = "youtube-old",
   timeTable = "time-table",
+  prayTalk = "pray-talk",
 }
 
 export type RadioItem = {

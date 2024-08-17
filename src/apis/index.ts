@@ -96,3 +96,18 @@ export const requestApplication = (
 export const requestYoutube = () => {
   return request.get('/api/youtube');
 };
+
+export const requestPray = () => {
+  return request.get('/api/pray');
+};
+
+export const requestCreatePray = (userId: number | null, content: string) => {
+  return request.post('/api/pray', {
+    userId: userId,
+    content: content
+  });
+};
+
+export const requestDeletePray = (id: number) => {
+  return request.delete(`/api/pray/${id}`);
+};

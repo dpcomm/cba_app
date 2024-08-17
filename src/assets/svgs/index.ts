@@ -49,3 +49,4 @@ export { ReactComponent as bill } from './Bill.svg';
 export { ReactComponent as check_lined } from './Check-lined.svg';
 export { ReactComponent as spinner } from './Spinner.svg';
 export { ReactComponent as message } from './Message.svg';
+export { ReactComponent as trash } from './Trash.svg';
