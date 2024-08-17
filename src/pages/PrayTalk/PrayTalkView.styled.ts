@@ -99,7 +99,8 @@ export const InputContainer = styled.div`
 `;
 
 export const Input = styled.input`
-  flex-grow: 1;
+  display: flex;
+  width: 100%;
   padding: 12px;
   border: none;
   border-radius: 8px;
