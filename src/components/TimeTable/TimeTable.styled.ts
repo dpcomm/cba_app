@@ -16,6 +16,7 @@ export const DayTitle = styled.h2`
   padding: 8px 0;
   color: #333;
   border-bottom: 2px solid ${EColor.TEXT_400};
+  user-select: none;
 `;
 
 export const EventList = styled.ul`

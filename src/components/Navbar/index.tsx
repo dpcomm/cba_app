@@ -22,6 +22,7 @@ const pageLabel = {
   [Page.youtube]: "유튜브 라이브",
   [Page.youtubeOld]: "이전 라이브",
   [Page.timeTable]: "수련회 일정표",
+  [Page.prayTalk]: "기도 TALK",
 };
 
 const Navbar = () => {

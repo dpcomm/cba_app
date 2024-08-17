@@ -27,7 +27,7 @@ export const ListItemButton = styled.div`
     color: ${EColor.TEXT_600};
     border-radius: 12px;
   }
-  gap: 8px
+  gap: 8px;
 `;
 
 export const VersionView = styled.div`
@@ -41,10 +41,10 @@ export const VersionView = styled.div`
 
 export const Name = styled.div`
   color: ${EColor.COLOR_PRIMARY_SUB2};
-  ${Title5}
+  ${Title5};
 `;
 
 export const Version = styled.div`
   color: ${EColor.TEXT_600};
-  ${body3}
+  ${body3};
 `;
