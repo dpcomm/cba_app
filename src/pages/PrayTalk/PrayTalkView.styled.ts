@@ -8,7 +8,7 @@ export const Container = styled.div`
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   background-color: ${EColor.COLOR_PRIMARY_SUB2};
 `;
 
