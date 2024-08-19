@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { EColor } from "@styles/color";
-import { Title5, body1, body2, body3, body4, body5 } from "@styles/font";
+import { Title5, Title6, body1, body2, body3, body4, body5 } from "@styles/font";
 
 export const Container = styled.div`
 	display: flex;
@@ -52,32 +52,6 @@ export const HeaderNameText = styled.div`
 	color: ${EColor.TEXT_200};
 `;
 
-
-// export const LogoView = styled.div`
-// 	display: flex;
-// 	flex-direction: column;
-// 	width: 100%;
-// 	align-items: center;
-// 	user-select: none;
-// `;
-
-// export const LogoLight = styled.div`
-// 	${Title6};
-// 	font-size: 38px;
-// 	color: ${EColor.COLOR_PRIMARY_SUB2};
-// 	letter-spacing: 2px;
-// 	user-select: none;
-// `;
-
-// export const LogoBold = styled.div`
-// 	${Title3}
-// 	font-size: 64px;
-// 	color: ${EColor.COLOR_PRIMARY};
-// 	letter-spacing: 7px;
-// 	margin-top: -16px;
-// 	user-select: none;
-// `;
-
 export const LoginInputView = styled.div`
 	width: 100%;
 	margin-top: 24px;
@@ -112,17 +86,73 @@ export const DDayView = styled.div`
 	width: 100%;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 	padding: 16px 24px;
 	background-color: ${EColor.TEXT_300};
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
-export const DDayTest = styled.div`
+export const DDayText = styled.div`
 	${body4};
 	font-size: 22px;
 	letter-spacing: 1px;
 	color: ${EColor.COLOR_PRIMARY_SUB1};
 	user-select: none;
+`;
+
+export const BarTextView = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	margin-bottom: 12px;
+`;
+
+export const BarTextMain = styled.div`
+	${Title5};
+	color: ${EColor.COLOR_PRIMARY_SUB1};
+	width: 96px;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+`;
+
+export const BarTextSubRight = styled.div`
+	${Title6};
+	color: ${EColor.COLOR_PRIMARY_SUB2};
+	width: 96px;
+	text-align: right;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+`;
+
+export const BarTextSubLeft = styled.div`
+	${Title6};
+	color: ${EColor.COLOR_PRIMARY_SUB2};
+	width: 96px;
+	text-align: left;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+`;
+
+export const Bar = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 3px;
+	background-image: linear-gradient(to right, ${EColor.COLOR_PRIMARY_SUB1} 50%, ${EColor.TEXT_500} 50%);
+`;
+
+export const Dot = styled.div<{ color: string }>`
+	display: flex;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background-color: ${(props) => props.color};
 `;
 
 export const Left = styled.div`

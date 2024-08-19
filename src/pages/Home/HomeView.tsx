@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonView, Container, DDayTest, DDayView, HeaderCenter, HeaderGroupText, HeaderNameText, HeaderRight, HeaderView, ItemText, ItemView, Left, Line, LogoBold, LogoLight, LogoView, MenuView, NameText, TextLight } from './HomeView.styled';
+import { Bar, BarTextMain, BarTextView, ButtonView, Container, DDayView, Dot, HeaderCenter, HeaderGroupText, HeaderNameText, HeaderRight, HeaderView, ItemText, ItemView, Left, Line, MenuView, TextLight, DDayText, BarTextSubLeft, BarTextSubRight} from './HomeView.styled';
 import { EColor } from '@styles/color';
 import SvgIcon from '@components/SvgIcon';
 import { IconButton } from '@components/IconButton';
@@ -9,14 +9,18 @@ import { applicationState, isLoadingState, userState } from '@modules/atoms';
 import { useState,useEffect } from 'react';
 import useConfirm from '@hooks/useConfirm';
 import { requestApplicationByUser, requestLogout } from '@apis/index';
+import { schedule } from '@pages/TimeTable/dummy';
 
 const HomeView = () => {
   const { handlePage } = usePageControll();
   const setIsLoading = useSetRecoilState(isLoadingState);
   const set_application = useSetRecoilState(applicationState);
-
   const user = useRecoilValue(userState);
+
   const [dDay, setDDay] = useState(null);
+  const [prevTime, set_prevTime] = useState("");
+  const [currentTime, set_currentTime] = useState("");
+  const [nextTime, set_nextTime] = useState("");
 
   const calculateDDay = (targetDate) => {
     const today = new Date();
@@ -25,9 +29,32 @@ const HomeView = () => {
     return difference;
   };
 
+  const getCurrentTimeTable = () => {
+    const now = new Date().getTime();
+    let prev = null, current = null, next = null;
+    const allActivities = schedule.day1.concat(schedule.day2, schedule.day3);
+
+    for (let i = 0; i < allActivities.length; i++) {
+      const activity = allActivities[i];
+      if (now < activity.startTime) {
+        next = activity.activity;
+        break;
+      }
+      if (now >= activity.startTime && now < activity.endTime) {
+        current = activity.activity;
+      }
+      if (now >= activity.endTime) {
+        prev = activity.activity;
+      }
+    }
+    set_prevTime(prev);
+    set_currentTime(current);
+    set_nextTime(next);
+  };
+
   useEffect(() => {
-    const targetDate = '2024-08-23'; // Set your target date here
-    setDDay(calculateDDay(targetDate));
+    getCurrentTimeTable();
+    setDDay(calculateDDay(schedule.day1[0].startTime));
   }, [user.userId]);
 
   const confirmRegister = useConfirm(
@@ -78,7 +105,23 @@ const HomeView = () => {
         </HeaderRight>
       </HeaderView>
       <DDayView>
-        <DDayTest>수련회까지 {dDay}일 남았어요.</DDayTest>
+        {
+          currentTime ?
+            <>
+              <BarTextView>
+                <BarTextSubLeft>{prevTime}</BarTextSubLeft>
+                <BarTextMain>{currentTime}</BarTextMain>
+                <BarTextSubRight>{nextTime}</BarTextSubRight>
+              </BarTextView>
+              <Bar>
+                <Dot color={EColor.COLOR_PRIMARY}/>
+                <Dot color={EColor.COLOR_PRIMARY}/>
+                <Dot color={EColor.TEXT_500} />
+              </Bar>
+            </>
+          :
+            <DDayText>수련회까지 {dDay}일 남았어요.</DDayText>
+        }
       </DDayView>
       <Left onClick={() => handlePage('youtube')}>수련회 라이브 바로가기 ▶</Left>
       <MenuView>
