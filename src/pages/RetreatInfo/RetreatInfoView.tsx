@@ -1,6 +1,13 @@
 import React from 'react';
 import logo from '@assets/images/retreat_grace_logo.png';
-import guidebook from '@assets/images/retreat_grace_timetable.png';
+import guidebook_1 from '@assets/images/retreat_grace_guidebook_1.png';
+import guidebook_2 from '@assets/images/retreat_grace_guidebook_2.png';
+import guidebook_3 from '@assets/images/retreat_grace_guidebook_3.png';
+import guidebook_4 from '@assets/images/retreat_grace_guidebook_4.png';
+import guidebook_5 from '@assets/images/retreat_grace_guidebook_5.png';
+import guidebook_6 from '@assets/images/retreat_grace_guidebook_6.png';
+import guidebook_7 from '@assets/images/retreat_grace_guidebook_7.png';
+import guidebook_8 from '@assets/images/retreat_grace_guidebook_8.png';
 import { Container, Left, LogoImage, RetreatGuideBookTitle, TextContainer } from './RetreatInfo.styled';
 import SvgIcon from '@components/SvgIcon';
 import usePageControll from '@hooks/usePageControll';
@@ -44,7 +51,14 @@ const RetreatInfoView = () => {
 			</Left>
 			<TextContainer>
 				<RetreatGuideBookTitle>GUIDE BOOK</RetreatGuideBookTitle>
-				<LogoImage src={guidebook} />
+				<LogoImage src={guidebook_1} />
+				<LogoImage src={guidebook_2} />
+				<LogoImage src={guidebook_3} />
+				<LogoImage src={guidebook_4} />
+				<LogoImage src={guidebook_5} />
+				<LogoImage src={guidebook_6} />
+				<LogoImage src={guidebook_7} />
+				<LogoImage src={guidebook_8} />
 			</TextContainer>
 		</Container>
   );
