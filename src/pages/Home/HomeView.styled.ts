@@ -45,11 +45,14 @@ export const HeaderGroupText = styled.div`
 	${body3};
 	font-size: 14px;
 	color: ${EColor.TEXT_200};
+	user-select: none;
 `;
+
 export const HeaderNameText = styled.div`
 	${Title5}
 	font-size: 20px;
 	color: ${EColor.TEXT_200};
+	user-select: none;
 `;
 
 export const LoginInputView = styled.div`

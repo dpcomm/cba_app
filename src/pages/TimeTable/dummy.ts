@@ -1,5 +1,6 @@
 export const schedule = {
   day1: [
+    { startTime: new Date('2024-08-23T00:00:00').getTime(), endTime: new Date('2024-08-23T13:00:00').getTime(), activity: '수련회 출발!' },
     { startTime: new Date('2024-08-23T13:00:00').getTime(), endTime: new Date('2024-08-23T14:00:00').getTime(), activity: '수련회 등록' },
     { startTime: new Date('2024-08-23T14:00:00').getTime(), endTime: new Date('2024-08-23T15:00:00').getTime(), activity: '개회예배' },
     { startTime: new Date('2024-08-23T15:00:00').getTime(), endTime: new Date('2024-08-23T16:00:00').getTime(), activity: 'OT' },
