@@ -26,60 +26,63 @@ import Youtube from '@pages/Youtube';
 import YoutubeOld from '@pages/YoutubeOld';
 import TimeTable from '@pages/TimeTable';
 import PrayTalk from '@pages/PrayTalk';
+import HolidayPass from '@pages/HolidayPass';
 
 const App = () => {
   const setUser = useSetRecoilState(userState);
-	const isLoading = useRecoilState(isLoadingState);
+  const isLoading = useRecoilState(isLoadingState);
 
   useEffect(() => {
-		handleAuthCheck();
-	}, []);
+    handleAuthCheck();
+  }, []);
 
-	const handleAuthCheck = async () => {
-		const accessToken = await localStorage.getItem('access_token');
-		const refreshToken = await localStorage.getItem('refresh_token');
+  const handleAuthCheck = async () => {
+    const accessToken = await localStorage.getItem('access_token');
+    const refreshToken = await localStorage.getItem('refresh_token');
 
-		requestAuthCheck(accessToken, refreshToken)
-		.then((res) => {
-			if (!res.data.user) return;
-			setUser({
-				id: res.data.user.id,
-				userId: res.data.user.userId,
-				rank: res.data.user.rank,
-				password: res.data.user.password,
-				name: res.data.user.name,
-				group: res.data.user.group,
-				phone: res.data.user.phone,
-				birth: res.data.user.birth,
-				gender: res.data.user.gender,
-			});
-			if (window.location.pathname == '/') window.location.href = '/home';
-		}).catch(async (err) => {
-			setUser({
-				id: null,
-				userId: "",
-				rank: "M",
-				password: "",
-				name: "",
-				group: "",
-				phone: "",
-				birth: "",
-				gender: "",
-			});
-			if (!err.response || !err.response.data) return console.log("An unexpected error occurred:", err);
-			if (err.response.data.message === "Token not exist") return;
-			if (err.response.data.message === "Unauthorized user") return alert("로그인이 필요합니다.");
-		});
-	};
+    requestAuthCheck(accessToken, refreshToken)
+      .then((res) => {
+        if (!res?.data?.user) return;
+        setUser({
+          id: res.data.user.id,
+          userId: res.data.user.userId,
+          rank: res.data.user.rank,
+          password: res.data.user.password,
+          name: res.data.user.name,
+          group: res.data.user.group,
+          phone: res.data.user.phone,
+          birth: res.data.user.birth,
+          gender: res.data.user.gender,
+        });
+        if (window.location.pathname == '/') window.location.href = '/home';
+      })
+      .catch(async (err) => {
+        setUser({
+          id: null,
+          userId: '',
+          rank: 'M',
+          password: '',
+          name: '',
+          group: '',
+          phone: '',
+          birth: '',
+          gender: '',
+        });
+        if (!err.response || !err.response.data) return console.log('An unexpected error occurred:', err);
+        if (err.response.data.message === 'Token not exist') return;
+        if (err.response.data.message === 'Unauthorized user') return alert('로그인이 필요합니다.');
+      });
+  };
 
   return (
     <BrowserRouter>
-			{isLoading[0].isLoading && <Spinner />}
+      {isLoading[0].isLoading && <Spinner />}
       <Navbar />
       <Routes>
         <Route path="/" element={<Login />} />
+        {/* <Route path="/" element={<HolidayPass />} /> */}
         <Route path={`/${Page.register}`} element={<Register />} />
-				<Route path={`/${Page.notLogin}`} element={<NotLogin />} />
+        <Route path={`/${Page.notLogin}`} element={<NotLogin />} />
         <Route path="/maintenance" element={<Maintenance />} />
         <Route element={<PrivateRoute />}>
           <Route path={`/${Page.home}`} element={<Home />} />
@@ -91,11 +94,12 @@ const App = () => {
           <Route path={`/${Page.editProfile}`} element={<Profile />} />
           <Route path={`/${Page.retreatAppInfo}`} element={<RetreatAppInfo />} />
           <Route path={`/${Page.AuthUser}`} element={<AuthUser />} />
-					<Route path={`/${Page.myPage}`} element={<MyPage />} />
-					<Route path={`/${Page.youtube}`} element={<Youtube />} />
-					<Route path={`/${Page.youtubeOld}`} element={<YoutubeOld />} />
-					<Route path={`/${Page.timeTable}`} element={<TimeTable />} />
-					<Route path={`/${Page.prayTalk}`} element={<PrayTalk />} />
+          <Route path={`/${Page.myPage}`} element={<MyPage />} />
+          <Route path={`/${Page.youtube}`} element={<Youtube />} />
+          <Route path={`/${Page.youtubeOld}`} element={<YoutubeOld />} />
+          <Route path={`/${Page.timeTable}`} element={<TimeTable />} />
+          <Route path={`/${Page.prayTalk}`} element={<PrayTalk />} />
+          <Route path={`/${Page.holidayPass}`} element={<HolidayPass />} />
         </Route>
         <Route path="*" element={<Error404 />} />
       </Routes>
