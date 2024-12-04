@@ -13,25 +13,26 @@ export type NavInfo = {
 };
 
 export enum Page {
-  home = "home",
-  register = "register",
-  retreatInfo = "retreat-info",
-  retreatLocation = "retreat-location",
-  retreatPayment = "retreat-payment",
-  retreatApplication = "retreat-application",
-  backoffice = "backoffice",
-  editProfile = "edit-profile",
-  retreatAppInfo = "retreat-application-info",
-  notLogin = "not-login",
-  AuthUser = "AuthUser",
-  myPage = "my-page",
-  youtube = "youtube",
-  youtubeOld = "youtube-old",
-  timeTable = "time-table",
-  prayTalk = "pray-talk",
+  home = 'home',
+  register = 'register',
+  retreatInfo = 'retreat-info',
+  retreatLocation = 'retreat-location',
+  retreatPayment = 'retreat-payment',
+  retreatApplication = 'retreat-application',
+  backoffice = 'backoffice',
+  editProfile = 'edit-profile',
+  retreatAppInfo = 'retreat-application-info',
+  notLogin = 'not-login',
+  AuthUser = 'AuthUser',
+  myPage = 'my-page',
+  youtube = 'youtube',
+  youtubeOld = 'youtube-old',
+  timeTable = 'time-table',
+  prayTalk = 'pray-talk',
+  holidayPass = 'holiday-pass',
 }
 
 export type RadioItem = {
   value: number;
   text: string;
-}
+};
