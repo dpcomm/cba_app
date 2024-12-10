@@ -10,6 +10,8 @@ import {
   Input,
   AnswerBox,
   Bible,
+  Ticket,
+  TicketIssued,
 } from './HolidayPass.styled';
 import { ProgressBar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,7 +20,6 @@ import usePageControll from '@hooks/usePageControll';
 
 const HolidayPassView = () => {
   const { handlePage } = usePageControll();
-
   const [questionNum, setQuestionNum] = useState(0);
   const [answers, setAnswers] = useState<{ [key: number]: string }>({});
   const [inputValue, setInputValue] = useState('');
@@ -38,25 +39,37 @@ const HolidayPassView = () => {
       handlePage('home');
       return;
     }
+
     setAnswers((prev) => ({
       ...prev,
       [questionId]: answer,
     }));
 
-    if (questionId === 5 && answer !== '조원') {
-      setQuestionNum(6);
-    } else {
-      if (questionId < HolidayPassQuestion.length - 1) {
-        setQuestionNum(questionNum + 1);
-      }
+    // if (questionId === 2 && answer === currentQuestion.answera) {
+    //   setQuestionNum(6);
+    // } else if (questionId === 2 && answer === currentQuestion.answerb) {
+    //   setQuestionNum(5);
+    // }
+
+    if (questionId < HolidayPassQuestion.length - 1) {
+      setQuestionNum(questionNum + 1);
     }
     setInputValue('');
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (currentQuestion?.id) {
+    if (currentQuestion?.id && inputValue.trim() !== '') {
       handleAnswerChange(currentQuestion.id, inputValue);
+      if (questionNum < HolidayPassQuestion.length - 1) {
+        setQuestionNum(questionNum + 1);
+      }
+      setInputValue('');
+    } else if (currentQuestion.type !== 'done') {
+      alert('내용을 입력해주세요~~');
+    } else {
+      alert('2025 홀리데이 때 만나요~');
+      handlePage('home');
     }
   };
 
@@ -76,16 +89,16 @@ const HolidayPassView = () => {
             now={(questionNum / (HolidayPassQuestion.length - 1)) * 100}
             style={{
               height: '100%',
-              background: 'linear-gradient(to right, #ff7e5f, #feb47b)', // 그라데이션 색상 (진행 상태 색)
+              background: 'linear-gradient(to right, #ff7e5f, #feb47b)',
             }}
           />
         </ProgressBar>
         <div className="progressNum">
-          {currentQuestion.id}/ {HolidayPassQuestion.length}
+          {currentQuestion.type !== 'done' ? `${currentQuestion.id} / ${HolidayPassQuestion.length}` : '완료!'}
         </div>
       </ProgressBarBox>
       <QuestioBox>
-        <Title>{currentQuestion.title} </Title>
+        <Title isDone={currentQuestion.type === 'done'}>{currentQuestion.title} </Title>
         {currentQuestion.type === 'choice' && (
           <ButtonGroup>
             <Button onClick={() => handleAnswerChange(currentQuestion.id, currentQuestion.answera || '')}>
@@ -111,6 +124,16 @@ const HolidayPassView = () => {
               </Button>
             </AnswerBox>
           </form>
+        )}
+        {currentQuestion.type === 'done' && (
+          <TicketIssued>
+            <div className="polaroid">
+              <Ticket src="/holydaypass.png" alt="holydaypass" />
+            </div>
+            <Button onClick={handleSubmit} type="submit">
+              {currentQuestion.nextBtn}
+            </Button>
+          </TicketIssued>
         )}
       </QuestioBox>
     </Container>
