@@ -21,8 +21,9 @@ import usePageControll from '@hooks/usePageControll';
 const HolidayPassView = () => {
   const { handlePage } = usePageControll();
   const [questionNum, setQuestionNum] = useState(0);
-  const [answers, setAnswers] = useState<{ [key: number]: string }>({});
   const [inputValue, setInputValue] = useState('');
+  const [answers, setAnswers] = useState<{ [key: number]: string }>({});
+  const answerArr = Object.values(answers);
 
   if (!HolidayPassQuestion || !Array.isArray(HolidayPassQuestion) || HolidayPassQuestion.length === 0) {
     return <div>Loading...</div>;
@@ -45,11 +46,12 @@ const HolidayPassView = () => {
       [questionId]: answer,
     }));
 
-    // if (questionId === 2 && answer === currentQuestion.answera) {
-    //   setQuestionNum(6);
-    // } else if (questionId === 2 && answer === currentQuestion.answerb) {
-    //   setQuestionNum(5);
-    // }
+    if (answerArr[1] === '리딩자') {
+      setQuestionNum(5);
+      return;
+    } else if (answerArr[1] === '멤버') {
+      setQuestionNum(4);
+    }
 
     if (questionId < HolidayPassQuestion.length - 1) {
       setQuestionNum(questionNum + 1);
