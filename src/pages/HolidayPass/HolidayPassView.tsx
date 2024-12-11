@@ -7,7 +7,7 @@ import {
   Title,
   ButtonGroup,
   Button,
-  Input,
+  Textarea,
   AnswerBox,
   Bible,
   Ticket,
@@ -102,21 +102,22 @@ const HolidayPassView = () => {
       <QuestioBox>
         <Title isDone={currentQuestion.type === 'done'}>{currentQuestion.title} </Title>
         {currentQuestion.type === 'choice' && (
-          <ButtonGroup>
-            <Button onClick={() => handleAnswerChange(currentQuestion.id, currentQuestion.answera || '')}>
-              {currentQuestion.answera}
-            </Button>
-            <Button onClick={() => handleAnswerChange(currentQuestion.id, currentQuestion.answerb || '')}>
-              {currentQuestion.answerb}
-            </Button>
-          </ButtonGroup>
+          <>
+            <Bible>{currentQuestion.bible}</Bible>
+            <ButtonGroup>
+              <Button onClick={() => handleAnswerChange(currentQuestion.id, currentQuestion.answera || '')}>
+                {currentQuestion.answera}
+              </Button>
+              <Button onClick={() => handleAnswerChange(currentQuestion.id, currentQuestion.answerb || '')}>
+                {currentQuestion.answerb}
+              </Button>
+            </ButtonGroup>
+          </>
         )}
         {currentQuestion.type === 'answer' && (
           <form onSubmit={handleSubmit}>
-            <Bible>{currentQuestion.bible}</Bible>
             <AnswerBox>
-              <Input
-                type="text"
+              <Textarea
                 placeholder={currentQuestion.desc}
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}

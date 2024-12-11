@@ -79,7 +79,8 @@ const App = () => {
       {isLoading[0].isLoading && <Spinner />}
       <Navbar />
       <Routes>
-        <Route path="/" element={<Login />} />
+        {/* <Route path="/" element={<Login />} /> */}
+        <Route path="/" element={<Home />} />
         {/* <Route path="/" element={<HolidayPass />} /> */}
         <Route path={`/${Page.register}`} element={<Register />} />
         <Route path={`/${Page.notLogin}`} element={<NotLogin />} />

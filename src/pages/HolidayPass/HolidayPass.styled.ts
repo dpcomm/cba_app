@@ -61,14 +61,18 @@ export const AnswerBox = styled.article`
   display: flex;
   flex-direction: column;
 `;
-export const Input = styled.input`
+export const Textarea = styled.textarea`
   ${body2}
-  width: 280px;
-  height: 50px;
+  width: 100%;
+  height: 150px;
   margin: 20px auto;
-  padding: 0 14px;
+  padding: 14px;
   border-radius: 8px;
   border: 1px solid ${EColor.COLOR_PRIMARY_SUB2};
+  text-align: left;
+  resize: none;
+  overflow-wrap: break-word;
+  word-break: break-word;
   &::placeholder {
     opacity: 1;
     color: ${EColor.TEXT_600};

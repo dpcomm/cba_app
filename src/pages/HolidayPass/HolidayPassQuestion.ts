@@ -44,8 +44,9 @@ export const HolidayPassQuestion: Question[] = [
     desc: '있다면 살포시 알려주세요.',
     bible:
       '그러므로 너희는 가서 모든 족속으로 제자를 삼아 \n 아버지와 아들과 성령의 이름으로 세례를 주고 내가 너희에게 분부한 모든 것을 가르쳐 지키게 하라 \n (마태복음 28:19-20)',
-    nextBtn: '다음',
-    type: 'answer',
+    answera: '리딩자 도전!',
+    answerb: '멤버 할게요!',
+    type: 'choice',
   },
   {
     id: 6,
