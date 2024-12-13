@@ -59,7 +59,7 @@ export const HolidayPassQuestion: Question[] = [
     id: 7,
     title: '2025 홀리데이 패스권이 발급되었습니다!',
     desc: '함께 기대하며, 기도해요!',
-    nextBtn: '완료',
+    nextBtn: '패스 등록하기',
     type: 'done',
   },
 ];

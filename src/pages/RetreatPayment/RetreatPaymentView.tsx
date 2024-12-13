@@ -3,7 +3,7 @@ import { ButtonView, Container, PaymentView, TextBody, TextBodyUnderLine, TextPa
 import { IconButton } from '@components/IconButton';
 import { EColor } from '@styles/color';
 import SvgIcon from '@components/SvgIcon';
-import { requestApplicationByUser } from '@apis/index';
+import { requestApplicationByUserAndRetreatId } from '@apis/index';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { isLoadingState, userState } from '@modules/atoms';
 
@@ -14,7 +14,7 @@ const RetreatPaymentView = () => {
   const user = useRecoilState(userState);
   useEffect(() => {
     setIsLoading({ isLoading: true });
-    requestApplicationByUser(user[0].userId).then((res) => {
+    requestApplicationByUserAndRetreatId(user[0].userId, 1).then((res) => {
       if (res.data.application.feePaid) {
         setIsLoading({ isLoading: false });
         return set_feePaid("납부완료");

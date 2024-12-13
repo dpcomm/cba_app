@@ -14,7 +14,7 @@ import usePageControll from '@hooks/usePageControll';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { applicationState, isLoadingState, userState } from '@modules/atoms';
 import useConfirm from '@hooks/useConfirm';
-import { requestApplicationByUser } from '@apis/index';
+import { requestApplicationByUserAndRetreatId } from '@apis/index';
 
 const RetreatInfoView = () => {
 	const { handlePage } = usePageControll();
@@ -30,7 +30,7 @@ const RetreatInfoView = () => {
 
   const handleApplicationPage = () => {
     setIsLoading({ isLoading: true });
-    requestApplicationByUser(user.userId).then((res) => {
+    requestApplicationByUserAndRetreatId(user.userId, 1).then((res) => {
 			set_application({
         ...res.data.application
       });

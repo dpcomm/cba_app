@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Container,
   ProgressBarBox,
@@ -17,13 +17,27 @@ import { ProgressBar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { HolidayPassQuestion } from './HolidayPassQuestion';
 import usePageControll from '@hooks/usePageControll';
+import { requestApplication, requestApplicationByUserAndRetreatId, requestCreatePray } from '@apis/index';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { isLoadingState, userState } from '@modules/atoms';
 
 const HolidayPassView = () => {
   const { handlePage } = usePageControll();
   const [questionNum, setQuestionNum] = useState(0);
   const [inputValue, setInputValue] = useState('');
   const [answers, setAnswers] = useState<{ [key: number]: string }>({});
+
+  const setIsLoading = useSetRecoilState(isLoadingState);
+  const user = useRecoilValue(userState);
+
   const answerArr = Object.values(answers);
+
+  useEffect(() => {
+    requestApplicationByUserAndRetreatId(user.userId, 2).then(() => {
+      alert("작성된 수련회 신청서가 있습니다. 홈 화면으로 이동합니다.");
+      handlePage("home");
+    });
+  }, []);
 
   if (!HolidayPassQuestion || !Array.isArray(HolidayPassQuestion) || HolidayPassQuestion.length === 0) {
     return <div>Loading...</div>;
@@ -59,7 +73,7 @@ const HolidayPassView = () => {
     setInputValue('');
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (currentQuestion?.id && inputValue.trim() !== '') {
       handleAnswerChange(currentQuestion.id, inputValue);
@@ -70,8 +84,26 @@ const HolidayPassView = () => {
     } else if (currentQuestion.type !== 'done') {
       alert('내용을 입력해주세요~~');
     } else {
-      alert('2025 홀리데이 때 만나요~');
-      handlePage('home');
+      try {
+        setIsLoading({ isLoading: true });
+        await requestCreatePray(user.id, answerArr[5]); // 해당 부분 수정 필요 -> 리딩자 멤버 선택에 따라 질문이 건너뛰어짐
+        await requestApplication(
+          user.userId,
+          2,
+          [],
+          "",
+          [],
+          "",
+          answerArr[1] === '리딩자'
+        );
+        setIsLoading({ isLoading: false });
+        alert("Pass 등록이 완료되었습니다. 2025 홀리데이 때 만나요~");
+        handlePage('home');
+      } catch (err) {
+        setIsLoading({ isLoading: false });
+        console.log(err.response?.data?.message || "Unexpected error");
+        alert("Pass 등록 중 오류가 발생했습니다.");
+      }
     }
   };
 

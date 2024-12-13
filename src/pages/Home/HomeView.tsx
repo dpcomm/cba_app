@@ -33,7 +33,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { applicationState, isLoadingState, userState } from '@modules/atoms';
 import { useState, useEffect } from 'react';
 import useConfirm from '@hooks/useConfirm';
-import { requestApplicationByUser, requestLogout } from '@apis/index';
+import { requestApplicationByUserAndRetreatId, requestLogout } from '@apis/index';
 import { schedule } from '@pages/TimeTable/dummy';
 
 const HomeView = () => {
@@ -92,7 +92,7 @@ const HomeView = () => {
 
   const handleApplicationPage = () => {
     setIsLoading({ isLoading: true });
-    requestApplicationByUser(user.userId)
+    requestApplicationByUserAndRetreatId(user.userId, 1)
       .then((res) => {
         set_application({
           ...res.data.application,
@@ -163,7 +163,7 @@ const HomeView = () => {
         <NoticeBottom></NoticeBottom>
       </NoticeView>
       <MenuView>
-        <ItemView onClick={() => handlePage('time-table')}>
+        <ItemView onClick={() => handlePage('holiday-pass')}>
           <SvgIcon name={'home_holyday'} width={'none'} height={'none'} fill={'none'} stroke={'none'} />
         </ItemView>
         <ItemView onClick={() => handlePage('pray-talk')}>

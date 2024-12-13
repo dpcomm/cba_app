@@ -73,23 +73,27 @@ export const requestAuthCheck = (accessToken: string | null, refreshToken: strin
   });
 };
 
-export const requestApplicationByUser = (userId: string | null) => {
-  return request.get(`/api/application/${userId}`);
+export const requestApplicationByUserAndRetreatId = (userId: string | null, retreatId: number) => {
+  return request.get(`/api/application/${userId}/${retreatId}`);
 };
 
 export const requestApplication = (
   userId: string | null,
-  meal: number[][],
-  transfer: string,
+  retreatId: number,
+  meal?: number[][],
+  transfer?: string,
   bus?: number[],
-  carId?: string
+  carId?: string,
+  isLeader: boolean = false,
 ) => {
   return request.post('/api/application', {
     userId,
+    retreatId,
     meal,
     transfer,
     bus,
-    carId
+    carId,
+    isLeader
   });
 };
 

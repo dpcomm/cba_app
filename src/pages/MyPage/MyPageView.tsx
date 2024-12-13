@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, ListItemButton, Name, Version, VersionView } from './styles';
 import usePageControll from '@hooks/usePageControll';
-import { requestApplicationByUser } from '@apis/index';
+import { requestApplicationByUserAndRetreatId } from '@apis/index';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { applicationState, isLoadingState, userState } from '@modules/atoms';
 import useConfirm from '@hooks/useConfirm';
@@ -17,7 +17,7 @@ const MyPageView = () => {
 
   const handleApplicationPage = () => {
     setIsLoading({ isLoading: true });
-    requestApplicationByUser(user.userId).then((res) => {
+    requestApplicationByUserAndRetreatId(user.userId, 1).then((res) => {
       set_application({
         ...res.data.application
       });

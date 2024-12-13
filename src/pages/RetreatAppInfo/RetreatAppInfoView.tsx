@@ -22,7 +22,7 @@ import usePageControll from '@hooks/usePageControll';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { applicationState, isLoadingState } from '@modules/atoms';
 import useConfirm from '@hooks/useConfirm';
-import { requestApplication, requestApplicationByUser } from '@apis/index';
+import { requestApplication, requestApplicationByUserAndRetreatId } from '@apis/index';
 
 const RetreatAppInfoView = () => {
   const { handlePage } = usePageControll();
@@ -30,7 +30,7 @@ const RetreatAppInfoView = () => {
   const application = useRecoilState(applicationState);
 
   useEffect(() => {
-    requestApplicationByUser(application[0].userId).then(() => {
+    requestApplicationByUserAndRetreatId(application[0].userId, 1).then(() => {
     }).catch((err) => {
       if (err.response.data.message === "Application not exist") {
         alert("등록된 수련회 신청서가 없습니다. 수련회 신청 페이지로 이동합니다.");
