@@ -20,7 +20,7 @@ export const HeaderView = styled.div`
   border-radius: 16px;
   padding: 16px 12px;
   gap: 6px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   margin-bottom: 12px;
 `;
 
@@ -93,7 +93,7 @@ export const DDayView = styled.div`
   margin-bottom: 12px;
   padding: 16px 24px;
   background-color: ${EColor.COLOR_PRIMARY_SUB2};
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   border-radius: 8px;
 `;
 
@@ -180,10 +180,10 @@ export const Left = styled.div`
 export const NoticeView = styled.div`
   display: flex;
   width: 100%;
-  height: 250px;
+  height: 110px;
   padding: 16px 24px;
   background-color: ${EColor.TEXT_200};
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   border-radius: 8px;
 `;
 export const NoticeTop = styled.h1`
@@ -194,20 +194,19 @@ export const NoticeTop = styled.h1`
 export const NoticeBottom = styled.div``;
 
 export const MenuView = styled.div`
+  width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  margin: 12px;
+  margin-top: 12px;
+  gap: 10px;
 `;
 
 export const ItemView = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-left: 36px;
-  padding-right: 36px;
+  object-fit: cover;
 `;
 
 export const ItemText = styled.div`

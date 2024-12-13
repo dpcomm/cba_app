@@ -6,10 +6,11 @@ export type SvgIconProps = {
   height: string | number | undefined;
   fill: string;
   stroke?: string;
+  style?: React.CSSProperties;
 };
-function SvgIcon({ name, width, height, fill, stroke }: SvgIconProps) {
+function SvgIcon({ name, width, height, fill, stroke, style }: SvgIconProps) {
   const Svg = Icons[name];
-  return <Svg width={width} height={height} fill={fill} stroke={stroke ?? undefined} />;
+  return <Svg width={width} height={height} fill={fill} stroke={stroke ?? undefined} style={style || undefined} />;
 }
 
 export default SvgIcon;

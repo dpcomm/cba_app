@@ -164,46 +164,23 @@ const HomeView = () => {
       </NoticeView>
       <MenuView>
         <ItemView onClick={() => handlePage('time-table')}>
-          <SvgIcon name={'clock'} width={36} height={36} fill={EColor.TEXT_800} stroke={'none'} />
-          <ItemText>수련회 일정표</ItemText>
+          <SvgIcon name={'home_holyday'} width={'none'} height={'none'} fill={'none'} stroke={'none'} />
         </ItemView>
-        <Line />
         <ItemView onClick={() => handlePage('pray-talk')}>
-          <SvgIcon name={'message'} width={36} height={36} fill={'none'} stroke={EColor.TEXT_800} />
-          <ItemText>
-            기도 <br></br>TALK
-          </ItemText>
+          <SvgIcon name={'home_prayer'} width={'none'} height={'none'} fill={'none'} stroke={'none'} />
         </ItemView>
       </MenuView>
       <MenuView>
         <ItemView onClick={() => handlePage('retreat-info')}>
-          <SvgIcon name={'info'} width={36} height={36} fill={'none'} stroke={EColor.TEXT_800} />
-          <ItemText>수련회 안내</ItemText>
+          <SvgIcon name={'home_guide'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
-        <Line />
         <ItemView onClick={() => handlePage('retreat-location')}>
-          <SvgIcon name={'location'} width={36} height={36} fill={'none'} stroke={EColor.TEXT_800} />
-          <ItemText>수련회 위치</ItemText>
+          <SvgIcon name={'home_live'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
-        <Line />
         <ItemView onClick={() => handlePage('retreat-payment')}>
-          <SvgIcon name={'bill'} width={36} height={36} fill={EColor.TEXT_800} stroke={EColor.TEXT_800} />
-          <ItemText>납부 확인</ItemText>
+          <SvgIcon name={'home_payment'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
       </MenuView>
-      <ButtonView>
-        <IconButton
-          label={'수련회 신청하기'}
-          width={'100%'}
-          height={'34px'}
-          borderRadius="8px"
-          padding="18px"
-          backgroundColor={EColor.TEXT_600}
-          tintColor="white"
-          color="white"
-          onClick={handleApplicationPage}
-        />
-      </ButtonView>
       <TextLight onClick={handleLogout}>로그아웃</TextLight>
     </Container>
   );
