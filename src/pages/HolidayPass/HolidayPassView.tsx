@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Container,
   ProgressBarBox,
@@ -7,30 +7,42 @@ import {
   Title,
   ButtonGroup,
   Button,
-  Input,
+  Textarea,
   AnswerBox,
   Bible,
+  Ticket,
+  TicketIssued,
 } from './HolidayPass.styled';
 import { ProgressBar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { HolidayPassQuestion } from './HolidayPassQuestion';
 import usePageControll from '@hooks/usePageControll';
+import { requestApplication, requestApplicationByUserAndRetreatId, requestCreatePray } from '@apis/index';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { isLoadingState, userState } from '@modules/atoms';
 
 const HolidayPassView = () => {
   const { handlePage } = usePageControll();
-
   const [questionNum, setQuestionNum] = useState(0);
-  const [answers, setAnswers] = useState<{ [key: number]: string }>({});
   const [inputValue, setInputValue] = useState('');
+  const [answers, setAnswers] = useState<string[]>([]);
+  console.log(answers);
 
-  if (!HolidayPassQuestion || !Array.isArray(HolidayPassQuestion) || HolidayPassQuestion.length === 0) {
+  const setIsLoading = useSetRecoilState(isLoadingState);
+  const user = useRecoilValue(userState);
+
+  useEffect(() => {
+    requestApplicationByUserAndRetreatId(user.userId, 2).then(() => {
+      alert('Holiday Pass가 이미 발급되었습니다.');
+      handlePage('home');
+    });
+  }, []);
+
+  if (!HolidayPassQuestion || HolidayPassQuestion.length === 0) {
     return <div>Loading...</div>;
   }
 
   const currentQuestion = HolidayPassQuestion[questionNum];
-  if (!currentQuestion) {
-    return <div>Question not found</div>;
-  }
 
   const handleAnswerChange = (questionId: number, answer: string) => {
     if (questionId === 1 && answer === '불참') {
@@ -38,70 +50,105 @@ const HolidayPassView = () => {
       handlePage('home');
       return;
     }
-    setAnswers((prev) => ({
-      ...prev,
-      [questionId]: answer,
-    }));
 
-    if (questionId === 5 && answer !== '조원') {
-      setQuestionNum(6);
-    } else {
-      if (questionId < HolidayPassQuestion.length - 1) {
-        setQuestionNum(questionNum + 1);
-      }
+    if (questionId === 5 && answer === '리딩자 도전!') {
+      setAnswers((prev) => {
+        const updatedAnswers = [...prev];
+        updatedAnswers[1] = '리딩자';
+        return updatedAnswers;
+      });
+    }
+
+    if (questionId === 5 && answer === '멤버 할게요!') {
+      setAnswers((prev) => {
+        const updatedAnswers = [...prev];
+        updatedAnswers[1] = '멤버';
+        return updatedAnswers;
+      });
+    }
+
+    setAnswers((prev) => {
+      const updatedAnswers = [...prev];
+      updatedAnswers[questionId - 1] = answer;
+      return updatedAnswers;
+    });
+
+    if (questionNum < HolidayPassQuestion.length - 1) {
+      setQuestionNum(questionNum + 1);
     }
     setInputValue('');
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (currentQuestion?.id) {
+    if (currentQuestion?.id && inputValue.trim() !== '') {
       handleAnswerChange(currentQuestion.id, inputValue);
+      if (questionNum < HolidayPassQuestion.length - 1) {
+        setQuestionNum(questionNum + 1);
+      }
+      setInputValue('');
+    } else if (currentQuestion.type !== 'done') {
+      alert('내용을 입력해주세요~~');
+    } else {
+      try {
+        setIsLoading({ isLoading: true });
+        await requestCreatePray(user.id, answers[5]);
+        await requestApplication(
+          user.userId,
+          2,
+          [],
+          '',
+          [],
+          '',
+          answers[1] === '리딩자'
+        );
+        setIsLoading({ isLoading: false });
+        alert('Pass 등록이 완료되었습니다. 2025 홀리데이 때 만나요~');
+        handlePage('home');
+      } catch (err) {
+        setIsLoading({ isLoading: false });
+        console.log(err.response?.data?.message || 'Unexpected error');
+        alert('Pass 등록 중 오류가 발생했습니다.');
+      }
     }
   };
 
   return (
     <Container>
-      <MainTitle>Pass 발급 신청</MainTitle>
       <ProgressBarBox>
-        <ProgressBar
-          style={{
-            height: '10px',
-            marginBottom: '20px',
-            borderRadius: 0,
-          }}
-        >
+        <ProgressBar style={{ height: '10px', marginBottom: '20px', borderRadius: 0 }}>
           <ProgressBar
             striped
             now={(questionNum / (HolidayPassQuestion.length - 1)) * 100}
             style={{
               height: '100%',
-              background: 'linear-gradient(to right, #ff7e5f, #feb47b)', // 그라데이션 색상 (진행 상태 색)
+              background: 'linear-gradient(to right, #ff7e5f, #feb47b)',
             }}
           />
         </ProgressBar>
         <div className="progressNum">
-          {currentQuestion.id}/ {HolidayPassQuestion.length}
+          {currentQuestion.type !== 'done' ? `${currentQuestion.id} / ${HolidayPassQuestion.length}` : '완료!'}
         </div>
       </ProgressBarBox>
       <QuestioBox>
-        <Title>{currentQuestion.title} </Title>
+        <Title isDone={currentQuestion.type === 'done'}>{currentQuestion.title}</Title>
         {currentQuestion.type === 'choice' && (
-          <ButtonGroup>
-            <Button onClick={() => handleAnswerChange(currentQuestion.id, currentQuestion.answera || '')}>
-              {currentQuestion.answera}
-            </Button>
-            <Button onClick={() => handleAnswerChange(currentQuestion.id, currentQuestion.answerb || '')}>
-              {currentQuestion.answerb}
-            </Button>
-          </ButtonGroup>
+          <>
+            {currentQuestion.bible && <Bible>{currentQuestion.bible}</Bible>}
+            <ButtonGroup>
+              <Button onClick={() => handleAnswerChange(currentQuestion.id, currentQuestion.answera || '')}>
+                {currentQuestion.answera}
+              </Button>
+              <Button onClick={() => handleAnswerChange(currentQuestion.id, currentQuestion.answerb || '')}>
+                {currentQuestion.answerb}
+              </Button>
+            </ButtonGroup>
+          </>
         )}
         {currentQuestion.type === 'answer' && (
           <form onSubmit={handleSubmit}>
-            <Bible>{currentQuestion.bible}</Bible>
             <AnswerBox>
-              <Input
-                type="text"
+              <Textarea
                 placeholder={currentQuestion.desc}
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
@@ -111,6 +158,16 @@ const HolidayPassView = () => {
               </Button>
             </AnswerBox>
           </form>
+        )}
+        {currentQuestion.type === 'done' && (
+          <TicketIssued>
+            <div className="polaroid">
+              <Ticket src="/holydaypass.png" alt="holydaypass" />
+            </div>
+            <Button onClick={handleSubmit} type="submit">
+              {currentQuestion.nextBtn}
+            </Button>
+          </TicketIssued>
         )}
       </QuestioBox>
     </Container>

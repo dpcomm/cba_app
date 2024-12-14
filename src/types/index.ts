@@ -30,6 +30,7 @@ export enum Page {
   timeTable = 'time-table',
   prayTalk = 'pray-talk',
   holidayPass = 'holiday-pass',
+  retreatList = 'retreat-list',
 }
 
 export type RadioItem = {

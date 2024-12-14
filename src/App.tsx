@@ -27,6 +27,7 @@ import YoutubeOld from '@pages/YoutubeOld';
 import TimeTable from '@pages/TimeTable';
 import PrayTalk from '@pages/PrayTalk';
 import HolidayPass from '@pages/HolidayPass';
+import RetreatList from '@pages/RetreatList';
 
 const App = () => {
   const setUser = useSetRecoilState(userState);
@@ -80,7 +81,6 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Login />} />
-        {/* <Route path="/" element={<HolidayPass />} /> */}
         <Route path={`/${Page.register}`} element={<Register />} />
         <Route path={`/${Page.notLogin}`} element={<NotLogin />} />
         <Route path="/maintenance" element={<Maintenance />} />
@@ -100,6 +100,7 @@ const App = () => {
           <Route path={`/${Page.timeTable}`} element={<TimeTable />} />
           <Route path={`/${Page.prayTalk}`} element={<PrayTalk />} />
           <Route path={`/${Page.holidayPass}`} element={<HolidayPass />} />
+          <Route path={`/${Page.retreatList}`} element={<RetreatList />} />
         </Route>
         <Route path="*" element={<Error404 />} />
       </Routes>

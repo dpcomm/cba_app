@@ -18,7 +18,7 @@ import RadioButton from '@components/RadioButton';
 import MealRadioButton from '@components/MealRadioButton';
 import { IconButton } from '@components/IconButton';
 import { EColor } from '@styles/color';
-import { requestApplication, requestApplicationByUser } from '@apis/index';
+import { requestApplication, requestApplicationByUserAndRetreatId } from '@apis/index';
 import usePageControll from '@hooks/usePageControll';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { applicationState, isLoadingState, userState } from '@modules/atoms';
@@ -38,7 +38,7 @@ const RetreatApplicationView = () => {
   ]);
 
   useEffect(() => {
-    requestApplicationByUser(user.userId).then(() => {
+    requestApplicationByUserAndRetreatId(user.userId, 1).then(() => {
       alert("작성된 수련회 신청서가 있습니다. 홈 화면으로 이동합니다.");
       handlePage("home");
     });
@@ -78,6 +78,7 @@ const RetreatApplicationView = () => {
     }
     requestApplication(
       user.userId,
+      1,
       meal,
       transfer,
       bus,
