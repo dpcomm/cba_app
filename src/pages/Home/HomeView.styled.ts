@@ -91,18 +91,27 @@ export const DDayView = styled.div`
   align-items: center;
   flex-direction: column;
   margin-bottom: 12px;
-  padding: 16px 24px;
+  padding: 10px 24px;
   background-color: ${EColor.COLOR_PRIMARY_SUB2};
   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   border-radius: 8px;
 `;
 
 export const DDayText = styled.div`
+  display: flex;
+  align-items: center;
   ${body4};
-  font-size: 22px;
+  gap: 20px;
+  font-size: 28px;
   letter-spacing: 1px;
-  color: ${EColor.COLOR_PRIMARY_SUB1};
+  color: ${EColor.TEXT_200};
   user-select: none;
+  .bible {
+    border-left: 3px solid ${EColor.TEXT_200};
+    padding-left: 14px;
+    font-size: 16px;
+    color: ${EColor.COLOR_PRIMARY};
+  }
 `;
 
 export const BarTextView = styled.div`
@@ -180,16 +189,24 @@ export const Left = styled.div`
 export const NoticeView = styled.div`
   display: flex;
   width: 100%;
-  height: 110px;
+  height: 70px;
   padding: 16px 24px;
   background-color: ${EColor.TEXT_200};
   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   border-radius: 8px;
 `;
-export const NoticeTop = styled.h1`
+export const NoticeTop = styled.div`
+  position: relative;
+  display: flex;
   width: 100%;
-  ${body1}
-  font-weight:800;
+  /* height: 120px; */
+  h3 {
+    position: absolute;
+    top: 0px;
+    left: 30px;
+    ${body1}
+    font-weight:bold;
+  }
 `;
 export const NoticeBottom = styled.div``;
 
@@ -242,7 +259,7 @@ export const TextLight = styled.div`
   width: 100%;
   ${body5};
   color: ${EColor.TEXT_600};
-  margin-top: auto;
+  margin-top: 20px;
   text-decoration: underline;
   user-select: none;
 `;

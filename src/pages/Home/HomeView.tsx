@@ -154,12 +154,23 @@ const HomeView = () => {
             </Bar>
           </>
         ) : (
-          <DDayText>수련회까지 {dDay}일 남았어요.</DDayText>
+          <DDayText>
+            <div className="day"> D-{dDay}</div>
+            <div className="bible">
+              주는 나의 목자시니 <br />
+              내가 부족함이 없으리로다.
+              <br />
+              (시 24:1)
+            </div>
+          </DDayText>
         )}
       </DDayView>
       {/* <Left onClick={() => handlePage('youtube')}>수련회 라이브 바로가기 ▶</Left> */}
       <NoticeView>
-        <NoticeTop>공지사항</NoticeTop>
+        <NoticeTop>
+          <SvgIcon name={'notice'} width={'none'} height={'none'} fill={'none'} stroke={'none'} />
+          <h3>공지사항</h3>
+        </NoticeTop>
         <NoticeBottom></NoticeBottom>
       </NoticeView>
       <MenuView>

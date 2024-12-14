@@ -54,3 +54,4 @@ export { ReactComponent as home_holyday } from './HomeHolyday.svg';
 export { ReactComponent as home_live } from './HomeLive.svg';
 export { ReactComponent as home_payment } from './HomePayment.svg';
 export { ReactComponent as home_prayer } from './HomePrayer.svg';
+export { ReactComponent as notice } from './notice.svg';

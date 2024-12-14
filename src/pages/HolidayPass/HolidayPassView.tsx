@@ -34,8 +34,8 @@ const HolidayPassView = () => {
 
   useEffect(() => {
     requestApplicationByUserAndRetreatId(user.userId, 2).then(() => {
-      alert("작성된 수련회 신청서가 있습니다. 홈 화면으로 이동합니다.");
-      handlePage("home");
+      alert('작성된 수련회 신청서가 있습니다. 홈 화면으로 이동합니다.');
+      handlePage('home');
     });
   }, []);
 
@@ -60,17 +60,24 @@ const HolidayPassView = () => {
       [questionId]: answer,
     }));
 
+    // 리딩자 처리
     if (answerArr[1] === '리딩자') {
-      setQuestionNum(5);
-      return;
+      setQuestionNum(3); // 3번 질문으로 이동
+      setAnswers((prev) => ({
+        ...prev,
+        [4]: '', // 4번 질문에 빈 문자열 저장
+      }));
+      setQuestionNum(5); // 5번 질문으로 이동
+    } else if (questionId < HolidayPassQuestion.length - 1) {
+      setQuestionNum(questionNum + 1);
     } else if (answerArr[1] === '멤버') {
       setQuestionNum(4);
-    }
-
-    if (questionId < HolidayPassQuestion.length - 1) {
+    } else if (questionId < HolidayPassQuestion.length - 1) {
+      // 기본적인 흐름으로 다음 질문으로 이동
       setQuestionNum(questionNum + 1);
     }
-    setInputValue('');
+
+    setInputValue(''); // 입력값 초기화
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -86,23 +93,18 @@ const HolidayPassView = () => {
     } else {
       try {
         setIsLoading({ isLoading: true });
-        await requestCreatePray(user.id, answerArr[5]); // 해당 부분 수정 필요 -> 리딩자 멤버 선택에 따라 질문이 건너뛰어짐
-        await requestApplication(
-          user.userId,
-          2,
-          [],
-          "",
-          [],
-          "",
-          answerArr[1] === '리딩자'
-        );
+
+        await requestCreatePray(user.id, answerArr[3]); // 해당 부분 수정 필요 -> 리딩자 멤버 선택에 따라 질문이 건너뛰어짐
+
+        await requestApplication(user.userId, 2, [], '', [], '', answerArr[1] === '리딩자');
+
         setIsLoading({ isLoading: false });
-        alert("Pass 등록이 완료되었습니다. 2025 홀리데이 때 만나요~");
+        alert('Pass 등록이 완료되었습니다. 2025 홀리데이 때 만나요~');
         handlePage('home');
-      } catch (err) {
+      } catch (err: any) {
         setIsLoading({ isLoading: false });
-        console.log(err.response?.data?.message || "Unexpected error");
-        alert("Pass 등록 중 오류가 발생했습니다.");
+        console.log(err.response?.data?.message || 'Unexpected error');
+        alert('Pass 등록 중 오류가 발생했습니다.');
       }
     }
   };

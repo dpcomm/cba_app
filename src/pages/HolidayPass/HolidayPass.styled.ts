@@ -108,21 +108,20 @@ export const TicketIssued = styled.section`
 export const Ticket = styled.img`
   width: 170px;
   height: 100%;
-  margin-left: 10px;
   object-fit: cover;
   opacity: 0;
-  transform: translateY(100px) rotate(-10deg);
+  transform: translateY(100px);
   animation: slideIn 0.8s ease-out forwards;
   @keyframes slideIn {
     0% {
       /* scale: 0.8; */
       opacity: 0;
-      transform: translateY(100px) rotate(-10deg);
+      transform: translateY(100px);
     }
     100% {
       /* scale: 1; */
       opacity: 1;
-      transform: translateY(0) rotate(0);
+      transform: translateY(0);
     }
   }
 `;
