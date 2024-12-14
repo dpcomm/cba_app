@@ -182,13 +182,13 @@ const HomeView = () => {
         </ItemView>
       </MenuView>
       <MenuView>
-        <ItemView onClick={() => handlePage('retreat-info')}>
+        <ItemView onClick={() => alert("2025 Holiday 겨울수련회 준비 중입니다.")}>
           <SvgIcon name={'home_guide'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
-        <ItemView onClick={() => handlePage('retreat-location')}>
+        <ItemView onClick={() => handlePage('youtube')}>
           <SvgIcon name={'home_live'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
-        <ItemView onClick={() => handlePage('retreat-payment')}>
+        <ItemView onClick={() => alert("2025 Holiday 겨울수련회 준비 중입니다.")}>
           <SvgIcon name={'home_payment'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
       </MenuView>

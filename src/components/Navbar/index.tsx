@@ -24,6 +24,7 @@ const pageLabel = {
   [Page.timeTable]: "수련회 일정표",
   [Page.prayTalk]: "기도 TALK",
   [Page.holidayPass]: "Pass 발급 신청",
+  [Page.retreatList]: "나의 수련회",
 };
 
 const Navbar = () => {

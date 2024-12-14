@@ -19,6 +19,7 @@ export interface Application {
       transfer: string;
       "own-car": string;
       bus: [number, number];
+      isLeader: boolean;
     };
   };
   attended: boolean;
@@ -26,7 +27,7 @@ export interface Application {
   createdAt: Date | null;
   updatedAt: Date | null;
   userId: string | null;
-  retreatId: number | null;
+  retreatId: number;
 }
 
 export interface Youtube {

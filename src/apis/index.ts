@@ -73,7 +73,7 @@ export const requestAuthCheck = (accessToken: string | null, refreshToken: strin
   });
 };
 
-export const requestApplicationByUserAndRetreatId = (userId: string | null, retreatId: number) => {
+export const requestApplicationByUserAndRetreatId = (userId: string | null, retreatId?: number) => {
   return request.get(`/api/application/${userId}/${retreatId}`);
 };
 

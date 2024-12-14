@@ -25,28 +25,24 @@ const HolidayPassView = () => {
   const { handlePage } = usePageControll();
   const [questionNum, setQuestionNum] = useState(0);
   const [inputValue, setInputValue] = useState('');
-  const [answers, setAnswers] = useState<{ [key: number]: string }>({});
+  const [answers, setAnswers] = useState<string[]>([]);
+  console.log(answers);
 
   const setIsLoading = useSetRecoilState(isLoadingState);
   const user = useRecoilValue(userState);
 
-  const answerArr = Object.values(answers);
-
   useEffect(() => {
     requestApplicationByUserAndRetreatId(user.userId, 2).then(() => {
-      alert('작성된 수련회 신청서가 있습니다. 홈 화면으로 이동합니다.');
+      alert('Holiday Pass가 이미 발급되었습니다.');
       handlePage('home');
     });
   }, []);
 
-  if (!HolidayPassQuestion || !Array.isArray(HolidayPassQuestion) || HolidayPassQuestion.length === 0) {
+  if (!HolidayPassQuestion || HolidayPassQuestion.length === 0) {
     return <div>Loading...</div>;
   }
 
   const currentQuestion = HolidayPassQuestion[questionNum];
-  if (!currentQuestion) {
-    return <div>Question not found</div>;
-  }
 
   const handleAnswerChange = (questionId: number, answer: string) => {
     if (questionId === 1 && answer === '불참') {
@@ -55,29 +51,32 @@ const HolidayPassView = () => {
       return;
     }
 
-    setAnswers((prev) => ({
-      ...prev,
-      [questionId]: answer,
-    }));
-
-    // 리딩자 처리
-    if (answerArr[1] === '리딩자') {
-      setQuestionNum(3); // 3번 질문으로 이동
-      setAnswers((prev) => ({
-        ...prev,
-        [4]: '', // 4번 질문에 빈 문자열 저장
-      }));
-      setQuestionNum(5); // 5번 질문으로 이동
-    } else if (questionId < HolidayPassQuestion.length - 1) {
-      setQuestionNum(questionNum + 1);
-    } else if (answerArr[1] === '멤버') {
-      setQuestionNum(4);
-    } else if (questionId < HolidayPassQuestion.length - 1) {
-      // 기본적인 흐름으로 다음 질문으로 이동
-      setQuestionNum(questionNum + 1);
+    if (questionId === 5 && answer === '리딩자 도전!') {
+      setAnswers((prev) => {
+        const updatedAnswers = [...prev];
+        updatedAnswers[1] = '리딩자';
+        return updatedAnswers;
+      });
     }
 
-    setInputValue(''); // 입력값 초기화
+    if (questionId === 5 && answer === '멤버 할게요!') {
+      setAnswers((prev) => {
+        const updatedAnswers = [...prev];
+        updatedAnswers[1] = '멤버';
+        return updatedAnswers;
+      });
+    }
+
+    setAnswers((prev) => {
+      const updatedAnswers = [...prev];
+      updatedAnswers[questionId - 1] = answer;
+      return updatedAnswers;
+    });
+
+    if (questionNum < HolidayPassQuestion.length - 1) {
+      setQuestionNum(questionNum + 1);
+    }
+    setInputValue('');
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -93,15 +92,20 @@ const HolidayPassView = () => {
     } else {
       try {
         setIsLoading({ isLoading: true });
-
-        await requestCreatePray(user.id, answerArr[3]); // 해당 부분 수정 필요 -> 리딩자 멤버 선택에 따라 질문이 건너뛰어짐
-
-        await requestApplication(user.userId, 2, [], '', [], '', answerArr[1] === '리딩자');
-
+        await requestCreatePray(user.id, answers[5]);
+        await requestApplication(
+          user.userId,
+          2,
+          [],
+          '',
+          [],
+          '',
+          answers[1] === '리딩자'
+        );
         setIsLoading({ isLoading: false });
         alert('Pass 등록이 완료되었습니다. 2025 홀리데이 때 만나요~');
         handlePage('home');
-      } catch (err: any) {
+      } catch (err) {
         setIsLoading({ isLoading: false });
         console.log(err.response?.data?.message || 'Unexpected error');
         alert('Pass 등록 중 오류가 발생했습니다.');
@@ -111,15 +115,8 @@ const HolidayPassView = () => {
 
   return (
     <Container>
-      <MainTitle>Pass 발급 신청</MainTitle>
       <ProgressBarBox>
-        <ProgressBar
-          style={{
-            height: '10px',
-            marginBottom: '20px',
-            borderRadius: 0,
-          }}
-        >
+        <ProgressBar style={{ height: '10px', marginBottom: '20px', borderRadius: 0 }}>
           <ProgressBar
             striped
             now={(questionNum / (HolidayPassQuestion.length - 1)) * 100}
@@ -134,10 +131,10 @@ const HolidayPassView = () => {
         </div>
       </ProgressBarBox>
       <QuestioBox>
-        <Title isDone={currentQuestion.type === 'done'}>{currentQuestion.title} </Title>
+        <Title isDone={currentQuestion.type === 'done'}>{currentQuestion.title}</Title>
         {currentQuestion.type === 'choice' && (
           <>
-            <Bible>{currentQuestion.bible}</Bible>
+            {currentQuestion.bible && <Bible>{currentQuestion.bible}</Bible>}
             <ButtonGroup>
               <Button onClick={() => handleAnswerChange(currentQuestion.id, currentQuestion.answera || '')}>
                 {currentQuestion.answera}
