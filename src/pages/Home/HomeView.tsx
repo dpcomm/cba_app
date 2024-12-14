@@ -174,7 +174,7 @@ const HomeView = () => {
         <NoticeBottom></NoticeBottom>
       </NoticeView>
       <MenuView>
-        <ItemView onClick={() => handlePage('holiday-pass')}>
+        <ItemView onClick={() => handlePage('holyday-pass')}>
           <SvgIcon name={'home_holyday'} width={'none'} height={'none'} fill={'none'} stroke={'none'} />
         </ItemView>
         <ItemView onClick={() => handlePage('pray-talk')}>
@@ -182,13 +182,13 @@ const HomeView = () => {
         </ItemView>
       </MenuView>
       <MenuView>
-        <ItemView onClick={() => alert("2025 Holiday 겨울수련회 준비 중입니다.")}>
+        <ItemView onClick={() => alert("2025 Holyday 겨울수련회 준비 중입니다.")}>
           <SvgIcon name={'home_guide'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
         <ItemView onClick={() => handlePage('youtube')}>
           <SvgIcon name={'home_live'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
-        <ItemView onClick={() => alert("2025 Holiday 겨울수련회 준비 중입니다.")}>
+        <ItemView onClick={() => alert("2025 Holyday 겨울수련회 준비 중입니다.")}>
           <SvgIcon name={'home_payment'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
       </MenuView>

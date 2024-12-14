@@ -26,7 +26,7 @@ import Youtube from '@pages/Youtube';
 import YoutubeOld from '@pages/YoutubeOld';
 import TimeTable from '@pages/TimeTable';
 import PrayTalk from '@pages/PrayTalk';
-import HolidayPass from '@pages/HolidayPass';
+import HolydayPass from '@pages/HolydayPass';
 import RetreatList from '@pages/RetreatList';
 
 const App = () => {
@@ -99,7 +99,7 @@ const App = () => {
           <Route path={`/${Page.youtubeOld}`} element={<YoutubeOld />} />
           <Route path={`/${Page.timeTable}`} element={<TimeTable />} />
           <Route path={`/${Page.prayTalk}`} element={<PrayTalk />} />
-          <Route path={`/${Page.holidayPass}`} element={<HolidayPass />} />
+          <Route path={`/${Page.holydayPass}`} element={<HolydayPass />} />
           <Route path={`/${Page.retreatList}`} element={<RetreatList />} />
         </Route>
         <Route path="*" element={<Error404 />} />

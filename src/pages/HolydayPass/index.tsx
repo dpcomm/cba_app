@@ -1,4 +1,4 @@
-import HolidayPassView from './HolidayPassView';
+import HolidayPassView from './HolydayPassView';
 
 const HolidayPass = () => {
   return <HolidayPassView />;
