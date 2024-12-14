@@ -27,7 +27,6 @@ import {
 } from './HomeView.styled';
 import { EColor } from '@styles/color';
 import SvgIcon from '@components/SvgIcon';
-import { IconButton } from '@components/IconButton';
 import usePageControll from '@hooks/usePageControll';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { applicationState, isLoadingState, userState } from '@modules/atoms';
