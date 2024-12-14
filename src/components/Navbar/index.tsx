@@ -23,7 +23,7 @@ const pageLabel = {
   [Page.youtubeOld]: "이전 라이브",
   [Page.timeTable]: "수련회 일정표",
   [Page.prayTalk]: "기도 TALK",
-  [Page.holidayPass]: "Pass 발급 신청",
+  [Page.holydayPass]: "Pass 발급 신청",
   [Page.retreatList]: "나의 수련회",
 };
 

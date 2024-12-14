@@ -12,10 +12,10 @@ import {
   Bible,
   Ticket,
   TicketIssued,
-} from './HolidayPass.styled';
+} from './HolydayPass.styled';
 import { ProgressBar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { HolidayPassQuestion } from './HolidayPassQuestion';
+import { HolidayPassQuestion } from './HolydayPassQuestion';
 import usePageControll from '@hooks/usePageControll';
 import { requestApplication, requestApplicationByUserAndRetreatId, requestCreatePray } from '@apis/index';
 import { useRecoilValue, useSetRecoilState } from 'recoil';

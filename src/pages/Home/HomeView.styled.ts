@@ -91,7 +91,7 @@ export const DDayView = styled.div`
   align-items: center;
   flex-direction: column;
   margin-bottom: 12px;
-  padding: 10px 24px;
+  padding: 10px 12px;
   background-color: ${EColor.COLOR_PRIMARY_SUB2};
   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   border-radius: 8px;
@@ -109,7 +109,7 @@ export const DDayText = styled.div`
   .bible {
     border-left: 3px solid ${EColor.TEXT_200};
     padding-left: 14px;
-    font-size: 16px;
+    font-size: 15px;
     color: ${EColor.COLOR_PRIMARY};
   }
 `;
@@ -192,17 +192,15 @@ export const NoticeView = styled.div`
   height: 70px;
   padding: 16px 24px;
   background-color: ${EColor.TEXT_200};
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   border-radius: 8px;
 `;
 export const NoticeTop = styled.div`
   position: relative;
   display: flex;
   width: 100%;
-  /* height: 120px; */
   h3 {
     position: absolute;
-    top: 0px;
+    top: -2px;
     left: 30px;
     ${body1}
     font-weight:bold;
@@ -259,7 +257,7 @@ export const TextLight = styled.div`
   width: 100%;
   ${body5};
   color: ${EColor.TEXT_600};
-  margin-top: 20px;
+  margin-top: 12px;
   text-decoration: underline;
   user-select: none;
 `;

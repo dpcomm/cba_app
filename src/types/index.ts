@@ -29,7 +29,7 @@ export enum Page {
   youtubeOld = 'youtube-old',
   timeTable = 'time-table',
   prayTalk = 'pray-talk',
-  holidayPass = 'holiday-pass',
+  holydayPass = 'holyday-pass',
   retreatList = 'retreat-list',
 }
 
