@@ -89,7 +89,8 @@ export const Textarea = styled.textarea`
 export const Button = styled.button`
   ${Title3}
   width: 160px;
-  height: 60px;
+  height: fit-content;
+  padding: 10px 14px;
   margin: 0 auto;
   border: none;
   border-radius: 16px;
@@ -105,7 +106,7 @@ export const TicketIssued = styled.section`
   align-items: center;
   gap: 10px;
 `;
-export const Ticket = styled.img`
+export const Ticket = styled.div`
   width: 170px;
   height: 100%;
   object-fit: cover;

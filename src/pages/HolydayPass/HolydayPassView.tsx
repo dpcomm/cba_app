@@ -20,10 +20,11 @@ import usePageControll from '@hooks/usePageControll';
 import { requestApplication, requestApplicationByUserAndRetreatId, requestCreatePray } from '@apis/index';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { isLoadingState, userState } from '@modules/atoms';
+import SvgIcon from '@components/SvgIcon';
 
 const HolidayPassView = () => {
   const { handlePage } = usePageControll();
-  const [questionNum, setQuestionNum] = useState(0);
+  const [questionNum, setQuestionNum] = useState(6);
   const [inputValue, setInputValue] = useState('');
   const [answers, setAnswers] = useState<string[]>([]);
   console.log(answers);
@@ -93,15 +94,7 @@ const HolidayPassView = () => {
       try {
         setIsLoading({ isLoading: true });
         await requestCreatePray(user.id, answers[5]);
-        await requestApplication(
-          user.userId,
-          2,
-          [],
-          '',
-          [],
-          '',
-          answers[1] === '리딩자'
-        );
+        await requestApplication(user.userId, 2, [], '', [], '', answers[1] === '리딩자');
         setIsLoading({ isLoading: false });
         alert('Pass 등록이 완료되었습니다. 2025 홀리데이 때 만나요~');
         handlePage('home');
@@ -161,9 +154,10 @@ const HolidayPassView = () => {
         )}
         {currentQuestion.type === 'done' && (
           <TicketIssued>
-            <div className="polaroid">
-              <Ticket src="/holydaypass.png" alt="holydaypass" />
-            </div>
+            <Ticket>
+              <SvgIcon name={'holydaypassTicket'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
+              {/* <Ticket src="/holydaypass.png" alt="holydaypass" /> */}
+            </Ticket>
             <Button onClick={handleSubmit} type="submit">
               {currentQuestion.nextBtn}
             </Button>

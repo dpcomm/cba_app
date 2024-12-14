@@ -49,6 +49,7 @@ export { ReactComponent as bill } from './Bill.svg';
 export { ReactComponent as spinner } from './Spinner.svg';
 export { ReactComponent as message } from './Message.svg';
 export { ReactComponent as trash } from './Trash.svg';
+export { ReactComponent as holydaypassTicket } from './holydaypass.svg';
 export { ReactComponent as home_guide } from './HomeGuide.svg';
 export { ReactComponent as home_holyday } from './HomeHolyday.svg';
 export { ReactComponent as home_live } from './HomeLive.svg';
