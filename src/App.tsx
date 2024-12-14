@@ -80,8 +80,7 @@ const App = () => {
       {isLoading[0].isLoading && <Spinner />}
       <Navbar />
       <Routes>
-        {/* <Route path="/" element={<Login />} /> */}
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Login />} />
         <Route path={`/${Page.register}`} element={<Register />} />
         <Route path={`/${Page.notLogin}`} element={<NotLogin />} />
         <Route path="/maintenance" element={<Maintenance />} />
