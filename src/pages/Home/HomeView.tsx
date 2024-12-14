@@ -135,7 +135,7 @@ const HomeView = () => {
           <HeaderNameText>{user.name} 님</HeaderNameText>
         </HeaderCenter>
         <HeaderRight onClick={() => handlePage('my-page')}>
-          <SvgIcon name={'chevron_right'} width={28} height={28} fill={EColor.TEXT_200} />
+          <SvgIcon name={'chevron_right'} width={28} height={28} fill={EColor.COLOR_PRIMARY} />
         </HeaderRight>
       </HeaderView>
       <DDayView>

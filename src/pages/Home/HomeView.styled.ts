@@ -36,6 +36,7 @@ export const HeaderRight = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
   &:active {
     background-color: ${EColor.TEXT_500};
     border-radius: 12px;
