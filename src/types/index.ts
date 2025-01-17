@@ -31,6 +31,7 @@ export enum Page {
   prayTalk = 'pray-talk',
   holydayPass = 'holyday-pass',
   retreatList = 'retreat-list',
+  resetPassword = 'reset-password',
 }
 
 export type RadioItem = {

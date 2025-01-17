@@ -100,7 +100,7 @@ const LoginView = () => {
 					로그인 유지
 				</CheckBox>
 			<TextButtonView>
-				<TextButton onClick={() => alert("서비스 준비중입니다.")}>아이디/비밀번호 찾기</TextButton>
+				<TextButton onClick={() => handlePage("reset-password")}>비밀번호 재설정</TextButton>
 				<TextButton onClick={() => handlePage("register")}>회원가입</TextButton>
 			</TextButtonView>
 		</Container>

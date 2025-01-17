@@ -25,6 +25,7 @@ const pageLabel = {
   [Page.prayTalk]: "기도 TALK",
   [Page.holydayPass]: "Pass 발급 신청",
   [Page.retreatList]: "나의 수련회",
+  [Page.resetPassword]: "비밀번호 재설정",
 };
 
 const Navbar = () => {

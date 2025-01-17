@@ -115,3 +115,33 @@ export const requestCreatePray = (userId: number | null, content: string) => {
 export const requestDeletePray = (id: number) => {
   return request.delete(`/api/pray/${id}`);
 };
+
+export const requestCheckUserWithoutPassword = (
+  userId: string,
+  name: string,
+  gender: string,
+  phone: string,
+  group: string,
+  birth: string,
+  password?: string
+) => {
+  return request.post('/api/user/check-user', {
+    userId,
+    password,
+    name,
+    gender,
+    phone,
+    group,
+    birth,
+  });
+};
+
+export const requestResetPassword = (
+  userId: string,
+  password: string,
+) => {
+  return request.post('/api/user/reset-password', {
+    userId,
+    password,
+  });
+};
