@@ -28,6 +28,7 @@ import TimeTable from '@pages/TimeTable';
 import PrayTalk from '@pages/PrayTalk';
 import HolydayPass from '@pages/HolydayPass';
 import RetreatList from '@pages/RetreatList';
+import ResetPassword from '@pages/ResetPassword';
 
 const App = () => {
   const setUser = useSetRecoilState(userState);
@@ -83,6 +84,7 @@ const App = () => {
         <Route path="/" element={<Login />} />
         <Route path={`/${Page.register}`} element={<Register />} />
         <Route path={`/${Page.notLogin}`} element={<NotLogin />} />
+        <Route path={`/${Page.resetPassword}`} element={<ResetPassword />} />
         <Route path="/maintenance" element={<Maintenance />} />
         <Route element={<PrivateRoute />}>
           <Route path={`/${Page.home}`} element={<Home />} />
