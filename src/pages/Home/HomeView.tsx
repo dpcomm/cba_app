@@ -181,7 +181,7 @@ const HomeView = () => {
         </ItemView>
       </MenuView>
       <MenuView>
-        <ItemView onClick={() => alert('2025 Holyday 겨울수련회 준비 중입니다.')}>
+        <ItemView onClick={() => handlePage('retreat-info')}>
           <SvgIcon name={'home_guide'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
         <ItemView onClick={() => handlePage('youtube')}>
