@@ -93,7 +93,7 @@ export const DDayView = styled.div`
   flex-direction: column;
   margin-bottom: 12px;
   padding: 10px 12px;
-  background-color: ${EColor.COLOR_PRIMARY_SUB2};
+  background-color: ${EColor.COLOR_PRIMARY_SUB2_2};
   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   border-radius: 8px;
 `;
@@ -111,7 +111,7 @@ export const DDayText = styled.div`
     border-left: 3px solid ${EColor.TEXT_200};
     padding-left: 14px;
     font-size: 15px;
-    color: ${EColor.COLOR_PRIMARY};
+    color: ${EColor.TEXT_200};
   }
 `;
 

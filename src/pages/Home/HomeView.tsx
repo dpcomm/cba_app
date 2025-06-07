@@ -183,7 +183,7 @@ const HomeView = () => {
       </NoticeView>
       <MenuView>
         <ItemView onClick={() => handlePage('holyday-pass')}>
-          <SvgIcon name={'home_holyday'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
+          <SvgIcon name={'home_pass'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
         <ItemView onClick={() => handlePage('pray-talk')}>
           <SvgIcon name={'home_prayer'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />

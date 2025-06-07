@@ -126,3 +126,28 @@ export const Ticket = styled.div`
     }
   }
 `;
+
+
+
+
+export const InputBox = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+  gap: 15px;
+`;
+
+export const SvgBox = styled.div`
+	padding-right: 52px;
+	width: 54px;
+	/* padding: 4px;
+	margin-right: 14px; */
+`;
+
+export const GroupInputView = styled.div`
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+`;
