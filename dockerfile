@@ -1,8 +1,7 @@
 FROM node:20-alpine AS react-builder
 WORKDIR /app
-ENV NODE_ENV=development
 COPY package*.json ./
-RUN npm ci
+RUN npm ci --include=dev
 RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 COPY . .
 RUN npm run build
