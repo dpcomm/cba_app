@@ -85,6 +85,7 @@ export const requestApplication = (
   bus?: number[],
   carId?: string,
   isLeader: boolean = false,
+  childCount?: number 
 ) => {
   return request.post('/api/application', {
     userId,
@@ -93,7 +94,8 @@ export const requestApplication = (
     transfer,
     bus,
     carId,
-    isLeader
+    isLeader,
+    childCount
   });
 };
 

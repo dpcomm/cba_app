@@ -1,6 +1,7 @@
 import { EColor } from '@styles/color';
-import { Title3, body2, body3 } from '@styles/font';
+import { Title3, Title4_2,body2, body3 } from '@styles/font';
 import styled from 'styled-components';
+
 
 export const Container = styled.section`
   display: flex;
@@ -91,12 +92,13 @@ export const Button = styled.button`
   width: 160px;
   height: fit-content;
   padding: 10px 14px;
-  margin: 0 auto;
+  margin: 30px auto 20px auto; /* 위쪽 여백 추가 */
   border: none;
   border-radius: 16px;
   background: ${(props) =>
-    props.type === 'submit' ? 'linear-gradient(to right, #AA68FC, #F16622 )' : `${EColor.TEXT_400}`};
+    props.type === 'submit' ? 'linear-gradient(to right, #1f9edd, #a4b6ff )' : `${EColor.TEXT_400}`};
   color: ${(props) => (props.type === 'submit' ? `${EColor.TEXT_200}` : '#000')};
+  align-items: center;
 `;
 
 export const TicketIssued = styled.section`
@@ -150,4 +152,59 @@ export const GroupInputView = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+`;
+
+export const TextForm = styled.div`
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	width: 118px;
+	margin-right: 12px;
+	${Title4_2}
+	letter-spacing: 2px;
+	user-select: none;
+	gap: 8px;
+`;
+
+export const MealButton = styled.button`
+  width: 68px;
+  padding: 5px;
+  margin-bottom: 5px;
+  ${body2};
+  color: ${EColor.TEXT_200};
+  background-color: ${EColor.COLOR_PRIMARY_SUB1};
+  border: none;
+  border-radius: 8px;
+`;
+
+export const MealButtonFalse = styled.button`
+  width: 68px;
+  padding: 5px;
+  margin-bottom: 5px;
+  ${body2};
+  color: ${EColor.TEXT_200};
+  background-color: ${EColor.COLOR_PRIMARY_SUB2};
+  border: none;
+  border-radius: 8px;
+`;
+
+export const Callout = styled.div`
+  max-width: 300px;
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #f0f4ff;
+  color: #1f3f71;
+  border-radius: 12px;
+  font-size: 20px;
+  line-height: 1.4;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+`;
+
+export const GradientText = styled.span`
+  font-weight: 700;
+  background: linear-gradient(to right, #1f9edd, #a4b6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 `;
