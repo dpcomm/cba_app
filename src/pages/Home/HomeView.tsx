@@ -41,47 +41,47 @@ const HomeView = () => {
   const set_application = useSetRecoilState(applicationState);
   const user = useRecoilValue(userState);
 
-  // const [dDay, setDDay] = useState(null);
-  // const [prevTime, set_prevTime] = useState('');
-  // const [currentTime, set_currentTime] = useState('');
-  // const [nextTime, set_nextTime] = useState('');
+  const [dDay, setDDay] = useState<number | null>(null);
+  const [prevTime, set_prevTime] = useState('');
+  const [currentTime, set_currentTime] = useState('');
+  const [nextTime, set_nextTime] = useState('');
 
-  // const calculateDDay = (targetDate) => {
-  //   const today = new Date();
-  //   const target = new Date(targetDate);
-  //   const difference = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
-  //   return difference;
-  // };
+  const calculateDDay = (targetDate:Date | number | string): number => {
+    const today = new Date();
+    const target = new Date(targetDate);
+    const difference = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
+    return difference;
+  };
 
-  // const getCurrentTimeTable = () => {
-  //   const now = new Date().getTime();
-  //   let prev = null,
-  //     current = null,
-  //     next = null;
-  //   const allActivities = schedule.day1.concat(schedule.day2, schedule.day3);
+  const getCurrentTimeTable = () => {
+    const now = new Date().getTime();
+    let prev = null,
+      current = null,
+      next = null;
+    const allActivities = schedule.day1.concat(schedule.day2, schedule.day3);
 
-  //   for (let i = 0; i < allActivities.length; i++) {
-  //     const activity = allActivities[i];
-  //     if (now < activity.startTime) {
-  //       next = activity.activity;
-  //       break;
-  //     }
-  //     if (now >= activity.startTime && now < activity.endTime) {
-  //       current = activity.activity;
-  //     }
-  //     if (now >= activity.endTime) {
-  //       prev = activity.activity;
-  //     }
-  //   }
-  //   set_prevTime(prev);
-  //   set_currentTime(current);
-  //   set_nextTime(next);
-  // };
+    for (let i = 0; i < allActivities.length; i++) {
+      const activity = allActivities[i];
+      if (now < activity.startTime) {
+        next = activity.activity;
+        break;
+      }
+      if (now >= activity.startTime && now < activity.endTime) {
+        current = activity.activity;
+      }
+      if (now >= activity.endTime) {
+        prev = activity.activity;
+      }
+    }
+    set_prevTime(prev);
+    set_currentTime(current);
+    set_nextTime(next);
+  };
 
-  // useEffect(() => {
-  //   getCurrentTimeTable();
-  //   setDDay(calculateDDay(schedule.day1[0].startTime));
-  // }, [user.userId]);
+  useEffect(() => {
+    getCurrentTimeTable();
+    setDDay(calculateDDay(schedule.day1[0].startTime));
+  }, [user.userId]);
 
   const confirmRegister = useConfirm(
     '수련회 신청서가 이미 작성되었습니다. 신청서를 수정하겠습니까?',
@@ -153,23 +153,23 @@ const HomeView = () => {
             </Bar>
           </>
         ) : (
-          <DDayText>
-            <div className="day"> D-{dDay}</div>
-            <div className="bible">
-              주는 나의 목자시니 <br />
-              내가 부족함이 없으리로다.
-              <br />
-              (시 24:1)
-            </div>
-          </DDayText>
+        <DDayText>
+          <div className="day"> D-{dDay}</div>
+          <div className="bible">
+            또 여기있다 저기 있다고도 못하리니 <br />
+            하나님의 나라는 너희 안에 있느니라
+            <br />
+            (눅 17:21)
+          </div>
+        </DDayText>
         )} */}
         <DDayText>
-          {/* <div className="day"> D-{dDay}</div> */}
+          <div className="day"> D-{dDay}</div>
           <div className="bible">
-            주는 나의 목자시니 <br />
-            내가 부족함이 없으리로다.
+            또 여기있다 저기 있다고도 못하리니 <br />
+            하나님의 나라는 너희 안에 있느니라
             <br />
-            (시 24:1)
+            (눅 17:21)
           </div>
         </DDayText>
       </DDayView>
@@ -185,18 +185,20 @@ const HomeView = () => {
         <ItemView onClick={() => handlePage('holyday-pass')}>
           <SvgIcon name={'home_pass'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
-        <ItemView onClick={() => handlePage('pray-talk')}>
-          <SvgIcon name={'home_prayer'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
+        <ItemView onClick={() => alert("준비중입니다. 조금만 기다려주세요!!")}>
+          <SvgIcon name={'home_carpool'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
       </MenuView>
       <MenuView>
-        <ItemView onClick={() => handlePage('retreat-info')}>
+        {/* <ItemView onClick={() => handlePage('retreat-info')}> */}
+        <ItemView onClick={() => alert("준비중입니다. 조금만 기다려주세요!!")}>
           <SvgIcon name={'home_guide'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
-        <ItemView onClick={() => handlePage('youtube')}>
+        {/* <ItemView onClick={() => handlePage('youtube')}> */}
+        <ItemView onClick={() => alert("준비중입니다. 조금만 기다려주세요!!")}>
           <SvgIcon name={'home_live'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
-        <ItemView onClick={() => alert('2025 Holyday 겨울수련회 준비 중입니다.')}>
+        <ItemView onClick={() => handlePage('retreat-payment')}>
           <SvgIcon name={'home_payment'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
       </MenuView>

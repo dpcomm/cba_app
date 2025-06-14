@@ -59,7 +59,7 @@ const RetreatPaymentView = () => {
       )}
       <TextBody>수련회비 납부 및 후원계좌</TextBody>
       <TextBodyUnderLine>카카오뱅크 79795194749 배윤희</TextBodyUnderLine>
-      <TextBodyUnderLine>60,000원</TextBodyUnderLine>
+      <TextBodyUnderLine>70,000원</TextBodyUnderLine>
       <ButtonView>
         <IconButton
           label={'계좌번호 복사하기'}
