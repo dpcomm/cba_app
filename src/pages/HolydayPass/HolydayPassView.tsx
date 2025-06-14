@@ -29,7 +29,7 @@ import TextInputB from '@components/TextInputB';
 
 const HolidayPassView = () => {
   const { handlePage } = usePageControll();
-  const [questionNum, setQuestionNum] = useState(6);
+  const [questionNum, setQuestionNum] = useState(0);
   const [inputValue, setInputValue] = useState('');
   const [answers, setAnswers] = useState<string[]>([]);
   console.log(answers);
