@@ -91,7 +91,7 @@ const HomeView = () => {
 
   const handleApplicationPage = () => {
     setIsLoading({ isLoading: true });
-    requestApplicationByUserAndRetreatId(user.userId, 1)
+    requestApplicationByUserAndRetreatId(user.userId, 3)
       .then((res) => {
         set_application({
           ...res.data.application,
@@ -100,7 +100,7 @@ const HomeView = () => {
         confirmRegister();
       })
       .catch((err) => {
-        if (err.response.data.message === 'Application not exist') handlePage('retreat-application');
+        if (err.response.data.message === 'Application not exist') handlePage('holyday-pass');
         setIsLoading({ isLoading: false });
       });
   };
