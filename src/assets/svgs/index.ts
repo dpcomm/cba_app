@@ -63,4 +63,4 @@ export { ReactComponent as home_payment } from './Home_CheckPayment.svg';
 // export { ReactComponent as home_prayer } from './Home_PrayMotion.svg';
 export { ReactComponent as home_carpool } from './CarPool.svg';
 export { ReactComponent as notice } from './notice.svg';
-
+export { ReactComponent as check_lined } from './Check-lined.svg';
