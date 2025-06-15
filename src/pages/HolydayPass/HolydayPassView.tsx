@@ -100,7 +100,7 @@ const HolidayPassView = () => {
         if (answer === '대형버스') {
           set_bus([bus[0], 1]); // 귀가: 버스, 출발 정보 유지
         } else {
-          set_bus([0, 0]); // 귀가: 자차 or 대중교통이면 전체 0으로
+          set_bus([bus[0], 0]); // 귀가: 자차 or 대중교통이면 전체 0으로
         }
         break;
 

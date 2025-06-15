@@ -91,7 +91,7 @@ const HomeView = () => {
 
   const handleApplicationPage = () => {
     setIsLoading({ isLoading: true });
-    requestApplicationByUserAndRetreatId(user.userId, 1)
+    requestApplicationByUserAndRetreatId(user.userId, 3)
       .then((res) => {
         set_application({
           ...res.data.application,
@@ -100,7 +100,7 @@ const HomeView = () => {
         confirmRegister();
       })
       .catch((err) => {
-        if (err.response.data.message === 'Application not exist') handlePage('retreat-application');
+        if (err.response.data.message === 'Application not exist') handlePage('holyday-pass');
         setIsLoading({ isLoading: false });
       });
   };
@@ -198,7 +198,7 @@ const HomeView = () => {
         <ItemView onClick={() => alert("준비중입니다. 조금만 기다려주세요!!")}>
           <SvgIcon name={'home_live'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
-        <ItemView onClick={() => handlePage('retreat-payment')}>
+        <ItemView onClick={() => alert("준비중입니다. 조금만 기다려주세요!!")}>
           <SvgIcon name={'home_payment'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
       </MenuView>
