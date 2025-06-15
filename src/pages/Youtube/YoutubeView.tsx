@@ -59,7 +59,7 @@ const YoutubeView = () => {
       <TextTitle>{data[0]?.title}</TextTitle>
       <ItemView>
         <TextSub>주제</TextSub>
-        <TextSub>{data[0]?.retreatId === 1  ? "The Light" : "대학청년부 주일예배"}</TextSub>
+        <TextSub>{data[0]?.retreatId === 3  ? "Kingdom of GOD" : "대학청년부 주일예배"}</TextSub>
       </ItemView>
       <ItemView>
         <TextSub>게시 날짜</TextSub>
