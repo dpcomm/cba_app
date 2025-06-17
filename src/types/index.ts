@@ -32,6 +32,7 @@ export enum Page {
   holydayPass = 'holyday-pass',
   retreatList = 'retreat-list',
   resetPassword = 'reset-password',
+  carpoolDownload = 'carpool-download',
 }
 
 export type RadioItem = {
