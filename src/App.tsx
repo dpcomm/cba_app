@@ -29,6 +29,7 @@ import PrayTalk from '@pages/PrayTalk';
 import HolydayPass from '@pages/HolydayPass';
 import RetreatList from '@pages/RetreatList';
 import ResetPassword from '@pages/ResetPassword';
+import CarpoolDownload from '@pages/CarpoolDownload';
 
 const App = () => {
   const setUser = useSetRecoilState(userState);
@@ -88,6 +89,7 @@ const App = () => {
         <Route path="/maintenance" element={<Maintenance />} />
         <Route element={<PrivateRoute />}>
           <Route path={`/${Page.home}`} element={<Home />} />
+          <Route path={`/${Page.carpoolDownload}`} element={<CarpoolDownload />} />
           <Route path={`/${Page.retreatInfo}`} element={<RetreatInfo />} />
           <Route path={`/${Page.retreatLocation}`} element={<RetreatLocation />} />
           <Route path={`/${Page.retreatPayment}`} element={<RetreatPayment />} />
