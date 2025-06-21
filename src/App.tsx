@@ -84,12 +84,12 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path={`/${Page.register}`} element={<Register />} />
-        <Route path={`/${Page.carpoolDownload}`} element={<CarpoolDownload />} />
         <Route path={`/${Page.notLogin}`} element={<NotLogin />} />
         <Route path={`/${Page.resetPassword}`} element={<ResetPassword />} />
         <Route path="/maintenance" element={<Maintenance />} />
         <Route element={<PrivateRoute />}>
           <Route path={`/${Page.home}`} element={<Home />} />
+          <Route path={`/${Page.carpoolDownload}`} element={<CarpoolDownload />} />
           <Route path={`/${Page.retreatInfo}`} element={<RetreatInfo />} />
           <Route path={`/${Page.retreatLocation}`} element={<RetreatLocation />} />
           <Route path={`/${Page.retreatPayment}`} element={<RetreatPayment />} />

@@ -185,7 +185,7 @@ const HomeView = () => {
         <ItemView onClick={() => handlePage('holyday-pass')}>
           <SvgIcon name={'home_pass'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
-        <ItemView onClick={() => alert("준비중입니다. 조금만 기다려주세요!!")}>
+        <ItemView onClick={() => handlePage('carpool-download')}>
           <SvgIcon name={'home_carpool'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
       </MenuView>
