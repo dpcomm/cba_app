@@ -1,12 +1,12 @@
 import React from 'react';
-import { Backdrop, ModalBox, CloseIconButton } from './ConsentModal.styles';
+import { Backdrop, ModalBox, CloseIconButton } from './ConsentModalView.styles';
 
 type ConsentModalProps = {
   open: boolean;
   onClose: () => void;
 };
 
-const ConsentModal: React.FC<ConsentModalProps> = ({ open, onClose }) => {
+const ConsentModalView: React.FC<ConsentModalProps> = ({ open, onClose }) => {
   if (!open) return null;
 
   return (
@@ -57,4 +57,4 @@ const ConsentModal: React.FC<ConsentModalProps> = ({ open, onClose }) => {
   );
 };
 
-export default ConsentModal;
+export default ConsentModalView;

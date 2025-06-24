@@ -12,7 +12,7 @@ import { requestRegister } from '@apis/index';
 import usePageControll from '@hooks/usePageControll';
 import { useSetRecoilState } from 'recoil';
 import { isLoadingState } from '@modules/atoms';
-import ConsentModal from '@pages/ConsentModal/ConsentModal';
+import ConsentModal from '@pages/ConsentModal/ConsentModalView';
 
 
 
@@ -185,6 +185,7 @@ const RegisterView = () => {
       </PrivacyConsentWrapper>
   
       </InputView>
+      
       <IconButton
         label={'가입 완료'}
         onClick={() => confirmRegister && confirmRegister()}
