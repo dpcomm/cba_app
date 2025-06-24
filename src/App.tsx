@@ -83,9 +83,7 @@ const App = () => {
       {isLoading[0].isLoading && <Spinner />}
       <Navbar />
       <Routes>
-        {/* <Route path="/" element={<Login />} /> */}
-        {/* <Route path="/" element={<MyPage />} /> */}
-        <Route path="/" element={<SupportView />} />
+        <Route path="/" element={<Login />} />
         <Route path={`/${Page.register}`} element={<Register />} />
         <Route path={`/${Page.notLogin}`} element={<NotLogin />} />
         <Route path={`/${Page.resetPassword}`} element={<ResetPassword />} />
