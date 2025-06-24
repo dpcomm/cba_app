@@ -30,7 +30,7 @@ import HolydayPass from '@pages/HolydayPass';
 import RetreatList from '@pages/RetreatList';
 import ResetPassword from '@pages/ResetPassword';
 import CarpoolDownload from '@pages/CarpoolDownload';
-import SupportView from '@pages/Support/SupportView';
+import Support from '@pages/Support';
 
 const App = () => {
   const setUser = useSetRecoilState(userState);
@@ -107,6 +107,7 @@ const App = () => {
           <Route path={`/${Page.holydayPass}`} element={<HolydayPass />} />
           <Route path={`/${Page.retreatList}`} element={<RetreatList />} />
           <Route path={`/${Page.retreatList}`} element={<RetreatList />} />
+          <Route path={`/${Page.support}`} element={<Support />} />
         </Route>
         <Route path="*" element={<Error404 />} />
       </Routes>
