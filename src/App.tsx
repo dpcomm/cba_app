@@ -30,6 +30,7 @@ import HolydayPass from '@pages/HolydayPass';
 import RetreatList from '@pages/RetreatList';
 import ResetPassword from '@pages/ResetPassword';
 import CarpoolDownload from '@pages/CarpoolDownload';
+import SupportView from '@pages/Support/SupportView';
 
 const App = () => {
   const setUser = useSetRecoilState(userState);
@@ -83,7 +84,8 @@ const App = () => {
       <Navbar />
       <Routes>
         {/* <Route path="/" element={<Login />} /> */}
-        <Route path="/" element={<MyPage />} />
+        {/* <Route path="/" element={<MyPage />} /> */}
+        <Route path="/" element={<SupportView />} />
         <Route path={`/${Page.register}`} element={<Register />} />
         <Route path={`/${Page.notLogin}`} element={<NotLogin />} />
         <Route path={`/${Page.resetPassword}`} element={<ResetPassword />} />
@@ -105,6 +107,7 @@ const App = () => {
           <Route path={`/${Page.timeTable}`} element={<TimeTable />} />
           <Route path={`/${Page.prayTalk}`} element={<PrayTalk />} />
           <Route path={`/${Page.holydayPass}`} element={<HolydayPass />} />
+          <Route path={`/${Page.retreatList}`} element={<RetreatList />} />
           <Route path={`/${Page.retreatList}`} element={<RetreatList />} />
         </Route>
         <Route path="*" element={<Error404 />} />
