@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { EColor } from "@styles/color";
 import { Title3, body4, Title6 } from "@styles/font";
 
+
 export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -80,4 +81,67 @@ export const TextSub = styled.div`
 	text-align: left;
 	color: ${EColor.TEXT_500};
 	${body4}
+`;
+
+
+export const PrivacyConsentWrapper = styled.div`
+  text-align: left;
+  ${body4}
+
+  font-family: sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+
+  h6 {
+    font-weight: bold;
+    margin: 16px 0 8px;
+    font-size: 14px;
+  }
+
+  ul {
+    padding-left: 1.2em;
+    margin-bottom: 8px;
+  }
+
+  li {
+    margin-bottom: 4px;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  button {
+	background-color: transparent;
+	border: none;
+	color: ${EColor.COLOR_PRIMARY};
+	cursor: pointer;
+	// text-decoration: underline;
+  }
+
+  .title {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .scrollBox {
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    padding: 16px;
+    height: 200px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+  }
+
+  .checkboxGroup {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .checkboxGroup input {
+    margin-right: 6px;
+  }
 `;

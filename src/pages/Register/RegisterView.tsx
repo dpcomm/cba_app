@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GroupInputView,Container, EmptyBox, InputBox, InputView, LogoBold, LogoLight, LogoView, SvgBox,TextSub } from './RegisterView.styled';
+import { GroupInputView,Container, EmptyBox, InputBox, InputView, LogoBold, LogoLight, LogoView, SvgBox,TextSub, PrivacyConsentWrapper } from './RegisterView.styled';
 import TextInputB from '@components/TextInputB';
 import PhoneInput from '@components/PhoneInput';
 import SvgIcon from '@components/SvgIcon';
@@ -12,6 +12,10 @@ import { requestRegister } from '@apis/index';
 import usePageControll from '@hooks/usePageControll';
 import { useSetRecoilState } from 'recoil';
 import { isLoadingState } from '@modules/atoms';
+import ConsentModal from '@pages/ConsentModal/ConsentModalView';
+
+
+
 
 const RegisterView = () => {
   const { handlePage } = usePageControll();
@@ -26,6 +30,22 @@ const RegisterView = () => {
   const [group, set_group] = useState("");
   const [birth, set_birth] = useState("2024-01-01");
   const [etcGroup, set_etcGroup] = useState("");
+
+  //개인정보동의
+  const [agree, setAgree] = useState(false); // 동의 여부
+  const [disagree, setDisagree] = useState(false); // 비동의 여부
+  const [openModal, setOpenModal] = useState(false); // 모달 open state
+
+  const handleAgreeCheck = (type: 'agree' | 'disagree') => {
+    if (type === 'agree') {
+      setAgree(true);
+      setDisagree(false);
+    } else {
+      setAgree(false);
+      setDisagree(true);
+      alert("개인정보 수집 및 이용에 동의하지 않으면 회원가입이 불가능합니다.");
+    }
+  };
 
   const ok = () => handleRegister();
   const cancle = () => console.log("Cancled..");
@@ -50,6 +70,10 @@ const RegisterView = () => {
       setIsLoading({ isLoading: false });
       return alert("이름은 2자 이상 실명으로 입력해주세요.");
     }
+    if (!agree) {
+      setIsLoading({ isLoading: false });
+      return alert("개인정보 수집 및 이용에 동의해야 가입할 수 있습니다.");
+    }   
     requestRegister(
       id,
       password,
@@ -126,10 +150,45 @@ const RegisterView = () => {
           <SvgBox><SvgIcon name={'cake'} width={30} height={30} fill={EColor.TEXT_200} stroke={EColor.COLOR_PRIMARY} /></SvgBox>
           <TextInputB placeHolder={'생년월일을 입력해주세요.'} getter={birth} setter={set_birth} type='date' />
         </InputBox>
+
+      <PrivacyConsentWrapper>
+        <div className="title">
+          카풀 서비스 개인정보 수집 및 이용 동의서
+          <button
+            type="button"
+            onClick={() => setOpenModal(true)}
+          >
+            [자세히 보기]
+          </button>
+        </div>
+
+        <div className="checkboxGroup">
+          <label>
+            <input
+              type="checkbox"
+              checked={agree}
+              onChange={() => handleAgreeCheck('agree')}
+            />
+            본인은 위의 내용을 충분히 이해하였으며, 개인정보 수집 및 이용에 동의합니다.
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={disagree}
+              onChange={() => handleAgreeCheck('disagree')}
+            />
+            동의하지 않습니다.
+          </label>
+        </div>
+
+        <ConsentModal open={openModal} onClose={() => setOpenModal(false)} />
+      </PrivacyConsentWrapper>
+  
       </InputView>
+      
       <IconButton
         label={'가입 완료'}
-        onClick={confirmRegister}
+        onClick={() => confirmRegister && confirmRegister()}
         width='118px'
         height='48px'
         color={EColor.TEXT_200}

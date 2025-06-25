@@ -14,6 +14,9 @@ const MyPageView = () => {
       <ListItemButton onClick={() => handlePage("retreat-list")}>
         나의 수련회
       </ListItemButton>
+      <ListItemButton onClick={() => handlePage("support")}>
+        Support
+      </ListItemButton>
       <VersionView>
         <Name>{packageJson.name}</Name>
         <Version>{packageJson.version}</Version>
