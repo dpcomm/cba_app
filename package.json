@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --config config/webpack.dev.js",
-    "build": "webpack --config config/webpack.prod.js"
+    "build": "npx webpack --config config/webpack.prod.js"
   },
   "browserslist": [
     "ie 11"
