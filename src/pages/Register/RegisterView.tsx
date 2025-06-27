@@ -25,7 +25,7 @@ const RegisterView = () => {
   const [password, set_password] = useState("");
   const [password2, set_password2] = useState("");
   const [name, set_name] = useState("");
-  const [gender, set_gender] = useState(0);
+  const [gender, set_gender] = useState<number | undefined>(undefined);
   const [phone, set_phone] = useState("");
   const [group, set_group] = useState("");
   const [birth, set_birth] = useState("2024-01-01");
@@ -57,7 +57,7 @@ const RegisterView = () => {
       setIsLoading({ isLoading: false });
       return alert("패스워드가 일치하지 않습니다.");
     }
-    if (!id || !password || !password2 || !name || !phone || !group || !birth) {
+    if (!id || !password || !password2 || !name || !phone || !group ) {
       setIsLoading({ isLoading: false });
       return alert("회원 정보를 모두 입력해주세요.");
     }
@@ -80,8 +80,8 @@ const RegisterView = () => {
       name,
       group === "기타" ? etcGroup : group,
       phone,
-      birth,
-      gender ? "female" : "male",
+      birth && birth !== "2024-01-01" ? birth : '1900-01-01',
+      gender === 0 || gender === 1 ? (gender ? "female" : "male") : "",
       etcGroup
     )
     .then(() => {
@@ -122,17 +122,6 @@ const RegisterView = () => {
           <TextInputB placeHolder={'이름을 입력해주세요.'} getter={name} setter={set_name} maxLength={4} />
         </InputBox>
         <InputBox>
-          <SvgBox><SvgIcon name={'gender'} width={30} height={30} fill={EColor.TEXT_200} stroke={EColor.COLOR_PRIMARY} /></SvgBox>
-          <RadioButton
-            items={[
-              { text: '남자', value: 0 },
-              { text: '여자', value: 1 },
-            ]}
-            initialValue={0}
-            onChange={set_gender}
-          />
-        </InputBox>
-        <InputBox>
           <SvgBox><SvgIcon name={'user'} width={30} height={30} fill={EColor.TEXT_200} stroke={EColor.COLOR_PRIMARY} /></SvgBox>
           <PhoneInput getter={phone} setter={set_phone} />
         </InputBox>
@@ -147,9 +136,21 @@ const RegisterView = () => {
         }
         <TextSub>* 지예배당/교단교회 - [기타]를 선택해 작성해주세요.</TextSub>
         <InputBox>
+          <SvgBox><SvgIcon name={'gender'} width={30} height={30} fill={EColor.TEXT_200} stroke={EColor.COLOR_PRIMARY} /></SvgBox>
+          <RadioButton
+            items={[
+              { text: '남자', value: 0 },
+              { text: '여자', value: 1 },
+            ]}
+            onChange={set_gender}
+            toggleable={true}
+          />
+        </InputBox>
+        <InputBox>
           <SvgBox><SvgIcon name={'cake'} width={30} height={30} fill={EColor.TEXT_200} stroke={EColor.COLOR_PRIMARY} /></SvgBox>
           <TextInputB placeHolder={'생년월일을 입력해주세요.'} getter={birth} setter={set_birth} type='date' />
         </InputBox>
+        <TextSub>* 성별과 생년월일은 선택사항입니다. 해당정보는 CBA 내 동명이인의 구별을 위해 사용됩니다.</TextSub>
 
       <PrivacyConsentWrapper>
         <div className="title">
