@@ -161,3 +161,9 @@ export const requestResetPassword = (
 export const requestApplicationVersion = () => {
   return request.get('/api/status/version/application');
 };
+
+export const requestUserDelete = (userId: number) => {
+  return request.post('/api/user/delete', {
+    id: userId
+  });
+};

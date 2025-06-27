@@ -8,7 +8,7 @@ import RadioButton from '@components/RadioButton';
 import Dropdown from '@components/Dropdown';
 import { IconButton } from '@components/IconButton';
 import useConfirm from '@hooks/useConfirm';
-import { updateUserInfo } from '@apis/index';
+import { requestUserDelete, updateUserInfo } from '@apis/index';
 import usePageControll from '@hooks/usePageControll';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { isLoadingState, userState } from '@modules/atoms';
@@ -79,7 +79,26 @@ const ProfileView = () => {
     }
   };
 
+  const handleAccountDelete = async () => {
+    setIsLoading({ isLoading: true });
+    try {
+      await requestUserDelete(user.id);
+      alert("계정 삭제가 완료되었습니다.");
+      await localStorage.removeItem('access_token');
+      await localStorage.removeItem('refresh_token');
+
+      handlePage('');
+      setIsLoading({ isLoading: false });
+    } catch (err) {
+      setIsLoading({ isLoading: false });
+      console.log('Error deleting account:', err);
+      alert("계정 삭제에 실패하였습니다.");
+    }
+  };
   const confirmUpdate = useConfirm("회원정보를 수정 하시겠습니까?", handleUpdateProfile);
+  const confirmDelete = useConfirm("계정을 삭제하시겠습니까? 서비스의 모든 데이터가 삭제됩니다.", handleAccountDelete);
+
+
 
 	return (
     <Container>
@@ -138,6 +157,17 @@ const ProfileView = () => {
         height='48px'
         color={EColor.TEXT_200}
         backgroundColor={EColor.COLOR_PRIMARY}
+        borderRadius='8px'
+      />
+      <br></br>
+      <IconButton
+        label={'계정 삭제'}
+        onClick={confirmDelete}
+        width='118px'
+        height='48px'
+        color={EColor.TEXT_200}
+        backgroundColor={EColor.RED}
+        tintColor={EColor.RED}
         borderRadius='8px'
       />
     </Container>
