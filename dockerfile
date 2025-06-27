@@ -2,6 +2,7 @@ FROM node:20-alpine AS react-builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
+RUN npm install -g webpack webpack-cli
 RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 COPY . .
 RUN npm run build
