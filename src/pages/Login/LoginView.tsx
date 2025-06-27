@@ -54,6 +54,7 @@ const LoginView = () => {
 			setIsLoading({ isLoading: false });
 			if (err.response.data.message === "Unregisterd user") return alert("존재하지 않는 유저입니다.");
 			if (err.response.data.message === "Incorrect password") return alert("비밀번호가 일치하지 않습니다.");
+			if (err.response.data.message === "Deleted user") return alert("삭제된 계정입니다.");
 			return alert("잘못된 접근입니다.");
 		});
 	};
