@@ -22,7 +22,7 @@ import { ProgressBar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { HolidayPassQuestion } from './HolydayPassQuestion';
 import usePageControll from '@hooks/usePageControll';
-import { requestApplication, requestApplicationByUserAndRetreatId, requestCreatePray, requestUserGroup } from '@apis/index';
+import { requestApplication, requestApplicationByUserAndRetreatId, requestCreatePray, requestUserBirth, requestUserGroup } from '@apis/index';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { isLoadingState, userState } from '@modules/atoms';
 import SvgIcon from '@components/SvgIcon';
@@ -32,6 +32,7 @@ import Dropdown  from '@components/Dropdown';
 import { EColor } from '@styles/color';
 import TextInputB from '@components/TextInputB';
 import CustomMealRadioButton from '@components/CustomMealRadioButton';
+import DateInput from '@components/DateInput';
 
 const HolidayPassView = () => {
   const { handlePage } = usePageControll();
@@ -48,6 +49,7 @@ const HolidayPassView = () => {
   const [meal, set_meal] = useState([[0,0,0], [0,0,0], [0,0,0]]);
   const [bus,set_bus] = useState([0,0])
   const [childCount,set_childCount] = useState(0)
+  const [birth,set_birth] = useState("")
 
 
   useEffect(() => {
@@ -151,12 +153,19 @@ const HolidayPassView = () => {
   
     // answer 타입일 경우 inputValue 값 체크
     if (currentQuestion.type === 'answer') {
-      if (inputValue.trim() === '') {
+      if (birth.trim() === '') {
         alert('내용을 입력해주세요~~');
         return;
       }
-      handleAnswerChange(currentQuestion.id, inputValue);
+      handleAnswerChange(currentQuestion.id, birth);
       return;
+
+      // if (inputValue.trim() === '') {
+      //   alert('내용을 입력해주세요~~');
+      //   return;
+      // }
+      // handleAnswerChange(currentQuestion.id, inputValue);
+      // return;
     }
 
     if (currentQuestion.type === 'selector') {
@@ -177,6 +186,7 @@ const HolidayPassView = () => {
         await requestCreatePray(user.id, answers[4]);
         await requestApplication(user.userId,3,meal ,answers[3],bus,CarNumber,false,childCount);
         await requestUserGroup(user.userId,answers[2])
+        await requestUserBirth(user.userId,answers[5])
         setIsLoading({ isLoading: false });
         alert('Pass 등록이 완료되었습니다. 2025 여름수련회 "하나님 나라"에서 만나요~');
         handlePage('home');
@@ -237,11 +247,12 @@ const HolidayPassView = () => {
         {currentQuestion.type === 'answer' && (
           <form onSubmit={handleSubmit}>
             <AnswerBox>
-              <Textarea
+              {/* <Textarea
                 placeholder={currentQuestion.desc}
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-              />
+              /> */}
+              <DateInput getter={birth} setter={set_birth} />
               <Button onClick={handleSubmit} type="submit">
                 {currentQuestion.nextBtn}
               </Button>

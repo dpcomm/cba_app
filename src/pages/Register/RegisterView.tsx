@@ -13,6 +13,7 @@ import usePageControll from '@hooks/usePageControll';
 import { useSetRecoilState } from 'recoil';
 import { isLoadingState } from '@modules/atoms';
 import ConsentModal from '@pages/ConsentModal/ConsentModalView';
+import DateInput from '@components/DateInput';
 
 
 
@@ -28,7 +29,7 @@ const RegisterView = () => {
   const [gender, set_gender] = useState<number | undefined>(undefined);
   const [phone, set_phone] = useState("");
   const [group, set_group] = useState("");
-  const [birth, set_birth] = useState("2024-01-01");
+  // const [birth, set_birth] = useState("");
   const [etcGroup, set_etcGroup] = useState("");
 
   //개인정보동의
@@ -80,7 +81,8 @@ const RegisterView = () => {
       name,
       group === "기타" ? etcGroup : group,
       phone,
-      birth && birth !== "2024-01-01" ? birth : '1900-01-01',
+      // birth && birth !== "2024-01-01" ? birth : '1900-01-01',
+      '1900-01-01',
       gender === 0 || gender === 1 ? (gender ? "female" : "male") : "",
       etcGroup
     )
@@ -146,11 +148,11 @@ const RegisterView = () => {
             toggleable={true}
           />
         </InputBox>
-        <InputBox>
-          <SvgBox><SvgIcon name={'cake'} width={30} height={30} fill={EColor.TEXT_200} stroke={EColor.COLOR_PRIMARY} /></SvgBox>
-          <TextInputB placeHolder={'생년월일을 입력해주세요.'} getter={birth} setter={set_birth} type='date' />
-        </InputBox>
-        <TextSub>* 성별과 생년월일은 선택사항입니다. 해당정보는 CBA 내 동명이인의 구별을 위해 사용됩니다.</TextSub>
+        {/* <InputBox>
+          <SvgBox><SvgIcon name={'cake'} width={30} height={30} fill={EColor.TEXT_200} stroke={EColor.COLOR_PRIMARY} /></SvgBox> */}
+          {/* <TextInputB placeHolder={'생년월일을 입력해주세요.'} getter={birth} setter={set_birth} type='numeric' /> */}
+        {/* </InputBox> */}
+        <TextSub>* 성별은 선택사항입니다. 해당정보는 CBA 내 동명이인의 구별을 위해 사용됩니다.</TextSub>
 
       <PrivacyConsentWrapper>
         <div className="title">

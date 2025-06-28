@@ -49,6 +49,12 @@ export const HolidayPassQuestion: Question[] = [
   },
   {
     id: 6,
+    title: '생년월일을 입력해주세요.',
+    nextBtn: '다음',
+    type: 'answer',
+  },
+  {
+    id: 7,
     title: '',
     nextBtn: '설문지 등록',
     type: 'done',
