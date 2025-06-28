@@ -39,7 +39,7 @@ const HolidayPassView = () => {
   const [questionNum, setQuestionNum] = useState(0);
   const [inputValue, setInputValue] = useState('');
   const [answers, setAnswers] = useState<any[]>([]);
-  console.log(answers);
+  // console.log(answers);
   
   const setIsLoading = useSetRecoilState(isLoadingState);
   const user = useRecoilValue(userState);
@@ -76,7 +76,7 @@ const HolidayPassView = () => {
   const handleAnswerChange = (questionId: number, answer: any) => {
     const updatedAnswers = [...answers];
     updatedAnswers[questionId - 1] = answer;
-    console.log(`[DEBUG] handleAnswerChange 호출됨: id=${questionId}, answer=`, answer);
+    // console.log(`[DEBUG] handleAnswerChange 호출됨: id=${questionId}, answer=`, answer);
 
     // 특수 케이스 처리
     switch (questionId) {
@@ -182,7 +182,7 @@ const HolidayPassView = () => {
     if (currentQuestion.type === 'done') {
       try {
         setIsLoading({ isLoading: true });
-        console.log(answers)
+        // console.log(answers)
         await requestCreatePray(user.id, answers[4]);
         await requestApplication(user.userId,3,meal ,answers[3],bus,CarNumber,false,childCount);
         await requestUserGroup(user.userId,answers[2])
@@ -192,7 +192,7 @@ const HolidayPassView = () => {
         handlePage('home');
       } catch (err) {
         setIsLoading({ isLoading: false });
-        console.log(err);
+        // console.log(err);
         // console.log(err.response?.data?.message);
         alert('Pass 등록 중 오류가 발생했습니다.');
       }
