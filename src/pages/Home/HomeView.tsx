@@ -118,7 +118,7 @@ const HomeView = () => {
           setIsLoading({ isLoading: false });
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
           alert('로그아웃에 실패하였습니다.');
           setIsLoading({ isLoading: false });
         });
@@ -190,15 +190,15 @@ const HomeView = () => {
         </ItemView>
       </MenuView>
       <MenuView>
-        {/* <ItemView onClick={() => handlePage('retreat-info')}> */}
-        <ItemView onClick={() => alert("준비중입니다. 조금만 기다려주세요!!")}>
+        <ItemView onClick={() => handlePage('retreat-info')}>
+        {/* <ItemView onClick={() => alert("준비중입니다. 조금만 기다려주세요!!")}> */}
           <SvgIcon name={'home_guide'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
         {/* <ItemView onClick={() => handlePage('youtube')}> */}
         <ItemView onClick={() => alert("준비중입니다. 조금만 기다려주세요!!")}>
           <SvgIcon name={'home_live'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
-        <ItemView onClick={() => alert("준비중입니다. 조금만 기다려주세요!!")}>
+        <ItemView onClick={() => handlePage('retreat-payment')}>
           <SvgIcon name={'home_payment'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
       </MenuView>
