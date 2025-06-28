@@ -109,6 +109,16 @@ export const requestUserGroup = (
   });
 };
 
+export const requestUserBirth = (
+  userId: string,
+  birth: string  // 개편으로 인한 소그룹 변경 확인 필요
+) => {
+  return request.post(`/api/user/${userId}/birth`, {
+    userId,
+    birth
+  });
+};
+
 export const requestYoutube = () => {
   return request.get('/api/youtube');
 };
