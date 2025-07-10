@@ -14,7 +14,7 @@ const RetreatPaymentView = () => {
   const user = useRecoilState(userState);
   useEffect(() => {
     setIsLoading({ isLoading: true });
-    requestApplicationByUserAndRetreatId(user[0].userId, 1).then((res) => {
+    requestApplicationByUserAndRetreatId(user[0].userId, 3).then((res) => {
       if (res.data.application.feePaid) {
         setIsLoading({ isLoading: false });
         return set_feePaid("납부완료");
