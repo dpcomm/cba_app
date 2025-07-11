@@ -125,7 +125,7 @@ export const BarTextView = styled.div`
 
 export const BarTextMain = styled.div`
   ${Title5};
-  color: ${EColor.COLOR_PRIMARY_SUB1};
+  color: ${EColor.COLOR_PRIMARY_SUB2};
   width: 96px;
   text-align: center;
   white-space: nowrap;
