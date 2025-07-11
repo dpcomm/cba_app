@@ -1,5 +1,6 @@
 import React from 'react';
 import poster from '@assets/images/retreat_kingdomOfGod_poster.png';
+import guidebook_0 from '@assets/images/retreat_kingdomOfGod_guidebook_0.png';
 import guidebook_1 from '@assets/images/retreat_kingdomOfGod_guidebook_1.png';
 import guidebook_2 from '@assets/images/retreat_kingdomOfGod_guidebook_2.png';
 import guidebook_3 from '@assets/images/retreat_kingdomOfGod_guidebook_3.png';
@@ -55,6 +56,7 @@ const RetreatInfoView = () => {
 				<LogoImage src={poster} />
 				<br></br>
 				<RetreatGuideBookTitle>GUIDE BOOK</RetreatGuideBookTitle>
+				<LogoImage src={guidebook_0} />
 				<LogoImage src={guidebook_1} />
 				<LogoImage src={guidebook_2} />
 				<LogoImage src={guidebook_3} />
