@@ -173,7 +173,7 @@ const HomeView = () => {
           </div>
         </DDayText> */}
       </DDayView>
-      {/* <Left onClick={() => handlePage('youtube')}>수련회 라이브 바로가기 ▶</Left> */}
+      <Left onClick={() => handlePage('youtube')}>수련회 라이브 바로가기 ▶</Left>
       <NoticeView>
         <NoticeTop>
           <SvgIcon name={'notice'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
@@ -194,8 +194,8 @@ const HomeView = () => {
         {/* <ItemView onClick={() => alert("준비중입니다. 조금만 기다려주세요!!")}> */}
           <SvgIcon name={'home_guide'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
-        {/* <ItemView onClick={() => handlePage('youtube')}> */}
-        <ItemView onClick={() => alert("준비중입니다. 조금만 기다려주세요!!")}>
+        <ItemView onClick={() => handlePage('youtube')}>
+        {/* <ItemView onClick={() => alert("준비중입니다. 조금만 기다려주세요!!")}> */}
           <SvgIcon name={'home_live'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
         <ItemView onClick={() => handlePage('retreat-payment')}>
