@@ -159,7 +159,7 @@ export const Bar = styled.div`
   align-items: center;
   width: 100%;
   height: 3px;
-  background-image: linear-gradient(to right, ${EColor.COLOR_PRIMARY_SUB1} 50%, ${EColor.TEXT_500} 50%);
+  background-image: linear-gradient(to right, ${EColor.COLOR_PRIMARY} 50%, ${EColor.TEXT_500} 50%);
 `;
 
 export const Dot = styled.div<{ color: string }>`
