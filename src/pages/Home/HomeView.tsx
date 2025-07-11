@@ -139,7 +139,7 @@ const HomeView = () => {
         </HeaderRight>
       </HeaderView>
       <DDayView>
-        {/* {currentTime ? (
+        {currentTime ? (
           <>
             <BarTextView>
               <BarTextSubLeft>{prevTime}</BarTextSubLeft>
@@ -162,8 +162,8 @@ const HomeView = () => {
             (눅 17:21)
           </div>
         </DDayText>
-        )} */}
-        <DDayText>
+        )}
+        {/* <DDayText>
           <div className="day"> D-{dDay}</div>
           <div className="bible">
             또 여기있다 저기 있다고도 못하리니 <br />
@@ -171,7 +171,7 @@ const HomeView = () => {
             <br />
             (눅 17:21)
           </div>
-        </DDayText>
+        </DDayText> */}
       </DDayView>
       {/* <Left onClick={() => handlePage('youtube')}>수련회 라이브 바로가기 ▶</Left> */}
       <NoticeView>
