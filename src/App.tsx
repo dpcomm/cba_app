@@ -37,6 +37,7 @@ const App = () => {
   const isLoading = useRecoilState(isLoadingState);
 
   useEffect(() => {
+    if (window.location.pathname === '/maintenance') return;
     handleAuthCheck();
   }, []);
 
