@@ -62,8 +62,8 @@ export const SvgView = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 128px;
-  height: 128px;
+  width: 148px;
+  height: 148px;
 `;
 
 export const HeaderCenter = styled.div`
