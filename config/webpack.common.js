@@ -63,10 +63,6 @@ module.exports = {
       ],
       maximumFileSizeToCacheInBytes: 15 * 1024 * 1024,
     }),
-    new GenerateSW({
-      include: [/\.html$/, /\.js$/],
-      maximumFileSizeToCacheInBytes: 15 * 1024 * 1024,
-    }),
   ],
   resolve: {
     alias: {

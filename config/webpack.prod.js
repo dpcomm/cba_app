@@ -5,6 +5,7 @@ const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const { GenerateSW } = require("workbox-webpack-plugin");
 
 module.exports = merge(common, {
   mode: "production",
@@ -21,14 +22,19 @@ module.exports = merge(common, {
         test: /\.(sa|sc|c)ss$/i,
         use: [
           MiniCssExtractPlugin.loader,
-          "style-loader",
           "css-loader",
           "sass-loader"
         ],
       },
     ],
   },
-  plugins: [new MiniCssExtractPlugin()],
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new GenerateSW({
+      include: [/\.html$/, /\.js$/],
+      maximumFileSizeToCacheInBytes: 15 * 1024 * 1024,
+    }),
+  ],
   optimization: {
     usedExports: true,
     minimize: true,

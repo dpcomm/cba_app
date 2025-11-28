@@ -32,29 +32,32 @@ const LoginView = () => {
 		setIsLoading({ isLoading: true });
 		requestLogin(id, password, autoLogin)
 		.then(async (res) => {
+			const { data } = res.data;
 			setUser({
-				id: res.data.user.id,
-				userId: res.data.user.userId,
-				rank: res.data.user.rank,
-				password: res.data.user.password,
-				name: res.data.user.name,
-				group: res.data.user.group,
-				phone: res.data.user.phone,
-				birth: res.data.user.birth,
-				gender: res.data.user.gender,
+				id: data.user.id,
+				userId: data.user.userId,
+				rank: data.user.rank,
+				password: data.user.password,
+				name: data.user.name,
+				group: data.user.group,
+				phone: data.user.phone,
+				birth: data.user.birth,
+				gender: data.user.gender,
 			});
-			await localStorage.setItem('access_token', res.data.accessToken);
-			if (autoLogin) {
-				await localStorage.setItem('refresh_token', res.data.refreshToken);
+			await localStorage.setItem('access_token', data.accessToken);
+			if (autoLogin && data.refreshToken) {
+				await localStorage.setItem('refresh_token', data.refreshToken);
 			}
 			handlePage('home');
 			alert("로그인에 성공하였습니다.");
 			setIsLoading({ isLoading: false });
 		}).catch((err) => {
 			setIsLoading({ isLoading: false });
-			if (err.response.data.message === "Unregisterd user") return alert("존재하지 않는 유저입니다.");
-			if (err.response.data.message === "Incorrect password") return alert("비밀번호가 일치하지 않습니다.");
-			if (err.response.data.message === "Deleted user") return alert("삭제된 계정입니다.");
+			if (err.response && err.response.data) {
+				if (err.response.data.message === "Unregisterd user") return alert("존재하지 않는 유저입니다.");
+				if (err.response.data.message === "Incorrect password") return alert("비밀번호가 일치하지 않습니다.");
+				if (err.response.data.message === "Deleted user") return alert("삭제된 계정입니다.");
+			}
 			return alert("잘못된 접근입니다.");
 		});
 	};

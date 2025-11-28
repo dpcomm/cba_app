@@ -2,7 +2,8 @@ import axios from 'axios';
 import { DOMAIN } from './domain';
 import { requestRefresh } from '.';
 
-const request = axios.create({ baseURL: DOMAIN.main, timeout: 1000 });
+const baseURL = process.env.NODE_ENV === 'development' ? DOMAIN.local : DOMAIN.main;
+const request = axios.create({ baseURL, timeout: 1000 });
 
 request.interceptors.request.use(async (config) => {
   const accessToken = await localStorage.getItem('access_token');
