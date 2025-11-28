@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { EColor } from '@styles/color';
-import { Title5, Title6, body1, body2, body3, body4, body5 } from '@styles/font';
+import { Title3, Title5, Title6, body1, body2, body3, body4, body5 } from '@styles/font';
 
 export const Container = styled.div`
   display: flex;
@@ -22,6 +22,48 @@ export const HeaderView = styled.div`
   gap: 6px;
   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   margin-bottom: 12px;
+`;
+
+export const ApplicationView = styled.div`
+  display: flex;
+  width: 100%;
+  height: 60%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  background-color: ${EColor.TEXT_200};
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+
+  &:hover {
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    background-color: ${EColor.TEXT_300};
+  }
+
+  &:active {
+    transform: translateY(2px) scale(0.995);
+  }
+`;
+
+export const ApplicationViewText = styled.div`
+  margin-top: 12px;
+  font-size: 18px;
+  color: ${EColor.COLOR_PRIMARY};
+  user-select: none;
+  ${Title3};
+  font-size: 35px;
+`;
+
+export const SvgView = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 148px;
+  height: 148px;
 `;
 
 export const HeaderCenter = styled.div`

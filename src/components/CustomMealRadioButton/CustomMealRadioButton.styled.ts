@@ -28,7 +28,7 @@ export const MealButton = styled.button<{ $active: boolean, $disabled: boolean }
   margin-bottom: 5px;
   ${body2};
   color: ${EColor.TEXT_200};
-  background-color: ${({ $active, $disabled }) => $disabled ? EColor.TEXT_400 : $active ? EColor.COLOR_PRIMARY_SUB2 : EColor.COLOR_PRIMARY_SUB1};
+  background-color: ${({ $active, $disabled }) => $disabled ? EColor.TEXT_400 : $active ? EColor.COLOR_PRIMARY_SUB1 : EColor.COLOR_PRIMARY_SUB2};
   border: none;
   border-radius: 8px;
   cursor: ${({ $disabled }) => $disabled ? 'not-allowed' : 'pointer'};

@@ -33,6 +33,7 @@ export enum Page {
   retreatList = 'retreat-list',
   resetPassword = 'reset-password',
   carpoolDownload = 'carpool-download',
+  winter26Application = 'winter26-application',
   support = 'support',
 }
 

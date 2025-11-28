@@ -24,6 +24,9 @@ import {
   NoticeView,
   NoticeTop,
   NoticeBottom,
+  ApplicationView,
+  SvgView,
+  ApplicationViewText,
 } from './HomeView.styled';
 import { EColor } from '@styles/color';
 import SvgIcon from '@components/SvgIcon';
@@ -85,13 +88,13 @@ const HomeView = () => {
 
   const confirmRegister = useConfirm(
     '수련회 신청서가 이미 작성되었습니다. 신청서를 수정하겠습니까?',
-    () => handlePage('retreat-application-info'),
+    () => handlePage('winter26-application'),
     () => console.log('Cancled..'),
   );
 
   const handleApplicationPage = () => {
     setIsLoading({ isLoading: true });
-    requestApplicationByUserAndRetreatId(user.userId, 3)
+    requestApplicationByUserAndRetreatId(user.userId, 4)
       .then((res) => {
         set_application({
           ...res.data.application,
@@ -100,7 +103,7 @@ const HomeView = () => {
         confirmRegister();
       })
       .catch((err) => {
-        if (err.response.data.message === 'Application not exist') handlePage('holyday-pass');
+        if (err.response.data.message === 'Application not exist') handlePage('winter26-application');
         setIsLoading({ isLoading: false });
       });
   };
@@ -138,7 +141,15 @@ const HomeView = () => {
           <SvgIcon name={'chevron_right'} width={28} height={28} fill={EColor.COLOR_PRIMARY} />
         </HeaderRight>
       </HeaderView>
-      <DDayView>
+      <ApplicationView onClick={handleApplicationPage}>
+        <SvgView>
+          <SvgIcon name={'application_check'} />
+        </SvgView>
+        <ApplicationViewText>
+          수련회 신청하기
+        </ApplicationViewText>
+      </ApplicationView>
+      {/* <DDayView>
         {currentTime ? (
           <>
             <BarTextView>
@@ -163,7 +174,7 @@ const HomeView = () => {
           </div>
         </DDayText>
         )}
-        {/* <DDayText>
+        <DDayText>
           <div className="day"> D-{dDay}</div>
           <div className="bible">
             또 여기있다 저기 있다고도 못하리니 <br />
@@ -171,37 +182,35 @@ const HomeView = () => {
             <br />
             (눅 17:21)
           </div>
-        </DDayText> */}
-      </DDayView>
-      <Left onClick={() => handlePage('youtube')}>수련회 라이브 바로가기 ▶</Left>
-      <NoticeView>
+        </DDayText>
+      </DDayView> */}
+      {/* <Left onClick={() => handlePage('youtube')}>수련회 라이브 바로가기 ▶</Left> */}
+      {/* <NoticeView>
         <NoticeTop>
           <SvgIcon name={'notice'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
           <h3>공지사항</h3>
         </NoticeTop>
         <NoticeBottom></NoticeBottom>
-      </NoticeView>
-      <MenuView>
+      </NoticeView> */}
+      {/* <MenuView>
         <ItemView onClick={() => handlePage('holyday-pass')}>
           <SvgIcon name={'home_pass'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
         <ItemView onClick={() => handlePage('carpool-download')}>
           <SvgIcon name={'home_carpool'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
-      </MenuView>
-      <MenuView>
+      </MenuView> */}
+      {/* <MenuView>
         <ItemView onClick={() => handlePage('retreat-info')}>
-        {/* <ItemView onClick={() => alert("준비중입니다. 조금만 기다려주세요!!")}> */}
           <SvgIcon name={'home_guide'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
         <ItemView onClick={() => handlePage('youtube')}>
-        {/* <ItemView onClick={() => alert("준비중입니다. 조금만 기다려주세요!!")}> */}
           <SvgIcon name={'home_live'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
         <ItemView onClick={() => handlePage('retreat-payment')}>
           <SvgIcon name={'home_payment'} width={'100%'} height={'100%'} fill={'none'} stroke={'none'} />
         </ItemView>
-      </MenuView>
+      </MenuView> */}
       <TextLight onClick={handleLogout}>로그아웃</TextLight>
     </Container>
   );

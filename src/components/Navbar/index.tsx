@@ -24,6 +24,7 @@ const pageLabel = {
   [Page.timeTable]: "수련회 일정표",
   [Page.prayTalk]: "기도 TALK",
   [Page.holydayPass]: "Pass 발급 신청",
+  [Page.winter26Application]: "[바라봄] 수련회 신청",
   [Page.retreatList]: "나의 수련회",
   [Page.resetPassword]: "비밀번호 재설정",
 };
