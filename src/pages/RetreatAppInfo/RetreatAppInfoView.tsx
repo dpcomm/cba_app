@@ -34,7 +34,7 @@ const RetreatAppInfoView = () => {
     }).catch((err) => {
       if (err.response.data.message === "Application not exist") {
         alert("등록된 수련회 신청서가 없습니다. 수련회 신청 페이지로 이동합니다.");
-        handlePage("retreat-application");
+        handlePage("winter26-application");
       }
     });
   }, []);

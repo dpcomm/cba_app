@@ -88,7 +88,7 @@ const HomeView = () => {
 
   const confirmRegister = useConfirm(
     '수련회 신청서가 이미 작성되었습니다. 신청서를 수정하겠습니까?',
-    () => handlePage('retreat-application-info'),
+    () => handlePage('winter26-application'),
     () => console.log('Cancled..'),
   );
 
@@ -103,7 +103,7 @@ const HomeView = () => {
         confirmRegister();
       })
       .catch((err) => {
-        if (err.response.data.message === 'Application not exist') handlePage('winter25-application');
+        if (err.response.data.message === 'Application not exist') handlePage('winter26-application');
         setIsLoading({ isLoading: false });
       });
   };

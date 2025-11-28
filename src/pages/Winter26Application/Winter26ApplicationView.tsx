@@ -17,24 +17,24 @@ import {
   MealButtonFalse,
   Callout,
   GradientText
-} from './Winter25Application.styled';
+} from './Winter26Application.styled';
 import { ProgressBar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Winter25ApplicationQuestion } from './Winter25ApplicationQuestion';
+import { Winter26ApplicationQuestion } from './Winter26ApplicationQuestion';
 import usePageControll from '@hooks/usePageControll';
 import { requestApplication, requestApplicationByUserAndRetreatId, requestCreatePray, requestUserBirth, requestUserGroup } from '@apis/index';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { isLoadingState, userState } from '@modules/atoms';
 import SvgIcon from '@components/SvgIcon';
 
-import { InputBox, SvgBox,GroupInputView } from './Winter25Application.styled';
+import { InputBox, SvgBox,GroupInputView } from './Winter26Application.styled';
 import Dropdown  from '@components/Dropdown';
 import { EColor } from '@styles/color';
 import TextInputB from '@components/TextInputB';
 import CustomMealRadioButton from '@components/CustomMealRadioButton';
 import DateInput from '@components/DateInput';
 
-const Winter25ApplicationView = () => {
+const Winter26ApplicationView = () => {
   const { handlePage } = usePageControll();
   const [questionNum, setQuestionNum] = useState(0);
   const [inputValue, setInputValue] = useState('');
@@ -51,27 +51,57 @@ const Winter25ApplicationView = () => {
   const [childCount,set_childCount] = useState(0);
   const [birth,set_birth] = useState("");
 
+  useEffect(() => {
+    if (!user.group) return;
+    setAnswers((prev) => {
+      const next = [...prev];
+      if (!next[2]) next[2] = user.group;
+      return next;
+    });
+  }, [user.group]);
 
   useEffect(() => {
-    requestApplicationByUserAndRetreatId(user.userId, 4).then((res) => {
-      const confirmEditApplication = window.confirm('기존에 작성된 설문지가 있습니다. 수정하시겠습니까?');
-      if (confirmEditApplication) {}
-      else {handlePage('home');}
-    })
-    .catch((err) => {
-      const data = err.response?.data;
-      if (data?.message === 'Application not exist') {} 
-      else{ alert('서버 오류가 발생했습니다.');
-        console.error(err);
-      }
-    });
+    requestApplicationByUserAndRetreatId(user.userId, 4)
+      .then((res) => {
+        const saved = res.data?.application;
+        if (!saved) return;
+
+        const savedMeal = saved.surveyData?.meal || [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+        const savedTransfer = saved.surveyData?.transfer;
+        const savedBus = savedTransfer?.bus || [0, 0];
+        const savedCarId = savedTransfer?.['own-car'] || '';
+        const savedChildCount = saved.surveyData?.childCount ?? 0;
+
+        set_meal(savedMeal);
+        set_bus(savedBus);
+        setCarNumber(savedCarId);
+        set_childCount(savedChildCount);
+        set_birth(user.birth || '');
+        setAnswers((prev) => {
+          const next = [...prev];
+          next[0] = '참가';
+          next[2] = user.group || next[2];
+          next[3] = savedTransfer?.transfer || next[3];
+          next[4] = savedBus[1] === 1 ? '대형버스' : next[4];
+          return next;
+        });
+      })
+      .catch((err) => {
+        const data = err.response?.data;
+        if (data?.message === 'Application not exist') {
+          return;
+        } else {
+          alert('서버 오류가 발생했습니다.');
+          console.error(err);
+        }
+      });
   }, []);
 
-  if (!Winter25ApplicationQuestion || Winter25ApplicationQuestion.length === 0) {
+  if (!Winter26ApplicationQuestion || Winter26ApplicationQuestion.length === 0) {
     return <div>Loading...</div>;
   }
 
-  const currentQuestion = Winter25ApplicationQuestion[questionNum];
+  const currentQuestion = Winter26ApplicationQuestion[questionNum];
   const handleAnswerChange = (questionId: number, answer: any) => {
     const updatedAnswers = [...answers];
     updatedAnswers[questionId - 1] = answer;
@@ -111,7 +141,7 @@ const Winter25ApplicationView = () => {
   
     setAnswers(updatedAnswers);
   
-    if (questionNum < Winter25ApplicationQuestion.length - 1) {
+    if (questionNum < Winter26ApplicationQuestion.length - 1) {
       setQuestionNum(questionNum + 1);
     }
   
@@ -183,11 +213,11 @@ const Winter25ApplicationView = () => {
         setIsLoading({ isLoading: true });
         // console.log(answers)
         await requestCreatePray(user.id, answers[4]);
-        await requestApplication(user.userId,3,meal ,answers[3],bus,CarNumber,false,childCount);
+        await requestApplication(user.userId,4,meal ,answers[3],bus,CarNumber,false,childCount);
         await requestUserGroup(user.userId,answers[2]);
-        await requestUserBirth(user.userId,answers[5]);
+        await requestUserBirth(user.userId,'1900-01-01');
         setIsLoading({ isLoading: false });
-        alert('Pass 등록이 완료되었습니다. 2025 여름수련회 "하나님 나라"에서 만나요~');
+        alert('2026 겨울수련회 "바라봄"에서 만나요~');
         handlePage('home');
       } catch (err) {
         setIsLoading({ isLoading: false });
@@ -199,15 +229,13 @@ const Winter25ApplicationView = () => {
   };
   
   const handleMealChange = (newData: number[][]) => {
-    const updated = newData.map((row, i) => {
-      const isChanged = !row.every((val, j) => val === meal[i][j]);
-      if (!isChanged) return meal[i]; // ← 주의! 이전 상태를 유지해야 함
-  
-      const isNowOn = row[0] === 1; // 바뀐 newData 기준
-      return Array(row.length).fill(isNowOn ? 1 : 0); // toggle
-    });
-  
-    set_meal(updated);
+    const enforcedOff = newData.map((row, rowIdx) =>
+      row.map((val, colIdx) => {
+        const isLockedOff = (rowIdx === 0 && (colIdx === 0 || colIdx === 1)) || (rowIdx === 2 && colIdx === 2);
+        return isLockedOff ? 0 : val;
+      })
+    );
+    set_meal(enforcedOff);
   };
 
   return (
@@ -216,7 +244,7 @@ const Winter25ApplicationView = () => {
         <ProgressBar style={{ height: '10px', marginBottom: '20px', borderRadius: 0 }}>
           <ProgressBar
             striped
-            now={(questionNum / (Winter25ApplicationQuestion.length - 1)) * 100}
+            now={(questionNum / (Winter26ApplicationQuestion.length - 1)) * 100}
             style={{
               height: '100%',
               // background: 'linear-gradient(to right, #ff7e5f, #feb47b)',
@@ -225,7 +253,7 @@ const Winter25ApplicationView = () => {
           />
         </ProgressBar>
         <div className="progressNum">
-          {currentQuestion.type !== 'done' ? `${currentQuestion.id} / ${Winter25ApplicationQuestion.length}` : '완료!'}
+          {currentQuestion.type !== 'done' ? `${currentQuestion.id} / ${Winter26ApplicationQuestion.length}` : '완료!'}
         </div>
       </ProgressBarBox>
       <QuestioBox>
@@ -262,15 +290,15 @@ const Winter25ApplicationView = () => {
           <form onSubmit={handleSubmit}>
             <InputBox>
               <CustomMealRadioButton
-                rowLabels={['7/11','7/12','7/13']}
-                columnLabels={['식사']}
+                rowLabels={['1/30','1/31','2/1']}
+                columnLabels={['아침','점심','저녁']}
                 labelOn='식사 O'
                 labelOff='식사 X'
                 data={meal}
                 disabled={[
-                  [false],
-                  [false],
-                  [false]
+                  [true,true,false],
+                  [false,false,false],
+                  [false,false,true],
                 ]}
                 onChange={handleMealChange}
               />
@@ -323,14 +351,14 @@ const Winter25ApplicationView = () => {
               </Button>
               {currentQuestion.id === 3 && (
               <Callout>
-                **가족실 안내사항** <br/>함께 참여하시는 자녀 인원 작성은 부부 중 <strong>1인만</strong> 작성해주세요!
+                {/* **가족실 안내사항** <br/>함께 참여하시는 자녀 인원 작성은 부부 중 <strong>1인만</strong> 작성해주세요! */}
+                기타 항목은 <br/><strong>기관,지예배당 및 교단교회</strong>에 해당하시면 선택하여 작성 바랍니다.
               </Callout>
               )}
               {currentQuestion.id === 4 && (
               <Callout>
-                **대형버스 출발편(7/11)** <br/>1. 본대 오전 9:30 본당 출발 <br/>2. 후발대 오후 7:30 본당 출발
-                <br/><br/> <span style={{fontWeight:600}}>원활한 진행을 위해 버스탑승 시간 반드시 준수해주세요 ㅠ</span>
-                <br/><br/> <GradientText>카풀 탑승자</GradientText>의 경우 대중교통으로 선택해주세요!
+                **선발대 안내**
+                <br/> <span style={{fontWeight:600}}>선발대 인원 중 차량을 갖고 가시는 분들은 자차 선택 후 번호 기입 부탁드리겠습니다.</span>
               </Callout>
               )}
             </InputBox>
@@ -339,7 +367,7 @@ const Winter25ApplicationView = () => {
         {currentQuestion.type === 'done' && (
           <InputBox>
             <Callout>
-                <GradientText>2025 여름 수련회</GradientText><br/><GradientText>[하나님 나라]</GradientText><br/><br/>수련회 등록이 <br/><strong>완료</strong>되었습니다!
+                <GradientText>2026 겨울 수련회</GradientText><br/><GradientText>[바라봄]</GradientText><br/><br/>수련회 등록이 <br/><strong>완료</strong>되었습니다!
             </Callout>
             <Button onClick={handleSubmit} type="submit">
               {currentQuestion.nextBtn}
@@ -362,4 +390,4 @@ const Winter25ApplicationView = () => {
   );
 };
 
-export default Winter25ApplicationView;
+export default Winter26ApplicationView;

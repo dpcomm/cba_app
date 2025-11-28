@@ -137,11 +137,11 @@ const ProfileView = () => {
         </InputBox>
         <InputBox>
           <SvgBox><SvgIcon name={'users'} width={30} height={30} fill={EColor.TEXT_200} stroke={EColor.COLOR_PRIMARY} /></SvgBox>
-          <Dropdown options={["권수영M", "노시은M", "반일섭M", "대청2부", "대청3부","기타"]} placeholder='소그룹을 선택해주세요.' initialValue={group} onChange={set_group}/>
+          <Dropdown options={["배윤희&김준영M", "노시은&윤승오M", "권수영&임강미M", "가족실","새친구","기타"]} placeholder='소그룹을 선택해주세요.' initialValue={group} onChange={set_group}/>
         </InputBox>
         {group === "기타" &&
             <GroupInputView>
-							<TextInputB placeHolder={'지예배당 및 교단교회 입력'} getter={etcGroup} setter={set_etcGroup} type={'text'} />
+							<TextInputB placeHolder={'기관, 지예배당 및 교단교회 입력'} getter={etcGroup} setter={set_etcGroup} type={'text'} />
             </GroupInputView>
         }
         <TextSub>* 지예배당/교단교회 - [기타]를 선택해 작성해주세요.</TextSub>

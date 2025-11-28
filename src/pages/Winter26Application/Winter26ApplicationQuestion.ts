@@ -10,10 +10,10 @@ export interface Question {
   type: string;
 }
 
-export const Winter25ApplicationQuestion: Question[] = [
+export const Winter26ApplicationQuestion: Question[] = [
   {
     id: 1,
-    title: '2025 여름 수련회(7/11~7/13) "하나님 나라"에 참가하나요?',
+    title: '2026 겨울 수련회(1/30~2/1) "바라봄"에 참가하나요?',
     answera: '참가',
     answerb: '불참',
     type: 'choice',
@@ -29,32 +29,26 @@ export const Winter25ApplicationQuestion: Question[] = [
     id: 3,
     title: '소속을 선택해주세요.',
     nextBtn: '다음',
-    desc: '가족실 자녀의 경우 대표자 1인만 작성해주시면 감사하겠습니다!',
-    options: ["배윤희&김준영M", "노시은&윤승오M", "권수영&임강미M", "가족실", "예배당(기관)","기타"],
+    desc: '기타는 기관,지예배당 및 교단교회에 해당하시면 선택해주시기 바랍니다.',
+    options: ["배윤희&김준영M", "노시은&윤승오M", "권수영&임강미M", "가족실","새친구","기타"],
     type: 'list',
   },
   {
     id: 4,
     title: '수련회장으로 갈 이동수단을 선택해주세요. (집->수련회장)',
     nextBtn: '다음',
-    options: ["본대 대형버스","후발대 대형버스", "자차","대중교통"],
+    options: ["본대 대형버스","후발대 대형버스", "자차","선발대","기타(대중교통/카풀 등)"],
     type: 'list',
   },
   {
     id: 5,
     title: '집으로 갈 이동수단을 선택해주세요. (수련회장->집)',
     nextBtn: '다음',
-    options: ["대형버스", "자차","대중교통"],
+    options: ["대형버스", "자차","선발대","기타(대중교통/카풀 등)"],
     type: 'list',
   },
   {
     id: 6,
-    title: '생년월일을 입력해주세요.',
-    nextBtn: '다음',
-    type: 'answer',
-  },
-  {
-    id: 7,
     title: '',
     nextBtn: '설문지 등록',
     type: 'done',
