@@ -31,6 +31,7 @@ import RetreatList from '@pages/RetreatList';
 import ResetPassword from '@pages/ResetPassword';
 import CarpoolDownload from '@pages/CarpoolDownload';
 import Support from '@pages/Support';
+import Winter25ApplicationView from '@pages/Winter25Application/Winter25ApplicationView';
 
 const App = () => {
   const setUser = useSetRecoilState(userState);
@@ -106,7 +107,7 @@ const App = () => {
           <Route path={`/${Page.timeTable}`} element={<TimeTable />} />
           <Route path={`/${Page.prayTalk}`} element={<PrayTalk />} />
           <Route path={`/${Page.holydayPass}`} element={<HolydayPass />} />
-          <Route path={`/${Page.retreatList}`} element={<RetreatList />} />
+          <Route path={`/${Page.winter25Application}`} element={<Winter25ApplicationView />} />
           <Route path={`/${Page.retreatList}`} element={<RetreatList />} />
           <Route path={`/${Page.support}`} element={<Support />} />
         </Route>
