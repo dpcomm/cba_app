@@ -1,4 +1,4 @@
-FROM node:20-alpine AS react-builder
+FROM node:20 AS react-builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm install --include=dev
