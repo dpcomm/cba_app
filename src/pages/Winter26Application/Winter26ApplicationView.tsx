@@ -247,8 +247,8 @@ const Winter26ApplicationView = () => {
             now={(questionNum / (Winter26ApplicationQuestion.length - 1)) * 100}
             style={{
               height: '100%',
-              // background: 'linear-gradient(to right, #ff7e5f, #feb47b)',
-              background: 'linear-gradient(to right, #87d5f2, #1f9edd)',
+              background: 'linear-gradient(to right, #ff7e5f, #feb47b)',
+              // background: 'linear-gradient(to right, #87d5f2, #1f9edd)',
             }}
           />
         </ProgressBar>
@@ -367,7 +367,7 @@ const Winter26ApplicationView = () => {
         {currentQuestion.type === 'done' && (
           <InputBox>
             <Callout>
-                <GradientText>2026 겨울 수련회</GradientText><br/><GradientText>[바라봄]</GradientText><br/><br/>수련회 등록이 <br/><strong>완료</strong>되었습니다!
+                <GradientText>2026 겨울 수련회</GradientText><br/><GradientText>[바라봄]</GradientText><br/>
             </Callout>
             <Button onClick={handleSubmit} type="submit">
               {currentQuestion.nextBtn}

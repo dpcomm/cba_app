@@ -96,7 +96,7 @@ export const Button = styled.button`
   border: none;
   border-radius: 16px;
   background: ${(props) =>
-    props.type === 'submit' ? 'linear-gradient(to right, #1f9edd, #a4b6ff )' : `${EColor.TEXT_400}`};
+    props.type === 'submit' ? 'linear-gradient(to right, #ff7e5f, #feb47b )' : `${EColor.TEXT_400}`};
   color: ${(props) => (props.type === 'submit' ? `${EColor.TEXT_200}` : '#000')};
   align-items: center;
 `;
@@ -203,7 +203,7 @@ export const Callout = styled.div`
 
 export const GradientText = styled.span`
   font-weight: 700;
-  background: linear-gradient(to right, #1f9edd, #a4b6ff);
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
