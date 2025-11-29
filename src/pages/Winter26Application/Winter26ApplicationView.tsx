@@ -330,7 +330,7 @@ const Winter26ApplicationView = () => {
               <GroupInputView>
                 <TextInputB placeHolder={'차량 번호 입력'} getter={CarNumber} setter={setCarNumber} type={'text'}/>
               </GroupInputView>}
-              {answers[currentQuestion.id - 1] === "가족실" &&
+              {/* {answers[currentQuestion.id - 1] === "가족실" &&
               <GroupInputView>
                 <InputBox>
                   함께 참여하는 자녀 수
@@ -341,7 +341,7 @@ const Winter26ApplicationView = () => {
                   initialValue={`${childCount}명`}
                   onChange={(selected) => set_childCount(parseInt(selected.replace('명',''),10))}
                 />
-              </GroupInputView>}
+              </GroupInputView>} */}
               {answers[currentQuestion.id - 1] === "기타" &&
               <GroupInputView>
                 <TextInputB placeHolder={'기타 소속 정보 입력'} getter={EtcGroup} setter={setEtcGroup} type={'text'}/>
