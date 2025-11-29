@@ -32,7 +32,9 @@ const LoginView = () => {
 		setIsLoading({ isLoading: true });
 		requestLogin(id, password, autoLogin)
 		.then(async (res) => {
-			const { data } = res.data;
+			const payload = res?.data?.data ? res.data.data : res?.data;
+			if (!payload) throw new Error('Invalid login response');
+			const data = payload;
 			setUser({
 				id: data.user.id,
 				userId: data.user.userId,
@@ -44,7 +46,7 @@ const LoginView = () => {
 				birth: data.user.birth,
 				gender: data.user.gender,
 			});
-			await localStorage.setItem('access_token', data.accessToken);
+			if (data.accessToken) await localStorage.setItem('access_token', data.accessToken);
 			if (autoLogin && data.refreshToken) {
 				await localStorage.setItem('refresh_token', data.refreshToken);
 			}

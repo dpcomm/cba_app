@@ -2,16 +2,18 @@ import axios from 'axios';
 import { DOMAIN } from './domain';
 import { requestRefresh } from '.';
 
-const baseURL = process.env.NODE_ENV === 'development' ? DOMAIN.local : DOMAIN.main;
-const request = axios.create({ baseURL, timeout: 1000 });
+const baseURL = process.env.NODE_ENV === 'development' ? DOMAIN.main : DOMAIN.main;
+const request = axios.create({ baseURL, timeout: 5000 });
 
-request.interceptors.request.use(async (config) => {
-  const accessToken = await localStorage.getItem('access_token');
+request.interceptors.request.use((config) => {
+  const accessToken = localStorage.getItem('access_token');
   if (!accessToken) {
-    config.headers.Authorization = null;
+    if (config.headers && config.headers.Authorization) {
+      delete config.headers.Authorization;
+    }
     return config;
   }
-  config.headers.Authorization = `Bearer ${accessToken}`;
+  if (config.headers) config.headers.Authorization = `Bearer ${accessToken}`;
   return config;
 });
 
@@ -39,7 +41,8 @@ request.interceptors.response.use(
           await localStorage.removeItem('access_token');
           await localStorage.setItem('access_token', data.data.accessToken);
           const newConfig = { ...error.config };
-          newConfig.headers.Authorization = `Bearer: ${data.data.accessToken}`;
+          if (!newConfig.headers) newConfig.headers = {};
+          newConfig.headers.Authorization = `Bearer ${data.data.accessToken}`;
           return axios(newConfig);
         }
       } catch (error) {
