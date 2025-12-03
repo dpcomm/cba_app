@@ -247,7 +247,8 @@ const Winter26ApplicationView = () => {
             now={(questionNum / (Winter26ApplicationQuestion.length - 1)) * 100}
             style={{
               height: '100%',
-              background: 'linear-gradient(to right, #ff7e5f, #feb47b)',
+              background: `linear-gradient(to right, ${EColor.COLOR_PRIMARY},${EColor.COLOR_PRIMARY_SUB1},${EColor.COLOR_PRIMARY_SUB2})`,
+              // background: 'linear-gradient(to right, #ff7e5f, #feb47b)',
               // background: 'linear-gradient(to right, #87d5f2, #1f9edd)',
             }}
           />
@@ -306,7 +307,8 @@ const Winter26ApplicationView = () => {
                   {currentQuestion.nextBtn}
               </Button>
               <Callout>
-                해당하는 날짜에 <span style={{ fontWeight: 600}}>한 번이라도</span>식사를 하신다면 체크!!
+                해당하는 날짜에 <span style={{ fontWeight: 600}}>한 번이라도</span> 
+                <br></br>식사를 하신다면 체크!!
               </Callout>
             </InputBox>
         </form>

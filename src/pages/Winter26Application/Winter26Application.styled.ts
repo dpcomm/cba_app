@@ -96,7 +96,7 @@ export const Button = styled.button`
   border: none;
   border-radius: 16px;
   background: ${(props) =>
-    props.type === 'submit' ? 'linear-gradient(to right, #ff7e5f, #feb47b )' : `${EColor.TEXT_400}`};
+    props.type === 'submit' ? `linear-gradient(to right,${EColor.COLOR_PRIMARY},${EColor.COLOR_PRIMARY_SUB1}, ${EColor.COLOR_PRIMARY_SUB2})` : `${EColor.TEXT_400}`};
   color: ${(props) => (props.type === 'submit' ? `${EColor.TEXT_200}` : '#000')};
   align-items: center;
 `;
@@ -192,18 +192,27 @@ export const Callout = styled.div`
   max-width: 300px;
   width: 100%;
   padding: 12px 16px;
-  background-color: #f0f4ff;
-  color: #1f3f71;
+  background: #00000;
+  color: ${EColor.COLOR_PRIMARY} !important;
+  border: 1px solid ${EColor.COLOR_PRIMARY_SUB1};
   border-radius: 12px;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.4;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 10px rgba(142, 119, 175, 0.12);
+  span {
+    color: inherit;
+  }
 `;
 
 export const GradientText = styled.span`
   font-weight: 700;
-  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  background: linear-gradient(
+    90deg,
+    ${EColor.COLOR_PRIMARY} 0%,
+    ${EColor.COLOR_PRIMARY_SUB1} 50%,
+    ${EColor.COLOR_PRIMARY_SUB2} 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
