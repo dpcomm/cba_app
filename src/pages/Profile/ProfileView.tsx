@@ -137,7 +137,7 @@ const ProfileView = () => {
         </InputBox>
         <InputBox>
           <SvgBox><SvgIcon name={'users'} width={30} height={30} fill={EColor.TEXT_200} stroke={EColor.COLOR_PRIMARY} /></SvgBox>
-          <Dropdown options={["배윤희&김준영M", "노시은&윤승오M", "권수영&임강미M", "가족실","새친구","기타"]} placeholder='소그룹을 선택해주세요.' initialValue={group} onChange={set_group}/>
+          <Dropdown options={["배윤희&김준영M", "노시은&윤승오M", "권수영&임강미M", "가족실","새친구","브릿지","기타"]} placeholder='소그룹을 선택해주세요.' initialValue={group} onChange={set_group}/>
         </InputBox>
         {group === "기타" &&
             <GroupInputView>
