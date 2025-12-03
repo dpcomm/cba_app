@@ -30,7 +30,7 @@ export const Winter26ApplicationQuestion: Question[] = [
     title: '소속을 선택해주세요.',
     nextBtn: '다음',
     desc: '기타는 기관,지예배당 및 교단교회에 해당하시면 선택해주시기 바랍니다.',
-    options: ["배윤희&김준영M", "노시은&윤승오M", "권수영&임강미M", "가족실","새친구","기타"],
+    options: ["배윤희&김준영M", "노시은&윤승오M", "권수영&임강미M", "가족실","새친구","브릿지","기타"],
     type: 'list',
   },
   {

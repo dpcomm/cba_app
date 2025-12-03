@@ -144,7 +144,6 @@ export const requestCheckUserWithoutPassword = (
   gender: string,
   phone: string,
   group: string,
-  birth: string,
   password?: string
 ) => {
   return request.post('/api/user/check-user', {
@@ -154,7 +153,6 @@ export const requestCheckUserWithoutPassword = (
     gender,
     phone,
     group,
-    birth,
   });
 };
 
