@@ -22,7 +22,7 @@ import { ProgressBar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { HolidayPassQuestion } from './HolydayPassQuestion';
 import usePageControll from '@hooks/usePageControll';
-import { requestApplication, requestApplicationByUserAndRetreatId, requestCreatePray, requestUserBirth, requestUserGroup } from '@apis/index';
+import { requestApplication, requestApplicationByUserAndRetreatId, requestUserBirth, requestUserGroup } from '@apis/index';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { isLoadingState, userState } from '@modules/atoms';
 import SvgIcon from '@components/SvgIcon';
@@ -183,7 +183,6 @@ const HolidayPassView = () => {
       try {
         setIsLoading({ isLoading: true });
         // console.log(answers)
-        await requestCreatePray(user.id, answers[4]);
         await requestApplication(user.userId,3,meal ,answers[3],bus,CarNumber,false,childCount);
         await requestUserGroup(user.userId,answers[2])
         await requestUserBirth(user.userId,answers[5])
